@@ -1,0 +1,101 @@
+/* Import font Google Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+/* Base styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4;
+}
+
+/* Navigation Bar */
+.navigation-bar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0.6rem 1.2rem;
+  margin: 0.5rem auto;              
+  max-width: 1200px;                
+  border-radius: 12px;              
+  
+  background: rgba(255, 255, 255, 0.85); 
+  backdrop-filter: blur(10px);            
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
+}
+
+/* Groups */
+.nav-left,
+.nav-center,
+.nav-right {
+  display: flex;
+  gap: 6.5rem;     
+  align-items: center;
+  flex: 1;
+}
+
+.nav-center {
+  justify-content: center;
+}
+
+.nav-right {
+  justify-content: flex-end;
+}
+
+.navigation-bar .logo {
+  height: 2.8em;
+  width: auto;
+  vertical-align: middle;
+  margin-right: 6px;
+}
+
+/* Links */
+.navigation-bar a {
+  display: inline-block;
+  white-space: nowrap;
+  text-decoration: none;
+  color: #222;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 0.3rem 0.6rem;
+  transition: all 0.2s ease-in-out;
+  transition: text-shadow 0.2s ease, color 0.2s ease;
+  border-radius: 6px;
+}
+
+/* Hover effect */
+.navigation-bar a:hover,
+.navigation-bar a:focus {
+  color: #133670;
+  background: rgba(39, 35, 104, 0.08);
+  transform: translateY(-1px);
+  text-shadow: 0 0 0 currentColor, 0.03em 0 0 currentColor;
+}
+
+/* Active class */
+.navigation-bar a.active {
+  font-weight: 600;
+  color: #133670;
+}
+
+/* Login button */
+.navigation-bar a.login {
+  background-color: #133670;
+  color: white;
+  padding: 0.3rem 1rem;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.navigation-bar a.login:hover {
+  background-color: #3b74ce;
+  transform: translateY(-1px);
+}
