@@ -2,59 +2,59 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NoteSmith - Summary</title>
-  <link rel="stylesheet" href="../stylesheets/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NoteSmith - Summary</title>
+    <link rel="stylesheet" href="../stylesheets/style.css">
 
 </head>
 
 <body>
-  <div class="navigation-bar">
-    <div class="nav-left">
-      <a href="../index.html">
-        <img src="../assets/NoteSmith_logo.png" alt="Logo" class="logo">
-      </a>
+    <div class="navigation-bar">
+        <div class="nav-left">
+            <a href="../index.html">
+                <img src="../assets/NoteSmith_logo.png" alt="Logo" class="logo">
+            </a>
+        </div>
+
+        <div class="nav-center">
+            <a href="./crash_course.html">Crash Course</a>
+            <a href="./practice_tests.html">Practice Test</a>
+            <a class="active" href="./summary.html">Summary</a>
+        </div>
+
+        <div class="nav-right">
+            <a href="#" id="loginBtn" class="login">Login/Sign Up</a>
+        </div>
     </div>
 
-    <div class="nav-center">
-      <a href="./crash_course.html">Crash Course</a>
-      <a href="./practice_tests.html">Practice Test</a>
-      <a class="active" href="./summary.html">Summary</a>
-    </div>
+    <div class="summary-container">
+        <!-- Locked message -->
+        <div id="summary-locked" style="display:none;">
+            <lottie-player src="../assets/lock_icon.json" background="transparent" speed="1"
+                style="width:150px; height:150px; margin:auto;" loop autoplay>
+            </lottie-player>
+            <p>You must be logged in to access Summary.</p>
+        </div>
 
-    <div class="nav-right">
-      <a href="#" id="loginBtn" class="login">Login/Sign Up</a>
-    </div>
-  </div>
+        <!-- Summary UI -->
+        <div id="summary-ui" style="display:none;">
+            <h2 class="summary-title">AI PDF Summary</h2>
 
-  <div class="summary-container">
-    <!-- Locked message -->
-    <div id="summary-locked" style="display:none;">
-      <lottie-player 
-        src="../assets/lock_icon.json"  
-        background="transparent"  
-        speed="1"  
-        style="width:150px; height:150px; margin:auto;"  
-        loop  
-        autoplay>
-      </lottie-player>
-      <p>You must be logged in to access Summary.</p>
-    </div>
+            <label for="pdfUpload" class="upload-box">
+                <lottie-player src="../assets/upload_icon.json" background="transparent" speed="1"
+                    style="width:120px; height:120px;" loop autoplay>
+                </lottie-player>
+                <p>Click to upload your PDF</p>
+                <input type="file" id="pdfUpload" accept="application/pdf" hidden>
+            </label>
 
-    <!-- Summary UI -->
-    <div id="summary-ui" style="display:none;">
-      <h2 class="summary-title">AI PDF Summary</h2>
-      <div class="upload-box">
-        <input type="file" id="pdfUpload" accept="application/pdf">
-        <button id="summarizeBtn">Summarize PDF</button>
-      </div>
-      <div id="summary-output" style="display:none;"></div>
+            <button id="summarizeBtn">Summarize PDF</button>
+            <div id="summary-output" style="display:none;"></div>
+        </div>
     </div>
-  </div>
-  
-  </div>
-  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-  <script src="../scripts/script.js"></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <script src="../scripts/script.js"></script>
 </body>
+
 </html>

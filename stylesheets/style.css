@@ -234,7 +234,7 @@ body {
 
 /* Summary Page *------------------------------------------------------------------------------------------*/
 
-/* Summary Container */
+/* Summary container */
 .summary-container {
   max-width: 800px;
   margin: 3rem auto;
@@ -244,11 +244,68 @@ body {
   box-shadow: 0 6px 18px rgba(0,0,0,0.08);
 }
 
-/* Title */
 .summary-title {
   text-align: center;
   color: #133670;
   margin-bottom: 1.5rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Upload box with animation */
+.upload-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: 2px dashed #ccc;
+  border-radius: 12px;
+  padding: 1.5rem;
+  background: #fafafa;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+.upload-box:hover {
+  border-color: #133670;
+  background: #f0f4ff;
+}
+
+.upload-box p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #444;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Button */
+#summarizeBtn {
+  display: block;
+  margin: 1.5rem auto 0;
+  padding: 0.7rem 1.2rem;
+  background: #133670;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+#summarizeBtn:hover {
+  background: #3b74ce;
+  transform: translateY(-2px);
+}
+
+/* Output */
+#summary-output {
+  margin: 2rem auto 0;
+  max-width: 650px;
+  padding: 1.5rem;
+  border-radius: 10px;
+  background: #f9f9ff;
+  border: 1px solid #e0e0f0;
   font-family: 'Poppins', sans-serif;
 }
 
@@ -268,49 +325,6 @@ body {
   margin-top: 1rem;
   font-family: 'Poppins', Arial, sans-serif;
 }
-
-/* Upload box */
-.upload-box {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-bottom: 2rem;
-}
-
-#pdfUpload {
-  padding: 0.5rem;
-  border: 1.5px solid #ccc;
-  border-radius: 8px;
-  font-family: 'Poppins', sans-serif;
-}
-
-#summarizeBtn {
-  padding: 0.7rem 1.2rem;
-  background: #133670;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.2s ease, transform 0.2s ease;
-}
-
-#summarizeBtn:hover {
-  background: #3b74ce;
-  transform: translateY(-2px);
-}
-
-/* Output box */
-#summary-output {
-  margin: 0 auto;
-  max-width: 650px;
-  padding: 1.5rem;
-  border-radius: 10px;
-  background: #f9f9ff;
-  border: 1px solid #e0e0f0;
-  font-family: 'Poppins', sans-serif;
-}
-
 
 
 /* Summary Page *------------------------------------------------------------------------------------------*/
