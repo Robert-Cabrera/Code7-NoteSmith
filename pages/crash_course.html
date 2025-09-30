@@ -24,10 +24,26 @@
         </div>
     </div>
     <div class="crash-course-container">
+        <div id="locked-message" style="display:none;">
+            <lottie-player src="../assets/lock_icon.json" background="transparent" speed="1"
+                style="width:150px; height:150px; margin:auto;" loop autoplay>
+            </lottie-player>
+            <p>You must be logged in to access Crash Course.</p>
+        </div>
+
+        <div id="crash-course-form" style="display:none;">
+            <div class="form-row">
+                <input type="text" id="topicInput" placeholder="Enter a topic">
+                <button id="generateBtn">Generate Crash Course</button>
+            </div>
+            <div id="output" style="display:none;"></div>
+        </div>
 
     </div>
+
 </body>
 <script src="../scripts/script.js"></script>
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 <link rel="stylesheet" href=".././stylesheets/style.css">
 </head>
 

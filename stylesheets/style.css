@@ -11,7 +11,7 @@ body {
     background-color: #f4f4f4;
 }
 
-/* Navigation Bar */
+/* Navigation Bar *------------------------------------------------------------------------------------------*/
 .navigation-bar {
   position: sticky;
   top: 0;
@@ -106,3 +106,211 @@ body {
   margin-right: 6px;
 }
 
+/* Navigation Bar *------------------------------------------------------------------------------------------*/
+
+/* Crash Course *------------------------------------------------------------------------------------------*/
+
+.crash-course-container {
+  max-width: 800px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+/* Locked message */
+#locked-message {
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #555;
+  padding: 2rem;
+  border: 2px dashed #ccc;
+  border-radius: 8px;
+  background: #fafafa;
+}
+
+/* Form layout */
+#crash-course-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Center form row */
+.form-row {
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Input width */
+#topicInput {
+  flex: 1;
+  max-width: 400px;
+}
+
+/* Button styling */
+#generateBtn {
+  padding: 0.8rem 1.4rem;
+  background: #133670;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+#generateBtn:hover {
+  background: #3b74ce;
+  transform: translateY(-2px);
+}
+
+/* Output box */
+#output {
+  margin: 0 auto;
+  max-width: 600px;
+  padding: 1.5rem;
+  border-radius: 10px;
+  background: #f9f9ff;
+  border: 1px solid #e0e0f0;
+}
+
+#output h3 {
+  margin-top: 0;
+  color: #133670;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}
+
+#output ul {
+  list-style: none;
+  padding: 0;
+}
+
+#output ul li {
+  margin: 0.6rem 0;
+  padding-left: 1.2rem;
+  position: relative;
+}
+
+#output ul li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #133670;
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+#locked-message {
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #555;
+  padding: 2rem;
+  border: 2px dashed #ccc;
+  border-radius: 8px;
+  background: #fafafa;
+}
+
+#locked-message p {
+  margin-top: 1rem;
+}
+
+/* Forcing font on forms */
+
+#crash-course-form input,
+#crash-course-form button,
+#output,
+#output * {
+  font-family: 'Poppins', Arial, sans-serif;
+}
+
+/* Crash Course *------------------------------------------------------------------------------------------*/
+
+/* Summary Page *------------------------------------------------------------------------------------------*/
+
+/* Summary Container */
+.summary-container {
+  max-width: 800px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+/* Title */
+.summary-title {
+  text-align: center;
+  color: #133670;
+  margin-bottom: 1.5rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Locked message for Summary */
+#summary-locked {
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #555;
+  padding: 2rem;
+  border: 2px dashed #ccc;
+  border-radius: 8px;
+  background: #fafafa;
+}
+
+#summary-locked p {
+  margin-top: 1rem;
+  font-family: 'Poppins', Arial, sans-serif;
+}
+
+/* Upload box */
+.upload-box {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+#pdfUpload {
+  padding: 0.5rem;
+  border: 1.5px solid #ccc;
+  border-radius: 8px;
+  font-family: 'Poppins', sans-serif;
+}
+
+#summarizeBtn {
+  padding: 0.7rem 1.2rem;
+  background: #133670;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+#summarizeBtn:hover {
+  background: #3b74ce;
+  transform: translateY(-2px);
+}
+
+/* Output box */
+#summary-output {
+  margin: 0 auto;
+  max-width: 650px;
+  padding: 1.5rem;
+  border-radius: 10px;
+  background: #f9f9ff;
+  border: 1px solid #e0e0f0;
+  font-family: 'Poppins', sans-serif;
+}
+
+
+
+/* Summary Page *------------------------------------------------------------------------------------------*/
