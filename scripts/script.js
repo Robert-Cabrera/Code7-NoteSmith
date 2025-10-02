@@ -5,6 +5,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const practiceTestLink = document.querySelector(".nav-center a:nth-child(2)"); // PRACTICE TEST
   const summaryLink = document.querySelector(".nav-center a:nth-child(3)"); // SUMMARY
   const loginBtn = document.getElementById("loginBtn");          // LOGIN / ACCOUNT
+  const toggleButton = document.getElementById('theme-toggle');
+  const body = document.body;
 
   // ===== LOGIN STATE =====
   let isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
@@ -19,6 +21,38 @@ document.addEventListener("DOMContentLoaded", () => {
     loginBtn.href = "#"; // adjust later
   }
 
+  if (toggleButton) {
+    function updateButtonIcon(theme) {
+      if (theme === 'dark-theme') {
+        toggleButton.setAttribute('aria-label', 'Switch to light theme');
+      } else {
+        toggleButton.setAttribute('aria-label', 'Switch to dark theme');
+      }
+    }
+
+    //Initial Theme Check
+    const currentTheme = localStorage.getItem('theme');
+
+    if (currentTheme) {
+      body.classList.add(currentTheme);
+      updateButtonIcon(currentTheme);
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      body.classList.add('dark-theme');
+    } else {
+    }
+
+    toggleButton.addEventListener('click', () => {
+      const isDark = body.classList.contains('dark-theme');
+
+      if (isDark) {
+        body.classList.remove('dark-theme');
+        localStorage.setItem('theme', 'light-theme');
+      } else {
+        body.classList.add('dark-theme');
+        localStorage.setItem('theme', 'dark-theme');
+      }
+    });
+  }
   // ===== PAGE-SPECIFIC HOOKS =====
 
   // --- HOME ---
