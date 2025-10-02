@@ -1,6 +1,7 @@
 /* Import font Google Poppins */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
+/* Should honestly separate these into multiple css files - David*/ 
 /* Base dark/light theme colors. Feel free to change them or set your own colors*/
 :root {
     --clr_primary: #133670;
@@ -43,6 +44,189 @@
     --clr_text_muted: #aaaaaa;
 }
 
+/* --- Dashboard Specific Styles --- */
+
+.dashboard-container {
+    padding: 20px 40px;
+    max-width: 1400px; /* Wider container for dashboard elements */
+    margin: 0 auto;
+}
+
+/* Header & Quick Actions */
+.dashboard-header {
+    text-align: center;
+    padding: 60px 20px;
+    margin-bottom: 40px;
+    background-color: var(--clr_container_bg);
+    border-radius: 12px;
+    box-shadow: 0 4px 10px var(--clr_nav_shadow);
+}
+
+.dashboard-header h2 {
+    font-size: 2.5em;
+    color: var(--clr_primary);
+}
+
+.dashboard-header p {
+    font-size: 1.1em;
+    color: var(--clr_text_muted);
+    margin-bottom: 30px;
+}
+
+
+/* Section Styling */
+.dashboard-section {
+    margin-bottom: 50px;
+}
+
+.dashboard-section h3 {
+    font-size: 1.6em;
+    color: var(--clr_text_base);
+    border-bottom: 2px solid var(--clr_output_border);
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+}
+
+/* Tests List Container & Empty State */
+.tests-list-container {
+    min-height: 200px; /* Ensure it takes up space even when empty */
+    background-color: var(--clr_container_bg);
+    border: 1px dashed var(--clr_output_border);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 20px;
+}
+
+.empty-state p {
+    color: var(--clr_text_muted);
+    margin-bottom: 15px;
+}
+
+.small-button {
+    padding: 8px 18px;
+    font-size: 0.9em;
+}
+
+/* Quick Access Tool Cards (Reuse of .card structure) */
+.tool-cards {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.tool-card {
+    text-align: left;
+    text-decoration: none;
+    flex: 1;
+    min-width: 250px;
+}
+
+.tool-card h4 {
+    color: var(--clr_primary);
+    margin-top: 0;
+    font-size: 1.2em;
+}
+/* --- index Section Styling --- */
+.index-section {
+    text-align: center;
+    padding: 120px 20px 100px;
+    background-color: var(--clr_container_bg); /* Main container background */
+    border-bottom: 1px solid var(--clr_output_border);
+}
+
+.index-section h1 {
+    font-size: 3.2em;
+    color: var(--clr_primary);
+    margin-bottom: 15px;
+}
+
+.index-section p {
+    font-size: 1.3em;
+    color: var(--clr_text_muted);
+    margin-bottom: 30px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.index-actions {
+    margin-top: 20px;
+}
+
+
+/* --- Features Section Styling --- */
+.features-section {
+    padding: 80px 20px;
+    text-align: center;
+    background-color: var(--clr_body_bg); /* Use the body background for this section */
+}
+
+.features-section h2 {
+    font-size: 2em;
+    color: var(--clr_text_base);
+    margin-bottom: 40px;
+}
+
+.feature-cards {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+.card {
+    background-color: var(--clr_container_bg);
+    padding: 30px;
+    border-radius: 12px; /* Slightly rounder corners */
+    box-shadow: 0 4px 12px var(--clr_nav_shadow);
+    border: 1px solid var(--clr_output_border); /* Subtle border for definition */
+    flex: 1;
+    min-width: 280px;
+    text-align: left;
+    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px var(--clr_nav_shadow); /* Stronger shadow on hover */
+}
+
+.card h3 {
+    color: var(--clr_primary);
+    margin-top: 0;
+    font-size: 1.4em;
+    border-bottom: 2px solid var(--clr_output_border);
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.card p {
+    color: var(--clr_text_muted);
+    line-height: 1.6;
+}
+
+.feature-link {
+    display: inline-block;
+    margin-top: 15px;
+    color: var(--clr_accent); /* Use accent for links */
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.feature-link:hover {
+    color: var(--clr_primary);
+    text-decoration: underline;
+}
 /* Base styles */
 body {
     margin: 0;

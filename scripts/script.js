@@ -7,8 +7,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const loginBtn = document.getElementById("loginBtn");          // LOGIN / ACCOUNT
   const toggleButton = document.getElementById('theme-toggle');
   const body = document.body;
-
-  // ===== LOGIN STATE =====
+  const userNameElement = document.getElementById("userName"); // For the dashboard greeting
+  const logoutBtn = document.getElementById("logoutBtn"); 
+  const userName = "John Doe"; // will get replaced with whatever the user is
   let isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
 
   // --- ALWAYS if logged in ---
@@ -56,13 +57,26 @@ document.addEventListener("DOMContentLoaded", () => {
   // ===== PAGE-SPECIFIC HOOKS =====
 
   // --- HOME ---
-  if (homeLink) {
+  // Get the current page path
+const currentPagePath = window.location.pathname;
+
+if (homeLink) {
+    const isOnPagesFolder = currentPagePath.includes('/pages/');
     if (isLoggedIn) {
-      // logic for HOME when logged in
+        if (isOnPagesFolder) {
+            homeLink.href = "./dashboard.html";
+        } else {
+            homeLink.href = "./pages/dashboard.html";
+        }
+
     } else {
-      // logic for HOME when not logged in
+        if (isOnPagesFolder) {
+            homeLink.href = "../index.html";
+        } else {
+            homeLink.href = "./index.html"; 
+        }
     }
-  }
+}
 
  // --- CRASH COURSE ---
 const crashCourseContainer = document.querySelector(".crash-course-container");
@@ -167,14 +181,33 @@ if (summarizeBtn) {
         // Simulate logout
         localStorage.removeItem("isLoggedIn");
         isLoggedIn = false;
+        location.reload();
+        window.location.href = "../index.html";
       } else {
         // Simulate login
         localStorage.setItem("isLoggedIn", "true");
         isLoggedIn = true;
+        location.reload();
+        window.location.href = "./pages/dashboard.html";
       }
 
       // Refresh to re-run state checks
-      location.reload();
     });
   }
 });
+if (userNameElement && logoutBtn) {
+    
+    userNameElement.textContent = `Welcome, ${userName}!`;
+
+    // Logout button handler for the dashboard nav bar
+    logoutBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        
+        // 1. Simulate logout
+        localStorage.removeItem("isLoggedIn");
+        isLoggedIn = false;
+        
+        // 2. Redirect to the public homepage (index.html)
+        window.location.href = "./index.html"; 
+    });
+}
