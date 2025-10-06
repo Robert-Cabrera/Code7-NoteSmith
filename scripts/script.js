@@ -1,18 +1,22 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // ===== NAVBAR ELEMENTS =====
-  const homeLink = document.querySelector(".nav-left a");       // HOME
-  const crashCourseLink = document.querySelector(".nav-center a:nth-child(1)"); // CRASH COURSE
-  const practiceTestLink = document.querySelector(".nav-center a:nth-child(2)"); // PRACTICE TEST
-  const summaryLink = document.querySelector(".nav-center a:nth-child(3)"); // SUMMARY
-  const loginBtn = document.getElementById("loginBtn");          // LOGIN / ACCOUNT
+  
+  // ============================================ NAVBAR ELEMENTS ============================================
+  const homeLink = document.querySelector(".nav-left a");                             // HOME
+  const crashCourseLink = document.querySelector(".nav-center a:nth-child(1)");       // CRASH COURSE
+  const practiceTestLink = document.querySelector(".nav-center a:nth-child(2)");      // PRACTICE TEST
+  const summaryLink = document.querySelector(".nav-center a:nth-child(3)");           // SUMMARY
+  const loginBtn = document.getElementById("loginBtn");                               // LOGIN / ACCOUNT
   const toggleButton = document.getElementById('theme-toggle');
   const body = document.body;
-  const userNameElement = document.getElementById("userName"); // For the dashboard greeting
+  const userNameElement = document.getElementById("userName");                        // For the dashboard greeting
   const logoutBtn = document.getElementById("logoutBtn"); 
-  const userName = "John Doe"; // will get replaced with whatever the user is
+  const userName = "John Doe";                                                        // will get replaced with whatever the user is
   let isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+  
+  // Determine if we are on index.html or not (helpful for relative paths)    
+  const isIndex = window.location.pathname.endsWith('index.html');
 
-  // --- ALWAYS if logged in ---
+  // ============================================ ALWAYS if logged in ============================================
   if (isLoggedIn && loginBtn) {
     loginBtn.innerHTML = `
       <img src="../assets/avatar_placeholder.png" alt="User" class="avatar"> Account Settings
@@ -22,24 +26,57 @@ document.addEventListener("DOMContentLoaded", () => {
     loginBtn.href = "#"; // adjust later
   }
 
+  // ============================================ ALWAYS if logged in ============================================
+
+
+  // ============================================ THEME SETTINGS ==================================================
+  
+  const currentTheme = localStorage.getItem('theme');
+  
+  // Select the toggle button and change text content and aria-label
   if (toggleButton) {
+    const logoElement = document.querySelector('.logo');
+    
     function updateButtonIcon(theme) {
       if (theme === 'dark-theme') {
         toggleButton.setAttribute('aria-label', 'Switch to light theme');
+        toggleButton.textContent = 'Light Mode';
       } else {
         toggleButton.setAttribute('aria-label', 'Switch to dark theme');
+        toggleButton.textContent = 'Dark Mode';
+      }
+    }``
+
+    // Update logo based on theme and page
+    function updateLogo(theme) {
+     
+      if (logoElement) {
+        let basePath = isIndex ? './assets/' : '../assets/';
+        
+        if (theme === 'dark-theme') {
+          logoElement.src = basePath + 'NoteSmith_logo_dark.png';
+        } else {
+          logoElement.src = basePath + 'NoteSmith_logo.png';
+        }
       }
     }
 
-    //Initial Theme Check
-    const currentTheme = localStorage.getItem('theme');
-
+    // Theme changing logic
     if (currentTheme) {
       body.classList.add(currentTheme);
       updateButtonIcon(currentTheme);
+      updateLogo(currentTheme);
+
     } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      
       body.classList.add('dark-theme');
+      updateButtonIcon('dark-theme');
+      updateLogo('dark-theme');
+    
     } else {
+      
+      updateButtonIcon('light-theme');
+      updateLogo('light-theme');
     }
 
     toggleButton.addEventListener('click', () => {
@@ -48,16 +85,22 @@ document.addEventListener("DOMContentLoaded", () => {
       if (isDark) {
         body.classList.remove('dark-theme');
         localStorage.setItem('theme', 'light-theme');
+        updateButtonIcon('light-theme');
+        updateLogo('light-theme');
       } else {
         body.classList.add('dark-theme');
         localStorage.setItem('theme', 'dark-theme');
+        updateButtonIcon('dark-theme');
+        updateLogo('dark-theme');
       }
     });
   }
-  // ===== PAGE-SPECIFIC HOOKS =====
+
+  // ============================================ THEME SETTINGS ====================================================
+
+  // ============================================ PAGE SPECIFIC SETTINGS ============================================
 
   // --- HOME ---
-  // Get the current page path
 const currentPagePath = window.location.pathname;
 
 if (homeLink) {
@@ -188,13 +231,24 @@ if (summarizeBtn) {
         localStorage.setItem("isLoggedIn", "true");
         isLoggedIn = true;
         location.reload();
-        window.location.href = "./pages/dashboard.html";
+        
+        if (isIndex) {
+          window.location.href = "./pages/dashboard.html";
+        } else {
+
+          // For now stay in the page
+          return;
+          
+          // Go to the dashboard
+          // window.location.href = "./pages/dashboard.html";0
+        }
       }
 
       // Refresh to re-run state checks
     });
   }
 });
+
 if (userNameElement && logoutBtn) {
     
     userNameElement.textContent = `Welcome, ${userName}!`;
@@ -211,3 +265,4 @@ if (userNameElement && logoutBtn) {
         window.location.href = "./index.html"; 
     });
 }
+  // ============================================ PAGE SPECIFIC SETTINGS ============================================
