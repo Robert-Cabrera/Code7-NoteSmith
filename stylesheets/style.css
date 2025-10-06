@@ -1,3 +1,22 @@
+/*
+
+    Main stylesheet for NoteSmith web application.
+    Handles global styles, theme variables, layout, navigation bar, 
+    dashboard, crash course, and summary page UI.
+
+    The way we separate styles for pages is based on container classes
+    For example,    .dashboard-container    - dashboard.html
+                    .crash-course-container - crash_course.html
+                    .summary-container      - summary.html
+                    .home-container         - index.html 
+
+
+    Notes: 
+    - Should probably separate into multiple CSS files for maintainability.
+    
+*/
+
+
 /* Import font Google Poppins */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
@@ -313,15 +332,22 @@ body {
   transform: translateY(-1px);
 }
 
-/* Active class */
-/*
+/* Active class - fix: based on theme now*/
+
 .navigation-bar a.active {
-  font-weight: 600;
-  color: var(--clr_primary);
-  background: #fff; 
-  padding: 0.2rem 0.5rem; 
-  border-radius: 8px; 
-  box-shadow: 0 1px 3px var(--clr_nav_shadow); 
+    font-weight: 600;
+    color: var(--clr_primary);
+    background: #fff;
+    padding: 0.2rem 0.5rem;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px var(--clr_nav_shadow);
+}
+
+/* Dark theme active nav link */
+.dark-theme .navigation-bar a.active {
+    color: var(--clr_primary);
+    background: #222;
+    box-shadow: 0 1px 6px var(--clr_nav_shadow);
 }
 
 

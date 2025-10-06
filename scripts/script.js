@@ -1,6 +1,23 @@
+/*
+  script.js
+  
+  Main client-side script for NoteSmith web application.
+  Handles navigation bar logic, theme toggling (light/dark), login/logout simulation,
+  and page-specific UI state (e.g., showing/hiding content based on authentication).
+  Also manages placeholder logic for crash course and summary features.
+  
+  Features (so far)
+  - Dynamic navbar links and account button based on login state.
+  - Theme switching with persistent user preference.
+  - Page-specific UI for home, crash course, practice test, and summary pages based on login state.
+  - Simulated login/logout using localStorage.
+
+*/
+
+
 document.addEventListener("DOMContentLoaded", () => {
   
-  // ============================================ NAVBAR ELEMENTS ============================================
+  // ============================================ NAVBAR ELEMENTS =================================================================
   const homeLink = document.querySelector(".nav-left a");                             // HOME
   const crashCourseLink = document.querySelector(".nav-center a:nth-child(1)");       // CRASH COURSE
   const practiceTestLink = document.querySelector(".nav-center a:nth-child(2)");      // PRACTICE TEST
@@ -16,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Determine if we are on index.html or not (helpful for relative paths)    
   const isIndex = window.location.pathname.endsWith('index.html');
 
-  // ============================================ ALWAYS if logged in ============================================
+  // ============================================ ALWAYS if logged in =============================================================
   if (isLoggedIn && loginBtn) {
     loginBtn.innerHTML = `
       <img src="../assets/avatar_placeholder.png" alt="User" class="avatar"> Account Settings
@@ -26,10 +43,10 @@ document.addEventListener("DOMContentLoaded", () => {
     loginBtn.href = "#"; // adjust later
   }
 
-  // ============================================ ALWAYS if logged in ============================================
+  // ============================================ ALWAYS if logged in =============================================================
 
 
-  // ============================================ THEME SETTINGS ==================================================
+  // ============================================ THEME SETTINGS ==================================================================
   
   const currentTheme = localStorage.getItem('theme');
   
@@ -38,6 +55,17 @@ document.addEventListener("DOMContentLoaded", () => {
     const logoElement = document.querySelector('.logo');
     
     function updateButtonIcon(theme) {
+
+      /*
+
+        Updates the theme toggle button's icon and aria-label based on the current theme.
+        (the aria-label is for screen readers and accessibility)
+
+        - If the theme is 'dark-theme', sets the button to indicate switching to light mode.
+        - If the theme is 'light-theme', sets the button to indicate switching to dark mode.
+      
+      */
+
       if (theme === 'dark-theme') {
         toggleButton.setAttribute('aria-label', 'Switch to light theme');
         toggleButton.textContent = 'Light Mode';
@@ -50,6 +78,15 @@ document.addEventListener("DOMContentLoaded", () => {
     // Update logo based on theme and page
     function updateLogo(theme) {
      
+      /*
+
+        Updates the logo image source based on the current theme and page context.
+        - If on index.html, uses './assets/' path.
+        - If on other pages, uses '../assets/' path.
+        - Uses 'NoteSmith_logo_dark.png' for dark theme and 'NoteSmith_logo.png' for light theme.
+      
+      */
+
       if (logoElement) {
         let basePath = isIndex ? './assets/' : '../assets/';
         
@@ -96,12 +133,13 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ============================================ THEME SETTINGS ====================================================
+  // ============================================ THEME SETTINGS ==================================================================
 
-  // ============================================ PAGE SPECIFIC SETTINGS ============================================
+  // ============================================ PAGE SPECIFIC SETTINGS ==========================================================
 
-  // --- HOME ---
-const currentPagePath = window.location.pathname;
+  // ====================================================== HOME ==================================================================
+
+  const currentPagePath = window.location.pathname;
 
 if (homeLink) {
     const isOnPagesFolder = currentPagePath.includes('/pages/');
@@ -121,7 +159,9 @@ if (homeLink) {
     }
 }
 
- // --- CRASH COURSE ---
+
+// ============================================ CRASH COURSE =====================================================================
+
 const crashCourseContainer = document.querySelector(".crash-course-container");
 const lockedMessage = document.getElementById("locked-message");
 const crashForm = document.getElementById("crash-course-form");
@@ -165,7 +205,8 @@ if (generateBtn) {
 }
 
 
-  // --- PRACTICE TEST ---
+  // ============================================================ PRACTICE TEST ========================================================
+  
   if (practiceTestLink) {
     if (isLoggedIn) {
       // logic for PRACTICE TEST when logged in
@@ -174,7 +215,9 @@ if (generateBtn) {
     }
   }
 
-  // --- SUMMARY ---
+
+// ================================================================= SUMMARY ============================================================
+
 const summaryContainer = document.querySelector(".summary-container");
 const summaryLocked = document.getElementById("summary-locked");
 const summaryUI = document.getElementById("summary-ui");
@@ -215,7 +258,7 @@ if (summarizeBtn) {
   });
 }
 
-  // --- LOGIN / ACCOUNT TOGGLE ---
+  // =========================================================== LOGIN ================================================================
   if (loginBtn) {
     loginBtn.addEventListener("click", (e) => {
       e.preventDefault();
@@ -265,4 +308,4 @@ if (userNameElement && logoutBtn) {
         window.location.href = "./index.html"; 
     });
 }
-  // ============================================ PAGE SPECIFIC SETTINGS ============================================
+  // ============================================ PAGE SPECIFIC SETTINGS ==========================================================
