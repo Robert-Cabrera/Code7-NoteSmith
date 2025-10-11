@@ -314,7 +314,6 @@ if (homeLink) {
 if (crashCourseLink) crashCourseLink.href = "/pages/crash_course.html";
 if (practiceTestLink) practiceTestLink.href = "/pages/practice_tests.html";
 if (summaryLink) summaryLink.href = "/pages/summary.html";
-// ...existing code continues...
 
 
 // ============================================ CRASH COURSE =====================================================================
