@@ -14,7 +14,6 @@
 
 */
 
-
 document.addEventListener("DOMContentLoaded", () => {
   
   // ============================================ NAVBAR ELEMENTS =================================================================
@@ -133,6 +132,167 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // ==================================================== GEMINI API ===================================================================
+
+  // General functions:
+async function generateContent(prompt) {
+    const response = await fetch('/api/gemini', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ prompt })
+    });
+    if (!response.ok) throw new Error('Failed to contact Gemini API');
+    return await response.json();
+}
+
+const checkForResponse = async (data) => {
+    /*
+        Checks if the API response contains valid content.
+        Returns true if valid content is found, otherwise false.
+
+        Parsing method:
+        - Ensure 'data' is defined and has a 'candidates' array.
+        - Check if the first candidate exists and has a 'content' object.
+        - Verify that 'content' has a 'parts' array.
+        - Ensure the first part exists and contains a 'text' property.
+    */
+    if (
+        data &&
+        data.candidates &&
+        data.candidates[0] &&
+        data.candidates[0].content &&
+        data.candidates[0].content.parts &&
+        data.candidates[0].content.parts[0] &&
+        data.candidates[0].content.parts[0].text
+    ) {
+        return true;
+    }
+    return false;
+}
+
+  // CrashCourse specific functions and classes:
+class CrashCourse {
+  static validateSchema(obj) {
+    /*
+      Validates the structure of the JSON object against the expected schema.
+      Returns true if the object matches the schema, otherwise false.
+    */
+
+    if (
+      typeof obj !== "object" ||
+      typeof obj.topic !== "string" ||
+      typeof obj.summary !== "string" ||
+      typeof obj.overview !== "string" ||
+      !Array.isArray(obj.main_topics) ||
+      typeof obj.conclusion !== "string"
+    ) return false;
+
+    for (const topic of obj.main_topics) {
+      if (
+        typeof topic !== "object" ||
+        typeof topic.title !== "string" ||
+        typeof topic.description !== "string" ||
+        !Array.isArray(topic.subtopics) ||
+        topic.subtopics.length !== 3
+      ) return false;
+
+      for (const sub of topic.subtopics) {
+        if (
+          typeof sub !== "object" ||
+          typeof sub.title !== "string" ||
+          typeof sub.details !== "string"
+        ) return false;
+      }
+    }
+    return true;
+  }
+
+  static async getValidJsonResponse(prompt, maxRetries = 3) {
+    /*
+      Attempts to get a valid JSON response from the Gemini API based on the provided prompt.
+      Retries up to 'maxRetries' times if the response is invalid or does not match the schema.
+      Logs the valid JSON response or an error message if all attempts fail.
+      
+      Important note: Remove the markdown code block markers (```json ... ```) from the response 
+      before parsing.
+    */
+
+    for (let attempt = 1; attempt <= maxRetries; attempt++) {
+      try {
+        const data = await generateContent(prompt);
+        if (!checkForResponse(data)) {
+          console.log(`Attempt ${attempt}: No valid response found. Retrying...`);
+          continue;
+        }
+
+        let text = data.candidates[0].content.parts[0].text;
+        // Remove Markdown code block markers if present
+        text = text.replace(/^```(?:json)?\s*([\s\S]*?)\s*```$/i, '$1').trim();
+
+        let json;
+        try {
+          json = JSON.parse(text);
+        } catch {
+          console.log(`Attempt ${attempt}: Response is not valid JSON. Retrying...`);
+          console.log("Received text:", text);
+          continue;
+        }
+
+        if (CrashCourse.validateSchema(json)) {
+          console.log(JSON.stringify(json, null, 2));
+          return json;
+        } else {
+          console.log(`Attempt ${attempt}: JSON does not match schema. Retrying...`);
+        }
+
+      } catch (err) {
+        console.error(`Attempt ${attempt}: Error -`, err);
+      }
+    }
+    console.log("Failed to get valid JSON response after maximum retries.");
+    return null;
+  }
+
+  static createPrompt(topic) {
+    return `
+      Generate a structured crash course on: ${topic}
+      Each main topic must have exactly 3 subtopics.
+      Follow word limits strictly.
+      Output must be valid JSON only.
+
+      Schema:
+      {
+        "topic": "string",
+        "summary": "string, ≤50 words",
+        "overview": "string, ≤80 words",
+        "main_topics": [
+        {
+          "title": "string",
+          "description": "string, ≤60 words",
+          "subtopics": [
+          {
+            "title": "string, ≤10 words",
+            "details": "string, ≤70 words"
+          },
+          {
+            "title": "string, ≤10 words",
+            "details": "string, ≤70 words"
+          },
+          {
+            "title": "string, ≤10 words",
+            "details": "string, ≤70 words"
+          }
+          ]
+        }
+        ],
+        "conclusion": "string, ≤40 words"
+      }
+    `;
+  }
+
+}
+  // =================================================================================================================================== 
+
   // ============================================ THEME SETTINGS ==================================================================
 
   // ============================================ PAGE SPECIFIC SETTINGS ==========================================================
@@ -142,66 +302,143 @@ document.addEventListener("DOMContentLoaded", () => {
   const currentPagePath = window.location.pathname;
 
 if (homeLink) {
-    const isOnPagesFolder = currentPagePath.includes('/pages/');
-    if (isLoggedIn) {
-        if (isOnPagesFolder) {
-            homeLink.href = "./dashboard.html";
-        } else {
-            homeLink.href = "./pages/dashboard.html";
-        }
-
-    } else {
-        if (isOnPagesFolder) {
-            homeLink.href = "../index.html";
-        } else {
-            homeLink.href = "./index.html"; 
-        }
-    }
+  // Always use absolute paths from project root for Node.js static server
+  if (isLoggedIn) {
+    homeLink.href = "/pages/dashboard.html";
+  } else {
+    homeLink.href = "/index.html";
+  }
 }
+
+// Update nav-center links to use absolute paths
+if (crashCourseLink) crashCourseLink.href = "/pages/crash_course.html";
+if (practiceTestLink) practiceTestLink.href = "/pages/practice_tests.html";
+if (summaryLink) summaryLink.href = "/pages/summary.html";
+// ...existing code continues...
 
 
 // ============================================ CRASH COURSE =====================================================================
-
 const crashCourseContainer = document.querySelector(".crash-course-container");
 const lockedMessage = document.getElementById("locked-message");
 const crashForm = document.getElementById("crash-course-form");
 
 if (crashCourseContainer) {
   if (isLoggedIn) {
-    crashForm.style.display = "block";     // show form
+    crashForm.style.display = "block";
     lockedMessage.style.display = "none";
   } else {
-    lockedMessage.style.display = "block"; // show locked message
+    lockedMessage.style.display = "block";
     crashForm.style.display = "none";
   }
 }
 
-// --- Place holder ---
 const generateBtn = document.getElementById("generateBtn");
 if (generateBtn) {
-  generateBtn.addEventListener("click", () => {
+  generateBtn.addEventListener("click", async () => {
     const topic = document.getElementById("topicInput").value.trim();
     const output = document.getElementById("output");
 
     if (!topic) {
-      output.style.display = "block";       // show box
+      output.style.display = "block";
       output.innerHTML = "<p>Please enter a topic.</p>";
       return;
     }
 
-    // Show output box and inject content
     output.style.display = "block";
-    output.innerHTML = `
-      <h3>Crash Course on ${topic}</h3>
-      <ul>
-        <li><b>What it is:</b> Quick definition.</li>
-        <li><b>Why it matters:</b> Plain-language reason.</li>
-        <li><b>3 key points:</b> Basics explained.</li>
-        <li><b>Example:</b> Simple illustration.</li>
-        <li><b>Next steps:</b> Resources to learn more.</li>
-      </ul>
-    `;
+    output.innerHTML = `<div id='crash-loading' style='display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:220px;'>
+      <lottie-player id='crash-lottie' src="../assets/loading_light.json" background="transparent" speed="1" style="width:120px;height:120px;margin-bottom:1rem;" loop autoplay></lottie-player>
+      <span style='color:var(--clr_text_muted);font-size:1.1rem;'>Generating crash course...</span>
+    </div>`;
+
+    const theme = document.body.classList.contains('dark-theme') ? 'dark' : 'light';
+    const lottie = output.querySelector('#crash-lottie');
+    if (lottie) {
+      lottie.setAttribute('src', theme === 'dark' ? '../assets/loading_dark.json' : '../assets/loading_light.json');
+    }
+
+    try {
+      // Use CrashCourse class methods
+      const prompt = CrashCourse.createPrompt(topic);
+      const data = await CrashCourse.getValidJsonResponse(prompt);
+      if (!data) throw new Error('No valid response from Gemini.');
+
+      output.innerHTML = renderCrashCourse(data);
+    } catch (err) {
+      output.innerHTML = `<p style='color:var(--clr_error);text-align:center;'>Error: ${err.message || 'Failed to generate crash course.'}</p>`;
+    }
   });
+}
+
+// Helper to render crash course JSON to HTML
+function renderCrashCourse(data) {
+  
+  // Check for errors
+  if (!data || typeof data !== 'object') return '<p>Invalid crash course data.</p>';
+  
+  // Define the structure and style of the response (should be in styles.css but inline for now)
+  
+  let html = `<div style="max-width:100%; width:98vw; margin:0 auto;">`;
+  (function ensureCrashShineStyle() {
+    const styleId = 'crash-shine-style';
+    if (!document.getElementById(styleId)) {
+      const style = document.createElement('style');
+      style.id = styleId;
+      style.textContent = `
+        .crash-shine {
+          position: relative;
+          display: inline-block;
+          color: var(--clr_primary);
+          background: linear-gradient(
+            90deg,
+            var(--clr_primary),
+            var(--clr_contrasting_accent),
+            var(--clr_primary)
+          );
+          background-size: 200% auto;
+          background-clip: text;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          animation: crashShine 4.2s linear infinite;
+        }
+        @keyframes crashShine {
+          0% { background-position: 200% 0; }
+          100% { background-position: -200% 0; }
+        }
+      `;
+      document.head.appendChild(style);
+    }
+  })();
+
+  html += `<h3 style="text-align:center;font-size:2rem;color:var(--clr_primary);margin-bottom:0.7rem;">
+    Crash Course on <span class="crash-shine">${data.topic}</span>
+    </h3>`;
+
+  html += `<p style='font-size:1.1rem;color:var(--clr_text);margin-bottom:1.5rem;text-align:center;'>${data.summary || ''}</p>`;
+  html += `<div style='margin-bottom:1.5rem;'><span style="font-weight:650;color:var(--clr_accent);">Overview: </span>${data.overview || ''}</div>`;
+  
+  // Check if there's main topics
+  if (Array.isArray(data.main_topics)) {
+    data.main_topics.forEach(topic => {
+      html += `<div style="margin-bottom:2rem;">`;
+      html += `<div style="font-size:1.15rem;font-weight:600;color:var(--clr_primary);margin-bottom:0.3rem;">${topic.title}</div>`;
+      html += `<div style="margin-bottom:0.5rem;color:var(--clr_text);">${topic.description}</div>`;
+      
+      // Check for subtopics
+      if (Array.isArray(topic.subtopics)) {
+        html += `<ul style="margin-left:1.2rem;margin-bottom:0.2rem;">`;
+        topic.subtopics.forEach(sub => {
+          html += `<li style="margin-bottom:0.4rem;">
+            <span style="font-weight:650;color:var(--clr_accent);">${sub.title}:</span> <span style="color:var(--clr_text);">${sub.details}</span>
+          </li>`;
+        });
+        html += `</ul>`;
+      }
+      html += `</div>`;
+    });
+  }
+  html += `<div style='margin-top:2rem;font-size:1.08rem;'><span style="font-weight:600;color:var(--clr_primary);">Conclusion:</span> ${data.conclusion || ''}</div>`;
+  html += `</div>`;
+  return html;
 }
 
 
@@ -232,6 +469,20 @@ if (summaryContainer) {
     summaryLocked.style.display = "block";
     summaryUI.style.display = "none";
   }
+}
+
+// Upon choosing a file change the UI:
+const pdfInput = document.getElementById("pdfUpload");
+if (pdfInput) {
+  pdfInput.addEventListener("change", () => {
+    const file = pdfInput.files[0];
+    const fileInfo = document.getElementById("fileInfo");
+    if (file) {
+      fileInfo.textContent = `Selected file: ${file.name} (${(file.size / 1024).toFixed(2)} KB)`;
+    } else {
+      fileInfo.textContent = "No file selected.";
+    }
+  });
 }
 
 // Summarize button logic

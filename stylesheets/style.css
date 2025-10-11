@@ -25,6 +25,7 @@
 :root {
     --clr_primary: #133670;
     --clr_accent: #3b74ce;
+    --clr_contrasting_accent:#e67229;
 
     --clr_body_bg: #f4f4f4;
     --clr_nav_bg: rgba(255, 255, 255, 0.85);
@@ -54,6 +55,7 @@
     --clr_text_nav: #f0f0f0;
     --clr_primary: #5c9eff; 
     --clr_accent: #87baff;
+    --clr_contrasting_accent:#e0c191;
     
     --clr_container_bg: #2a2a2a;
     --clr_output_bg: #303030;
@@ -379,7 +381,7 @@ body {
 /* Crash Course *------------------------------------------------------------------------------------------*/
 
 .crash-course-container {
-    max-width: 800px;
+    max-width: 70%;
     margin: 3rem auto;
     padding: 2rem;
     background: var(--clr_container_bg); 
@@ -441,7 +443,7 @@ body {
 /* Output box */
 #output {
     margin: 0 auto;
-    max-width: 600px;
+    max-width: 1200px;
     padding: 1.5rem;
     border-radius: 10px;
     background: var(--clr_output_bg); 
@@ -490,15 +492,6 @@ body {
 
 #locked-message p {
   margin-top: 1rem;
-}
-
-/* Forcing font on forms */
-
-#crash-course-form input,
-#crash-course-form button,
-#output,
-#output * {
-  font-family: 'Poppins', Arial, sans-serif;
 }
 
 /* Crash Course *------------------------------------------------------------------------------------------*/
