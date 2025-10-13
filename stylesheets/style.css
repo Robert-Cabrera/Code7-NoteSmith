@@ -597,3 +597,74 @@ body {
 
 
 /* Summary Page *------------------------------------------------------------------------------------------*/
+
+/* Practice Test Page Styles -------------------------------------------------------*/
+
+.practice-test-container {
+  max-width: 800px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background: var(--clr_container_bg);
+  border-radius: 12px;
+  box-shadow: 0 6px 18px var(--clr_nav_shadow);
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+/* Form Styling */
+.practice-test-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+/* Label + Input Group */
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: 600;
+  color: var(--clr_text_base);
+  margin-bottom: 0.5rem;
+}
+
+.form-group input {
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
+  font-family: 'Poppins', sans-serif;
+  border: 1px solid var(--clr_output_border);
+  border-radius: 8px;
+  background-color: var(--clr_output_bg);
+  color: var(--clr_text_base);
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.form-group input:focus {
+  border-color: var(--clr_primary);
+  outline: none;
+  background-color: var(--clr_hover_bg);
+}
+
+/* Submit Button */
+.submit-btn {
+  align-self: flex-start;
+  background-color: var(--clr_primary);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.8rem 1.6rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.submit-btn:hover {
+  background-color: var(--clr_accent);
+  transform: translateY(-2px);
+}
+
+/* End of Practice Test Page Styles -------------------------------------------------------*/
