@@ -55,6 +55,7 @@
     --clr_text_nav: #f0f0f0;
     --clr_primary: #5c9eff; 
     --clr_accent: #87baff;
+    --clr_darker_accent:#705a39;
     --clr_contrasting_accent:#e0c191;
     
     --clr_container_bg: #2a2a2a;
@@ -421,6 +422,8 @@ body {
 #topicInput {
   flex: 1;
   max-width: 400px;
+  padding: 0.6rem 1rem;
+  font-family: 'Poppins', sans-serif;
 }
 
 /* Button styling */
@@ -430,9 +433,10 @@ body {
   color: #fff;
   border: none;
   border-radius: 8px;
-  font-weight: 600;
+  font-weight: normal;
   cursor: pointer;
-  transition: background 0.2s ease, transform 0.2s ease;
+  transition: ease-in-out 0.2s, transform 0.2s ease;
+  font-family: 'Poppins', sans-serif;
 }
 
 #generateBtn:hover {
@@ -500,7 +504,7 @@ body {
 
 /* Summary container */
 .summary-container {
-    max-width: 800px;
+    max-width: 1200px;
     margin: 3rem auto;
     padding: 2rem;
     background: var(--clr_container_bg); 
@@ -555,7 +559,8 @@ body {
   border-radius: 8px;
   font-weight: 600;
   cursor: pointer;
-  transition: background 0.2s ease, transform 0.2s ease;
+  font-family: 'Poppins', sans-serif;
+  transition: ease 0.2s, transform 0.2s ease;
 }
 
 
@@ -568,7 +573,7 @@ body {
 /* Output */
 #summary-output {
     margin: 2rem auto 0;
-    max-width: 650px;
+    max-width: 1200px;
     padding: 1.5rem;
     border-radius: 10px;
     background: var(--clr_output_bg); 
