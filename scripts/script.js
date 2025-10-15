@@ -11,6 +11,8 @@
   - Theme switching with persistent user preference.
   - Page-specific UI for home, crash course, practice test, and summary pages based on login state.
   - Simulated login/logout using localStorage.
+  - Crash course generation using Gemini API with structured output.
+  - PDF summarization with token count check using Gemini API with structured output.
 
 */
 
@@ -135,16 +137,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // ==================================================== GEMINI API ===================================================================
 
   // General functions:
-  async function generateContent(prompt) {
-    const response = await fetch('/api/gemini', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ prompt })
-    });
-    if (!response.ok) throw new Error('Failed to contact Gemini API');
-    return await response.json();
-  }
-
   const checkForResponse = async (data) => {
     /*
         Checks if the API response contains valid content.
@@ -207,86 +199,76 @@ document.addEventListener("DOMContentLoaded", () => {
       return true;
     }
 
-    static async getValidJsonResponse(prompt, maxRetries = 3) {
+    static async getValidJsonResponse(prompt) {
       /*
-        Attempts to get a valid JSON response from the Gemini API based on the provided prompt.
-        Retries up to 'maxRetries' times if the response is invalid or does not match the schema.
-        Logs the valid JSON response or an error message if all attempts fail.
-        
-        Important note: Remove the markdown code block markers (```json ... ```) from the response 
-        before parsing.
+        Gets a valid JSON response from the Gemini API using structured output.
+        Uses the CrashCoursePrompt.json schema for guaranteed valid responses.
+        The schema is loaded and applied on the server side.
       */
 
-      for (let attempt = 1; attempt <= maxRetries; attempt++) {
-        try {
-          const data = await generateContent(prompt);
-          if (!checkForResponse(data)) {
-            console.log(`Attempt ${attempt}: No valid response found. Retrying...`);
-            continue;
-          }
-
-          let text = data.candidates[0].content.parts[0].text;
-          // Remove Markdown code block markers if present
-          text = text.replace(/^```(?:json)?\s*([\s\S]*?)\s*```$/i, '$1').trim();
-
-          let json;
-          try {
-            json = JSON.parse(text);
-          } catch {
-            console.log(`Attempt ${attempt}: Response is not valid JSON. Retrying...`);
-            console.log("Received text:", text);
-            continue;
-          }
-
-          if (CrashCourse.validateSchema(json)) {
-            console.log(JSON.stringify(json, null, 2));
-            return json;
-          } else {
-            console.log(`Attempt ${attempt}: JSON does not match schema. Retrying...`);
-          }
-
-        } catch (err) {
-          console.error(`Attempt ${attempt}: Error -`, err);
-        }
+      let response, data;
+      
+      try {
+        response = await fetch('/api/crash-course', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ prompt })
+        });
+      } catch (networkError) {
+        throw new Error('Network error while generating crash course');
       }
-      console.log("Failed to get valid JSON response after maximum retries.");
-      return null;
+
+      if (!response.ok) {
+        throw new Error('Failed to generate crash course');
+      }
+
+      try {
+        data = await response.json();
+      } catch (parseError) {
+        throw new Error('Failed to parse crash course response');
+      }
+
+      // Extract the actual JSON from Gemini response structure
+      if (checkForResponse(data)) {
+        const jsonText = data.candidates[0].content.parts[0].text;
+        
+        let parsedData;
+        try {
+          // When using structured output, the text is already valid JSON
+          parsedData = JSON.parse(jsonText);
+        } catch (parseError) {
+          console.error('Failed to parse JSON response:', jsonText);
+          throw new Error('Failed to parse API response as JSON');
+        }
+
+        // Log the parsed data for debugging
+        console.log('Parsed crash course data:', parsedData);
+
+        if (!CrashCourse.validateSchema(parsedData)) {
+          console.error('Schema validation failed for:', parsedData);
+          throw new Error('Response does not match expected schema');
+        }
+
+        return parsedData;
+      }
+
+      throw new Error('Invalid response format from API');
     }
 
     static createPrompt(topic) {
       return `
-      Generate a structured crash course on: ${topic}
-      Each main topic must have exactly 3 subtopics.
-      Follow word limits strictly.
-      Output must be valid JSON only.
+      Generate a comprehensive crash course on: ${topic}
 
-      Schema:
-      {
-        "topic": "string",
-        "summary": "string, ≤50 words",
-        "overview": "string, ≤80 words",
-        "main_topics": [
-        {
-          "title": "string",
-          "description": "string, ≤60 words",
-          "subtopics": [
-          {
-            "title": "string, ≤10 words",
-            "details": "string, ≤70 words"
-          },
-          {
-            "title": "string, ≤10 words",
-            "details": "string, ≤70 words"
-          },
-          {
-            "title": "string, ≤10 words",
-            "details": "string, ≤70 words"
-          }
-          ]
-        }
-        ],
-        "conclusion": "string, ≤40 words"
-      }
+      Guidelines:
+      - Provide a concise summary (≤50 words) that captures the essence of the topic.
+      - Include an overview (≤80 words) explaining what will be covered.
+      - Create multiple main topics, each with a description (≤60 words).
+      - For each main topic, include exactly 3 subtopics:
+        * Each subtopic title should be ≤10 words
+        * Each subtopic details should be ≤70 words
+      - End with a conclusion (≤40 words) that ties everything together.
+      
+      Make the content educational, clear, and easy to understand for someone learning this topic for the first time.
     `;
     }
 
@@ -294,8 +276,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Summary specific functions and classes:
   class Summary {
-
-
 
     static async getPDFTokenCount(file) {
       const formData = new FormData();
@@ -314,39 +294,54 @@ document.addEventListener("DOMContentLoaded", () => {
       return data;
     }
 
-    static validateSchema(obj) {
-      /*
-        Validates the structure of the JSON object against the expected summary schema.
-        Returns true if the object matches the schema, otherwise false.
-        Note: We check for minimum requirements but allow some flexibility in array lengths.
-      */
-      if (
-        typeof obj !== "object" ||
-        typeof obj.document_title !== "string" ||
-        typeof obj.executive_summary !== "string" ||
-        !Array.isArray(obj.key_findings) ||
-        obj.key_findings.length < 1 ||  // At least 1 finding (ideally 3)
-        !Array.isArray(obj.section_summaries) ||
-        obj.section_summaries.length < 1  // At least 1 section
-      ) return false;
+    static createPrompt(totalPages) {
+      
+      // Determine if we do page-by-page or grouped summaries
+      
+      if (totalPages <= 20) {
+        // Page-by-page summary for 20 or fewer pages
+        return `
+      Analyze the attached PDF, which has a total of ${totalPages} pages.
 
-      for (const finding of obj.key_findings) {
-        if (typeof finding !== "string") return false;
-      }
-
-      for (const section of obj.section_summaries) {
-        if (
-          typeof section !== "object" ||
-          typeof section.page_range !== "string" ||
-          !Array.isArray(section.summary_points) ||
-          section.summary_points.length < 1  // At least 1 point (ideally 3)
-        ) return false;
-
-        for (const point of section.summary_points) {
-          if (typeof point !== "string") return false;
+      1. **Global Analysis:** Provide the 'document_title', 'executive_summary', and 3 'key_findings'.
+      2. **Page-by-Page Analysis:** For the 'section_summaries' array, provide a summary for EACH individual page.
+         * For page 1, use page_range "1"
+         * For page 2, use page_range "2"
+         * Continue for all ${totalPages} pages
+         * For each page, provide **EXACTLY 3 distinct, concise bullet points** summarizing that specific page's content.
+         * If a page is a title page, table of contents, or mostly empty, still include it but note this in the summary points.
+      
+      Return the output STRICTLY in the provided JSON schema format.
+      Be thorough, accurate, and concise in your summaries.
+    `;
+      } else {
+        // Grouped summary for more than 20 pages
+        let groupSize;
+        if (totalPages <= 40) {
+          groupSize = 5;
+        } else if (totalPages <= 75) {
+          groupSize = 10;
+        } else if (totalPages <= 150) {
+          groupSize = 20;
+        } else if (totalPages <= 300) {
+          groupSize = 25;
+        } else {
+          groupSize = 50;
         }
+
+        return `
+      Analyze the attached PDF, which has a total of ${totalPages} pages.
+
+      1. **Global Analysis:** Provide the 'document_title', 'executive_summary', and 3 'key_findings'.
+      2. **Section Analysis:** For the 'section_summaries' array, group the content into chunks of ${groupSize} pages each.
+         * The first summary must cover pages 1 to ${groupSize} (use page_range "1-${groupSize}").
+         * The next summary must cover pages ${groupSize + 1} to ${groupSize * 2} (use page_range "${groupSize + 1}-${groupSize * 2}"), and so on, until the end of the document.
+         * For each resulting section, provide **EXACTLY 3 distinct, concise bullet points** summarizing the entire chunk.
+      
+      Return the output STRICTLY in the provided JSON schema format.
+      Be thorough, accurate, and concise in your summaries.
+    `;
       }
-      return true;
     }
 
     static async summarizePDF(file, prompt, totalPages) {
@@ -404,56 +399,42 @@ document.addEventListener("DOMContentLoaded", () => {
 
       throw new Error('Invalid response format from API');
     }
+    
+    static validateSchema(obj) {
+      /*
+        Validates the structure of the JSON object against the expected summary schema.
+        Returns true if the object matches the schema, otherwise false.
+        Note: We check for minimum requirements but allow some flexibility in array lengths.
+      */
+      if (
+        typeof obj !== "object" ||
+        typeof obj.document_title !== "string" ||
+        typeof obj.executive_summary !== "string" ||
+        !Array.isArray(obj.key_findings) ||
+        obj.key_findings.length < 1 ||  // At least 1 finding (ideally 3)
+        !Array.isArray(obj.section_summaries) ||
+        obj.section_summaries.length < 1  // At least 1 section
+      ) return false;
 
-    static createPrompt(totalPages) {
-      
-      // Determine if we do page-by-page or grouped summaries
-      
-      if (totalPages <= 20) {
-        // Page-by-page summary for 20 or fewer pages
-        return `
-      Analyze the attached PDF, which has a total of ${totalPages} pages.
-
-      1. **Global Analysis:** Provide the 'document_title', 'executive_summary', and 3 'key_findings'.
-      2. **Page-by-Page Analysis:** For the 'section_summaries' array, provide a summary for EACH individual page.
-         * For page 1, use page_range "1"
-         * For page 2, use page_range "2"
-         * Continue for all ${totalPages} pages
-         * For each page, provide **EXACTLY 3 distinct, concise bullet points** summarizing that specific page's content.
-         * If a page is a title page, table of contents, or mostly empty, still include it but note this in the summary points.
-      
-      Return the output STRICTLY in the provided JSON schema format.
-      Be thorough, accurate, and concise in your summaries.
-    `;
-      } else {
-        // Grouped summary for more than 20 pages
-        let groupSize;
-        if (totalPages <= 40) {
-          groupSize = 5;
-        } else if (totalPages <= 75) {
-          groupSize = 10;
-        } else if (totalPages <= 150) {
-          groupSize = 20;
-        } else if (totalPages <= 300) {
-          groupSize = 25;
-        } else {
-          groupSize = 50;
-        }
-
-        return `
-      Analyze the attached PDF, which has a total of ${totalPages} pages.
-
-      1. **Global Analysis:** Provide the 'document_title', 'executive_summary', and 3 'key_findings'.
-      2. **Section Analysis:** For the 'section_summaries' array, group the content into chunks of ${groupSize} pages each.
-         * The first summary must cover pages 1 to ${groupSize} (use page_range "1-${groupSize}").
-         * The next summary must cover pages ${groupSize + 1} to ${groupSize * 2} (use page_range "${groupSize + 1}-${groupSize * 2}"), and so on, until the end of the document.
-         * For each resulting section, provide **EXACTLY 3 distinct, concise bullet points** summarizing the entire chunk.
-      
-      Return the output STRICTLY in the provided JSON schema format.
-      Be thorough, accurate, and concise in your summaries.
-    `;
+      for (const finding of obj.key_findings) {
+        if (typeof finding !== "string") return false;
       }
+
+      for (const section of obj.section_summaries) {
+        if (
+          typeof section !== "object" ||
+          typeof section.page_range !== "string" ||
+          !Array.isArray(section.summary_points) ||
+          section.summary_points.length < 1  // At least 1 point (ideally 3)
+        ) return false;
+
+        for (const point of section.summary_points) {
+          if (typeof point !== "string") return false;
+        }
+      }
+      return true;
     }
+
   }
 
   // =================================================================================================================================== 
