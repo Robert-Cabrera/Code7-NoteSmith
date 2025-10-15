@@ -207,7 +207,7 @@ document.addEventListener("DOMContentLoaded", () => {
       */
 
       let response, data;
-      
+
       try {
         response = await fetch('/api/crash-course', {
           method: 'POST',
@@ -607,7 +607,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let sizeLimitElem = document.getElementById("size-limit");
 
   const FILE_SIZE_LIMIT_MB = 30;  // 30MB limit
-  const TOKEN_LIMIT = 20000;      // 20,000 token limit
+  const TOKEN_LIMIT = 220000;      // 20,000 token limit
 
   if (summaryContainer) {
     if (isLoggedIn) {
