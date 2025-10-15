@@ -1,3 +1,31 @@
+<!--
+    crash_course.html
+
+    This file contains the HTML structure for the crash course page of NoteSmith.
+    It includes a navigation bar and a container for crash course content.
+
+    Features (so far):
+    - Lets you input a topic and outputs a dummy template response.
+    - Locked behind a login (dummy check for now) but very cool animation through LottieFiles hehe
+
+    LottieFiles explained:
+        <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+        
+        This script tag includes the Lottie Player library from a CDN. Lottie is a library for rendering animations
+        and this script allows you to use Lottie animations in your web pages.
+
+        Attributes:
+        - src           
+        - background    
+        - speed         
+        - style         
+        - loop          
+        - autoplay      
+
+        
+    
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,6 +33,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NoteSmith - Crash Course</title>
+    <script src="../scripts/script.js"></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <link rel="stylesheet" href=".././stylesheets/style.css">
+</head>
 
 <body>
     <div class="navigation-bar">
@@ -18,18 +50,32 @@
             <a class="active" href="./crash_course.html">Crash Course</a>
             <a href="./practice_tests.html">Practice Test</a>
             <a href="./summary.html">Summary</a>
+            <button id="theme-toggle" class="theme-toggle">Theme</button>
         </div>
         <div class="nav-right">
             <a href="#" id="loginBtn" class="login">Login/Sign Up</a>
         </div>
     </div>
     <div class="crash-course-container">
+        <div id="locked-message" style="display:none;">
+            <lottie-player src="../assets/lock_icon.json" background="transparent" speed="1"
+                style="width:150px; height:150px; margin:auto;" loop autoplay>
+            </lottie-player>
+            <p>You must be logged in to access Crash Course.</p>
+        </div>
+
+        <div id="crash-course-form" style="display:none;">
+            <div class="form-row">
+                <input type="text" id="topicInput" placeholder="Enter a topic">
+                <button id="generateBtn">Generate Crash Course</button>
+            </div>
+            <div id="output" style="display:none;"></div>
+        </div>
 
     </div>
+
 </body>
-<script src="../scripts/script.js"></script>
-<link rel="stylesheet" href=".././stylesheets/style.css">
-</head>
+
 
 <body>
 

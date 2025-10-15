@@ -1,38 +1,63 @@
+<!--
+    practice_test.html
+
+    This file contains the HTML structure for the practice test page of NoteSmith.
+    It includes a navigation bar and a container for practice test content.
+
+    (NOT DONE YET) 
+-->
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NoteSmith - Practice Test</title>
-
-<body>
-    <div class="navigation-bar">
-        <div class="nav-left">
-            <a href="../index.html">
-                <img src="../assets/NoteSmith_logo.png" alt="Logo" class="logo">
-            </a>
-        </div>
-
-        <div class="nav-center">
-            <a href="./crash_course.html">Crash Course</a>
-            <a class="active" href="./practice_tests.html">Practice Test</a>
-            <a href="./summary.html">Summary</a>
-        </div>
-        <div class="nav-right">
-            <a href="#" id="loginBtn" class="login">Login/Sign Up</a>
-        </div>
-    </div>
-    <div class="practice-test-container">
-
-    </div>
-</body>
-<script src="../scripts/script.js"></script>
-<link rel="stylesheet" href=".././stylesheets/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NoteSmith – Practice Test</title>
+  <link rel="stylesheet" href="../stylesheets/style.css" />
+  <script src="../scripts/script.js" defer></script>
 </head>
-
 <body>
+  <!-- Navigation -->
+  <div class="navigation-bar">
+    <div class="nav-left">
+      <a href="../index.html">
+        <img src="../assets/NoteSmith_logo.png" alt="Logo" class="logo" />
+      </a>
+    </div>
 
+    <div class="nav-center">
+      <a href="./crash_course.html">Crash Course</a>
+      <a class="active" aria-current="page" href="./practice_test.html">Practice Test</a>
+      <a href="./summary.html">Summary</a>
+      <button id="theme-toggle" class="theme-toggle" type="button">Theme</button>
+    </div>
+
+    <div class="nav-right">
+      <a href="#" id="loginBtn" class="login">Login/Sign Up</a>
+    </div>
+  </div>
+
+  <!-- Main Container -->
+  <div class="practice-test-container">
+    <header class="dashboard-header">
+      <h2>Practice Test</h2>
+      <p>Fill in your course and topic to generate a practice test.</p>
+    </header>
+
+    <!-- Practice Test Form -->
+    <form id="practice-test-form" class="practice-test-form">
+      <div class="form-group">
+        <label for="courseInput">Course</label>
+        <input type="text" id="practiceTestCourseInput" name="course" placeholder="e.g., Computer Organization" required />
+      </div>
+
+      <div class="form-group">
+        <label for="topicInput">Topic</label>
+        <input type="text" id="practiceTestTopicInput" name="topic" placeholder="e.g., Memory Hierarchy" required />
+      </div>
+
+      <button type="submit" id="submitBtn" class="submit-btn">Generate Test</button>
+    </form>
+  </div>
 </body>
-
 </html>

@@ -1,0 +1,38 @@
+{
+    "type": "object",
+    "properties": {
+        "document_title": {
+            "type": "string",
+            "description": "The main title of the document."
+        },
+        "executive_summary": {
+            "type": "string",
+            "description": "A concise, 4-5 sentence executive summary of the document's purpose and overall findings."
+        },
+        "key_findings": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "A list of 3 of the most critical, high-level conclusions or data points from the entire PDF."
+        },
+        "section_summaries": {
+            "type": "array",
+            "description": "A list of summaries for the major content chunks of the document.",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "page_range": {
+                        "type": "string",
+                        "description": "The range of pages covered by this summary (e.g., '1-10')."
+                    },
+                    "summary_points": {
+                        "type": "array",
+                        "items": { "type": "string" },
+                        "description": "Exactly 3 distinct bullet points summarizing the core content of this page range."
+                    }
+                },
+                "required": ["page_range", "summary_points"]
+            }
+        }
+    },
+    "required": ["document_title", "executive_summary", "key_findings", "section_summaries"]
+}

@@ -1,0 +1,60 @@
+{
+    "type": "object",
+    "properties": {
+        "topic": {
+            "type": "string",
+            "description": "The main topic of the crash course."
+        },
+        "summary": {
+            "type": "string",
+            "description": "A concise summary of the topic, 50 words or less."
+        },
+        "overview": {
+            "type": "string",
+            "description": "A brief overview of what the crash course will cover, 80 words or less."
+        },
+        "main_topics": {
+            "type": "array",
+            "description": "A list of the main topics covered in the crash course.",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "title": {
+                        "type": "string",
+                        "description": "The title of the main topic."
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "A description of the main topic, 60 words or less."
+                    },
+                    "subtopics": {
+                        "type": "array",
+                        "description": "Exactly 3 subtopics for this main topic.",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "title": {
+                                    "type": "string",
+                                    "description": "The title of the subtopic, 10 words or less."
+                                },
+                                "details": {
+                                    "type": "string",
+                                    "description": "Details about the subtopic, 70 words or less."
+                                }
+                            },
+                            "required": ["title", "details"]
+                        },
+                        "minItems": 3,
+                        "maxItems": 3
+                    }
+                },
+                "required": ["title", "description", "subtopics"]
+            }
+        },
+        "conclusion": {
+            "type": "string",
+            "description": "A concluding statement for the crash course, 40 words or less."
+        }
+    },
+    "required": ["topic", "summary", "overview", "main_topics", "conclusion"]
+}

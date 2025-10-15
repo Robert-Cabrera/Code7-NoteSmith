@@ -1,0 +1,85 @@
+<!--
+    dashboard.html
+
+    This file contains the HTML structure for the dashboard page of NoteSmith.
+    It includes a navigation bar and a container for dashboard content.
+
+    Features:
+    - Displays user-specific information and quick access to study tools.
+    - Also has a cool koala fact (idk why really - i like it though)
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NoteSmith - Dashboard</title>
+    <script src="../scripts/script.js"></script>
+    <link rel="stylesheet" href=".././stylesheets/style.css">
+</head>
+
+<body>
+    <div class="navigation-bar">
+        <div class="nav-left">
+            <a href="./dashboard.html">
+                <img src="../assets/NoteSmith_logo.png" alt="Logo" class="logo">
+            </a>
+        </div>
+
+        <div class="nav-center">
+            <a href="./crash_course.html">Crash Course</a>
+            <a href="./practice_tests.html">Practice Test</a>
+            <a href="./summary.html">Summary</a>
+            <button id="theme-toggle" class="theme-toggle">Theme</button>
+        </div>
+
+        <div class="nav-right">
+            <a href="#" id="loginBtn" class="login">Login/Sign Up</a>
+        </div>
+    </div>
+
+    <div class="home-container dashboard-container">
+        
+        <header class="dashboard-header">
+            <h2>Your Dashboard</h2>
+            <p>Ready to crush your next test? Jump back into your notes or create a new test instantly.</p>
+            <div class="dashboard_stats">
+                <p>Work in Progress, maybe display statistics like avg score or something?</p>
+            </div>
+        </header>
+
+        <section class="dashboard-section recent-tests">
+            <h3>Recently Generated Tests & Quizzes</h3>
+            <div class="tests-list-container">
+                <div class="empty-state"> <!-- make one thats not later-->
+                    <p>Koalas have fingerprints that are so similar to human fingerprints that they could potentially contaminate a crime scene.</p>
+                    <p>Do what you will with this information...</p>
+                </div>
+
+                </div>
+        </section>
+
+        <section class="dashboard-section quick-access">
+            <h3>Quick Access Study Tools</h3>
+            <div class="tool-cards">
+                <a href="./crash_course.html" class="card tool-card">
+                    <h4>Crash Course</h4>
+                    <p>this just goes to the crash course tab</p>
+                </a>
+                <a href="./summary.html" class="card tool-card">
+                    <h4>Summary Generator</h4>
+                    <p>and guess what this box does</p>
+                </a>
+                <a href="#" class="card tool-card">
+                    <h4>Placeholder for test when it comes</h4>
+                    <p>...</p>
+                </a>
+            </div>
+        </section>
+
+    </div>
+</body>
+
+</html>

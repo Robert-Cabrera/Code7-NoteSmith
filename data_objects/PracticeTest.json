@@ -1,0 +1,70 @@
+{
+  "test_id": "pt_20251013_002",
+  "course": "Computer Organization",
+  "topic": "Memory Hierarchy",
+  "created_at": "2025-10-13T15:00:00Z",
+  "duration_minutes": 25,
+  "num_questions": 5,
+  "instructions": "Select the best answer for each question. You have 25 minutes to complete this test.",
+
+  "questions": [
+    {
+      "id": "q1",
+      "question_text": "Which type of memory is closest to the CPU?",
+      "options": ["Main Memory", "Cache Memory", "Virtual Memory", "Hard Disk"],
+      "correct_answer": "Cache Memory",
+      "explanation": "Cache memory stores frequently accessed data and instructions to speed up CPU operations."
+    },
+    {
+      "id": "q2",
+      "question_text": "Which of the following has the largest capacity?",
+      "options": ["Cache", "Registers", "RAM", "Hard Disk"],
+      "correct_answer": "Hard Disk",
+      "explanation": "Hard disks store significantly more data than RAM or cache, but are much slower."
+    },
+    {
+      "id": "q3",
+      "question_text": "What is the main purpose of cache memory?",
+      "options": [
+        "To permanently store user data",
+        "To increase CPU clock speed",
+        "To provide high-speed data access to the CPU",
+        "To expand main memory capacity"
+      ],
+      "correct_answer": "To provide high-speed data access to the CPU",
+      "explanation": "Cache reduces the time needed to access frequently used data, improving performance."
+    },
+    {
+      "id": "q4",
+      "question_text": "Which of the following correctly represents the memory hierarchy from fastest to slowest?",
+      "options": [
+        "Cache → RAM → Secondary Storage",
+        "RAM → Cache → Secondary Storage",
+        "Secondary Storage → RAM → Cache",
+        "Registers → Cache → RAM → Secondary Storage"
+      ],
+      "correct_answer": "Registers → Cache → RAM → Secondary Storage",
+      "explanation": "The closer the memory is to the CPU, the faster and more expensive it is."
+    },
+    {
+      "id": "q5",
+      "question_text": "What characteristic makes SRAM faster than DRAM?",
+      "options": [
+        "SRAM uses magnetic storage",
+        "SRAM does not require refreshing",
+        "SRAM has higher density",
+        "SRAM uses optical circuits"
+      ],
+      "correct_answer": "SRAM does not require refreshing",
+      "explanation": "Unlike DRAM, SRAM retains data without refresh cycles, making it faster."
+    }
+  ],
+
+  "results": {
+    "user_id": "user_001",
+    "score": null,
+    "correct_count": null,
+    "submitted_at": null,
+    "answers": []
+  }
+}

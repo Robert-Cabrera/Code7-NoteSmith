@@ -1,3 +1,15 @@
+<!--
+    summary.html
+
+    This file contains the HTML structure for the crash course page of NoteSmith.
+    It includes a navigation bar and a container for crash course content.
+
+    Features (so far):
+    - Lets you upload a PDF and outputs a dummy template response. (we need to hook up to backend) plus nice LottieFiles animation
+    - Locked behind a login (dummy check for now) but very cool animation through LottieFiles. hehe
+    
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,6 +17,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NoteSmith - Summary</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script src="../scripts/script.js"></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <link rel="stylesheet" href=".././stylesheets/style.css">
+</head>
 
 <body>
     <div class="navigation-bar">
@@ -18,18 +35,42 @@
             <a href="./crash_course.html">Crash Course</a>
             <a href="./practice_tests.html">Practice Test</a>
             <a class="active" href="./summary.html">Summary</a>
+            <button id="theme-toggle" class = "theme-toggle">Theme</button>
         </div>
+
         <div class="nav-right">
             <a href="#" id="loginBtn" class="login">Login/Sign Up</a>
         </div>
     </div>
-    <div class="summary-test-container">
 
+    <div class="summary-container">
+        <!-- Locked message -->
+        <div id="summary-locked" style="display:none;">
+            <lottie-player src="../assets/lock_icon.json" background="transparent" speed="1"
+                style="width:150px; height:150px; margin:auto;" loop autoplay>
+            </lottie-player>
+            <p>You must be logged in to access Summary.</p>
+        </div>
+
+        <!-- Summary UI -->
+        <div id="summary-ui" style="display:none;">
+            <h2 class="summary-title">AI PDF Summary</h2>
+
+            <label for="pdfUpload" class="upload-box">
+                <lottie-player src="../assets/upload_icon.json" background="transparent" speed="1"
+                    style="width:120px; height:120px;" loop autoplay>
+                </lottie-player>
+                <p>Click to upload your PDF</p>
+                <p id='size-limit' style="font-size:0.9rem;color:var(--clr_text_muted);margin-top:0.5rem;">Max file size: 30MB</p>
+                <input type="file" id="pdfUpload" accept="application/pdf" hidden>
+            </label>
+
+            <button id="summarizeBtn">Summarize PDF</button>
+            <div id="summary-output" style="display:none;"></div>
+        </div>
     </div>
 </body>
-<script src="../scripts/script.js"></script>
-<link rel="stylesheet" href=".././stylesheets/style.css">
-</head>
+
 
 <body>
 
