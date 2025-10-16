@@ -2,6 +2,31 @@ const express = require('express');
 const router = express.Router();
 const { readUsers, generateUserId, insertUserSorted } = require('../utils/userManager');
 
+// Get user by ID (for dashboard history)
+router.get('/user/:userId', (req, res) => {
+    try {
+        const { userId } = req.params;
+        
+        const usersData = readUsers();
+        const user = usersData.users.find(u => u.id === userId);
+        
+        if (user) {
+            res.json({
+                id: user.id,
+                username: user.username,
+                email: user.email,
+                profilePicture: user.profilePicture,
+                crashCourses: user.crashCourses || [],
+                summaries: user.summaries || []
+            });
+        } else {
+            res.status(404).json({ success: false, error: 'User not found' });
+        }
+    } catch (err) {
+        res.status(500).json({ success: false, error: err.message });
+    }
+});
+
 // Login endpoint
 router.post('/login', (req, res) => {
     try {

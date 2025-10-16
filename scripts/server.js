@@ -15,8 +15,7 @@ const summaryRoutes = require('./routes/summary');
 // Use routes
 app.use('/api', authRoutes);
 app.use('/api/crash-course', crashCourseRoutes);
-app.use('/api/summarize-pdf', summaryRoutes);
-app.use('/api/pdf-token-count', summaryRoutes);
+app.use('/api/summary', summaryRoutes);
 
 // Serve favicon specifically BEFORE static files
 const faviconPath = path.join(__dirname, '..', 'assets', 'favicon.ico');

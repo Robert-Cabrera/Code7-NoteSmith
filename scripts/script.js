@@ -11,6 +11,7 @@ import { initNavbar } from './frontend/navbar.js';
 import { initCrashCourse } from './frontend/crashCourse.js';
 import { initSummary } from './frontend/summary.js';
 import { initPracticeTest } from './frontend/practiceTest.js';
+import { initDashboard } from './frontend/dashboard.js';
 
 document.addEventListener("DOMContentLoaded", () => {
   // Initialize core functionality
@@ -22,6 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const isLoggedIn = isUserLoggedIn();
 
   // Initialize page-specific features
+  initDashboard(isLoggedIn);
   initCrashCourse(isLoggedIn);
   initSummary(isLoggedIn);
   initPracticeTest(isLoggedIn);

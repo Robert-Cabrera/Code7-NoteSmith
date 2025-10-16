@@ -94,7 +94,7 @@ class CrashCourse {
         throw new Error('Failed to parse API response as JSON');
       }
 
-      console.log('Parsed crash course data:', parsedData);
+      // console.log('Parsed crash course data:', parsedData); // Removed - clutters output
 
       if (!CrashCourse.validateSchema(parsedData)) {
         console.error('Schema validation failed for:', parsedData);
@@ -127,120 +127,172 @@ class CrashCourse {
 
 // Helper to render crash course JSON to HTML
 function renderCrashCourse(data) {
-  if (!data || typeof data !== 'object') return '<p>Invalid crash course data.</p>';
+  if (!data || typeof data !== 'object') {
+    console.error('Invalid crash course data:', data);
+    return;
+  }
 
-  let html = `<div style="max-width:100%; width:98vw; margin:0 auto;">`;
+  // Populate the HTML elements
+  const topicTitle = document.getElementById('crash-topic-title');
+  const summary = document.getElementById('crash-summary');
+  const overview = document.getElementById('crash-overview');
+  const mainTopics = document.getElementById('crash-main-topics');
+  const conclusion = document.getElementById('crash-conclusion');
+
+  // Check if all elements exist
+  if (!topicTitle || !summary || !overview || !mainTopics || !conclusion) {
+    console.error('One or more crash course output elements not found in DOM');
+    return;
+  }
+
+  // Set topic with shine effect
+  topicTitle.innerHTML = `<span class="crash-shine">${data.topic}</span>`;
   
-  // Ensure shine animation style exists
-  (function ensureCrashShineStyle() {
-    const styleId = 'crash-shine-style';
-    if (!document.getElementById(styleId)) {
-      const style = document.createElement('style');
-      style.id = styleId;
-      style.textContent = `
-        .crash-shine {
-          position: relative;
-          display: inline-block;
-          color: var(--clr_primary);
-          background: linear-gradient(
-            90deg,
-            var(--clr_primary),
-            var(--clr_contrasting_accent),
-            var(--clr_primary)
-          );
-          background-size: 200% auto;
-          background-clip: text;
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          animation: crashShine 4.2s linear infinite;
-        }
-        @keyframes crashShine {
-          0% { background-position: 200% 0; }
-          100% { background-position: -200% 0; }
-        }
-      `;
-      document.head.appendChild(style);
-    }
-  })();
+  // Set summary
+  summary.textContent = data.summary || '';
+  
+  // Set overview
+  overview.innerHTML = `<strong>Overview:</strong> ${data.overview || ''}`;
 
-  html += `<h3 style="text-align:center;font-size:2rem;color:var(--clr_primary);margin-bottom:0.7rem;">
-    Crash Course on <span class="crash-shine">${data.topic}</span>
-  </h3>`;
-
-  html += `<p style='font-size:1.1rem;color:var(--clr_text);margin-bottom:1.5rem;text-align:center;'>${data.summary || ''}</p>`;
-  html += `<div style='margin-bottom:1.5rem;'><span style="font-weight:650;color:var(--clr_accent);">Overview: </span>${data.overview || ''}</div>`;
-
+  // Clear and populate main topics
+  mainTopics.innerHTML = '';
   if (Array.isArray(data.main_topics)) {
     data.main_topics.forEach(topic => {
-      html += `<div style="margin-bottom:2rem;">`;
-      html += `<div style="font-size:1.15rem;font-weight:600;color:var(--clr_primary);margin-bottom:0.3rem;">${topic.title}</div>`;
-      html += `<div style="margin-bottom:0.5rem;color:var(--clr_text);">${topic.description}</div>`;
+      const topicDiv = document.createElement('div');
+      topicDiv.className = 'crash-topic';
+      
+      const titleDiv = document.createElement('div');
+      titleDiv.className = 'crash-topic-title';
+      titleDiv.textContent = topic.title;
+      
+      const descDiv = document.createElement('div');
+      descDiv.className = 'crash-topic-desc';
+      descDiv.textContent = topic.description;
+      
+      topicDiv.appendChild(titleDiv);
+      topicDiv.appendChild(descDiv);
 
       if (Array.isArray(topic.subtopics)) {
-        html += `<ul style="margin-left:1.2rem;margin-bottom:0.2rem;">`;
+        const subtopicsList = document.createElement('ul');
+        subtopicsList.className = 'crash-subtopics';
+        
         topic.subtopics.forEach(sub => {
-          html += `<li style="margin-bottom:0.4rem;">
-            <span style="font-weight:650;color:var(--clr_accent);">${sub.title}:</span> <span style="color:var(--clr_text);">${sub.details}</span>
-          </li>`;
+          const li = document.createElement('li');
+          li.className = 'crash-subtopic';
+          li.innerHTML = `<span class="crash-subtopic-title">${sub.title}:</span> <span class="crash-subtopic-details">${sub.details}</span>`;
+          subtopicsList.appendChild(li);
         });
-        html += `</ul>`;
+        
+        topicDiv.appendChild(subtopicsList);
       }
-      html += `</div>`;
+      
+      mainTopics.appendChild(topicDiv);
     });
   }
-  
-  html += `<div style='margin-top:2rem;font-size:1.08rem;'><span style="font-weight:600;color:var(--clr_primary);">Conclusion:</span> ${data.conclusion || ''}</div>`;
-  html += `</div>`;
-  return html;
+
+  // Set conclusion
+  conclusion.innerHTML = `<strong>Conclusion:</strong> ${data.conclusion || ''}`;
 }
 
 export function initCrashCourse(isLoggedIn) {
   const crashCourseContainer = document.querySelector(".crash-course-container");
+  
+  // If not on crash course page, exit early
+  if (!crashCourseContainer) {
+    return;
+  }
+
   const lockedMessage = document.getElementById("locked-message");
   const crashForm = document.getElementById("crash-course-form");
 
-  if (crashCourseContainer) {
-    if (isLoggedIn) {
-      crashForm.style.display = "block";
-      lockedMessage.style.display = "none";
-    } else {
-      lockedMessage.style.display = "block";
-      crashForm.style.display = "none";
-    }
+  if (isLoggedIn) {
+    if (crashForm) crashForm.style.display = "block";
+    if (lockedMessage) lockedMessage.style.display = "none";
+  } else {
+    if (lockedMessage) lockedMessage.style.display = "block";
+    if (crashForm) crashForm.style.display = "none";
   }
 
   const generateBtn = document.getElementById("generateBtn");
   if (generateBtn) {
     generateBtn.addEventListener("click", async () => {
-      const topic = document.getElementById("topicInput").value.trim();
+      const topicInput = document.getElementById("topicInput");
       const output = document.getElementById("output");
+      const loading = document.getElementById("crash-loading");
 
-      if (!topic) {
-        output.style.display = "block";
-        output.innerHTML = "<p>Please enter a topic.</p>";
+      // Check if required elements exist
+      if (!topicInput || !output || !loading) {
+        console.error('Required crash course elements not found in DOM');
         return;
       }
 
-      output.style.display = "block";
-      output.innerHTML = `<div id='crash-loading' style='display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:220px;'>
-        <lottie-player id='crash-lottie' src="../assets/loading_light.json" background="transparent" speed="1" style="width:120px;height:120px;margin-bottom:1rem;" loop autoplay></lottie-player>
-        <span style='color:var(--clr_text_muted);font-size:1.1rem;'>Generating crash course...</span>
-      </div>`;
+      const topic = topicInput.value.trim();
 
-      const theme = document.body.classList.contains('dark-theme') ? 'dark' : 'light';
-      const lottie = output.querySelector('#crash-lottie');
-      if (lottie) {
-        lottie.setAttribute('src', theme === 'dark' ? '../assets/loading_dark.json' : '../assets/loading_light.json');
+      if (!topic) {
+        // Show error in the output container without destroying the structure
+        const topicTitle = document.getElementById('crash-topic-title');
+        if (topicTitle) {
+          topicTitle.textContent = "Please enter a topic";
+          topicTitle.classList.add('error-message');
+          console.log('Added error-message class, classList:', topicTitle.classList);
+          console.log('Computed style color:', window.getComputedStyle(topicTitle).color);
+        }
+        // Clear other fields
+        document.getElementById('crash-summary').textContent = '';
+        document.getElementById('crash-overview').textContent = '';
+        document.getElementById('crash-main-topics').innerHTML = '';
+        document.getElementById('crash-conclusion').textContent = '';
+        output.style.display = "block";
+        loading.style.display = "none";
+        return;
       }
+
+      // Remove error class if it was previously set
+      const topicTitle = document.getElementById('crash-topic-title');
+      if (topicTitle) {
+        topicTitle.classList.remove('error-message');
+      }
+
+      // Hide output
+      output.style.display = "none";
+
+      // Set the correct loading animation based on theme BEFORE showing it
+      const theme = document.body.classList.contains('dark-theme') ? 'dark' : 'light';
+      const lottie = loading.querySelector('#crash-lottie');
+      if (lottie) {
+        const newSrc = theme === 'dark' ? '../assets/loading_dark.json' : '../assets/loading_light.json';
+        lottie.setAttribute('src', newSrc);
+        lottie.load(newSrc); // Force reload the animation
+      }
+      
+      // Now show loading
+      loading.style.display = "flex";
 
       try {
         const prompt = CrashCourse.createPrompt(topic);
         const data = await CrashCourse.getValidJsonResponse(prompt);
         if (!data) throw new Error('No valid response from Gemini.');
 
-        output.innerHTML = renderCrashCourse(data);
+        // Hide loading, show output
+        loading.style.display = "none";
+        output.style.display = "block";
+        
+        // Populate the HTML structure
+        renderCrashCourse(data);
       } catch (err) {
-        output.innerHTML = `<p style='color:var(--clr_error);text-align:center;'>Error: ${err.message || 'Failed to generate crash course.'}</p>`;
+        loading.style.display = "none";
+        output.style.display = "block";
+        // Display error without destroying structure
+        const topicTitle = document.getElementById('crash-topic-title');
+        if (topicTitle) {
+          topicTitle.textContent = `Error: ${err.message || 'Failed to generate crash course.'}`;
+          topicTitle.classList.add('error-message');
+        }
+        // Clear other fields
+        document.getElementById('crash-summary').textContent = '';
+        document.getElementById('crash-overview').textContent = '';
+        document.getElementById('crash-main-topics').innerHTML = '';
+        document.getElementById('crash-conclusion').textContent = '';
       }
     });
   }

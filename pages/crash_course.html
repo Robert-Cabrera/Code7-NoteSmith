@@ -69,7 +69,22 @@
                 <input type="text" id="topicInput" placeholder="Enter a topic">
                 <button id="generateBtn">Generate Crash Course</button>
             </div>
-            <div id="output" style="display:none;"></div>
+            
+            <!-- Loading State -->
+            <div id="crash-loading" class="loading-container" style="display:none;">
+                <lottie-player id="crash-lottie" src="../assets/loading_light.json" background="transparent" speed="1" 
+                    style="width:120px;height:120px;margin-bottom:1rem;" loop autoplay></lottie-player>
+                <span class="loading-text">Generating crash course...</span>
+            </div>
+
+            <!-- Output Container -->
+            <div id="output" class="crash-output" style="display:none;">
+                <h3 id="crash-topic-title" class="crash-title"></h3>
+                <p id="crash-summary" class="crash-summary"></p>
+                <div id="crash-overview" class="crash-overview"></div>
+                <div id="crash-main-topics" class="crash-topics"></div>
+                <div id="crash-conclusion" class="crash-conclusion"></div>
+            </div>
         </div>
 
     </div>

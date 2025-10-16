@@ -4,13 +4,21 @@
   Handles navigation bar initialization and link setup.
 */
 
+import { isUserLoggedIn } from './auth.js';
+
 export function initNavbar() {
   // Navigation elements
   const homeLink = document.querySelector(".nav-left a");
-  const crashCourseLink = document.querySelector(".nav-center a:nth-child(1)");
-  const practiceTestLink = document.querySelector(".nav-center a:nth-child(2)");
-  const summaryLink = document.querySelector(".nav-center a:nth-child(3)");
-
-  // We can add any navbar-specific logic here in the future
-  // For now, the links work via href in HTML
+  
+  // If user is logged in, make logo redirect to dashboard instead of index
+  if (homeLink && isUserLoggedIn()) {
+    // Determine if we're on index.html or in pages folder
+    const isIndex = window.location.pathname.endsWith('index.html') || window.location.pathname === '/';
+    
+    if (isIndex) {
+      homeLink.href = "./pages/dashboard.html";
+    } else {
+      homeLink.href = "./dashboard.html";
+    }
+  }
 }

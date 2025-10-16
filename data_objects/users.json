@@ -7,8 +7,1720 @@
       "password": "password123",
       "createdAt": "2023-10-01T10:00:00Z",
       "profilePicture": "",
-      "crashCourses": [],
-      "summaries": []
+      "crashCourses": [
+        {
+          "id": "cc_1760647746751",
+          "createdAt": "2025-10-16T20:49:06.751Z",
+          "topic": "Multi-Actuated Nanopositioning",
+          "summary": "Explore the advanced field of multi-actuated nanopositioning, focusing on systems with multiple independent actuators for precise control at the nanoscale. Learn about their design, control strategies, and applications in cutting-edge research and industry.",
+          "overview": "This crash course introduces multi-actuated nanopositioning systems. We will cover the fundamental principles, various actuator types, sophisticated control techniques, and calibration methods essential for achieving high-precision motion. The course will also highlight real-world applications and future trends in this rapidly evolving domain.",
+          "main_topics": [
+            {
+              "title": "Fundamentals of Nanopositioning",
+              "description": "Understand the core concepts of nanopositioning, including the challenges of achieving sub-nanometer accuracy and the necessity for sophisticated systems. This section lays the groundwork for understanding multi-actuator approaches.",
+              "subtopics": [
+                {
+                  "title": "What is Nanopositioning?",
+                  "details": "Definition, importance, and the inherent difficulties in achieving precise movement and placement at the nanoscale due to thermal drift, vibrations, and material limitations."
+                },
+                {
+                  "title": "Accuracy vs. Resolution vs. Repeatability",
+                  "details": "Clarifying key performance metrics: accuracy (closeness to target), resolution (smallest discernible step), and repeatability (consistency of movement) in nanopositioning systems."
+                },
+                {
+                  "title": "Challenges in Nanoscale Control",
+                  "details": "Discussing factors like hysteresis, creep, and environmental disturbances that complicate precise control and necessitate advanced system designs."
+                }
+              ]
+            },
+            {
+              "title": "Actuator Technologies for Nanopositioning",
+              "description": "Examine the diverse range of actuators utilized in nanopositioning, from piezoelectric and electrothermal to MEMS-based devices. Learn about their operating principles, strengths, and weaknesses.",
+              "subtopics": [
+                {
+                  "title": "Piezoelectric Actuators (PZTs)",
+                  "details": "How PZTs convert electrical energy into mechanical motion. Their high speed, stiffness, and fine resolution make them popular choices for nanopositioning."
+                },
+                {
+                  "title": "Electrothermal and Magnetic Actuators",
+                  "details": "Exploring actuators based on thermal expansion or magnetic forces. These offer different trade-offs in terms of force, displacement, and complexity."
+                },
+                {
+                  "title": "Other Nanoscale Actuators",
+                  "details": "Brief overview of emerging technologies like MEMS actuators, shape memory alloys, and microfluidic-driven systems for nanopositioning."
+                }
+              ]
+            },
+            {
+              "title": "Multi-Actuator System Design and Integration",
+              "description": "Delve into the design considerations for systems employing multiple actuators, focusing on their synergistic operation, kinematic configurations, and the advantages they offer over single-actuator systems.",
+              "subtopics": [
+                {
+                  "title": "Kinematic Configurations",
+                  "details": "Discussing various arrangements of multiple actuators (e.g., serial, parallel) to achieve desired degrees of freedom and workspace in nanopositioning stages."
+                },
+                {
+                  "title": "Synergistic Actuation",
+                  "details": "Strategies for combining the benefits of different actuator types or multiple identical actuators to enhance performance, overcome limitations, or achieve complex movements."
+                },
+                {
+                  "title": "System Integration Challenges",
+                  "details": "Addressing practical issues like sensor integration, wiring, thermal management, and mechanical coupling when building complex multi-actuated systems."
+                }
+              ]
+            },
+            {
+              "title": "Control Strategies and Calibration",
+              "description": "Investigate advanced control algorithms and essential calibration techniques necessary to harness the full potential of multi-actuated nanopositioning systems for high-fidelity performance.",
+              "subtopics": [
+                {
+                  "title": "Advanced Control Algorithms",
+                  "details": "Exploring techniques like feedforward, feedback, adaptive control, and model predictive control tailored for multi-actuator systems to improve precision and speed."
+                },
+                {
+                  "title": "Sensing and Feedback",
+                  "details": "The role of high-resolution sensors (encoders, interferometers, capacitive sensors) in providing feedback for accurate closed-loop control of multi-actuated stages."
+                },
+                {
+                  "title": "System Calibration Methods",
+                  "details": "Techniques for characterizing and compensating for actuator nonlinearities, cross-couplings, and system errors to achieve verifiable nanopositioning accuracy."
+                }
+              ]
+            },
+            {
+              "title": "Applications and Future Directions",
+              "description": "Highlighting the diverse and impactful applications of multi-actuated nanopositioning across scientific research and industrial sectors, and looking ahead to future advancements.",
+              "subtopics": [
+                {
+                  "title": "Scientific Research Applications",
+                  "details": "Examples in microscopy (AFM, STM), semiconductor metrology, DNA sequencing, and advanced optics where precise nanoscale manipulation is critical."
+                },
+                {
+                  "title": "Industrial Uses",
+                  "details": "Applications in micro/nanofabrication, precision assembly, quantum computing, and advanced manufacturing processes requiring sub-micron or nanometer precision."
+                },
+                {
+                  "title": "Emerging Trends",
+                  "details": "Future developments in AI-driven control, novel actuator designs, integrated multi-functional systems, and broader accessibility of nanopositioning technology."
+                }
+              ]
+            }
+          ],
+          "conclusion": "Mastering multi-actuated nanopositioning unlocks unprecedented precision. Understanding its components, control, and applications is key to driving innovation in science and technology at the nanoscale."
+        },
+        {
+          "id": "cc_1760647689157",
+          "createdAt": "2025-10-16T20:48:09.157Z",
+          "topic": "Atomic Force Microscopy (AFM) Scanner",
+          "summary": "An AFM scanner precisely controls the movement of the AFM tip or sample, enabling high-resolution surface imaging by raster scanning. It's crucial for nanoscale topography and material property analysis.",
+          "overview": "This crash course introduces the AFM scanner, its fundamental principles, and its vital role in achieving nanoscale resolution. We will explore its components, types, scanning mechanisms, and applications, providing a foundational understanding for newcomers to the field of atomic force microscopy.",
+          "main_topics": [
+            {
+              "title": "Fundamentals of AFM Scanning",
+              "description": "Understand the core concept of how AFM scanners enable high-resolution surface imaging. This section covers the basic piezoelectric principles and raster scanning techniques essential for nanoscale topographic mapping.",
+              "subtopics": [
+                {
+                  "title": "Piezoelectric Effect",
+                  "details": "Learn how applying voltage to piezoelectric materials causes them to deform, enabling precise, nanoscale movements of the scanner."
+                },
+                {
+                  "title": "Raster Scanning",
+                  "details": "Discover how the tip or sample is systematically moved in a grid pattern across the surface to build a complete image pixel by pixel."
+                },
+                {
+                  "title": "Feedback Loop",
+                  "details": "Understand the role of the feedback loop in maintaining a constant interaction between the tip and sample during scanning."
+                }
+              ]
+            },
+            {
+              "title": "Components and Types of AFM Scanners",
+              "description": "Explore the key components that constitute an AFM scanner and differentiate between common types. This includes understanding piezoelectric actuators, scanner heads, and their integrated designs.",
+              "subtopics": [
+                {
+                  "title": "Scanner Head Design",
+                  "details": "Examine the physical construction of scanner heads, including common configurations like tube scanners and joystick scanners."
+                },
+                {
+                  "title": "Actuator Technologies",
+                  "details": "Compare different piezoelectric materials and actuator designs used for X, Y, and Z axis control in AFM scanners."
+                },
+                {
+                  "title": "Integrated vs. External Scanners",
+                  "details": "Understand the advantages and disadvantages of scanners integrated directly into the AFM head versus separate external scanning units."
+                }
+              ]
+            },
+            {
+              "title": "Scanning Modes and Applications",
+              "description": "Delve into the different modes of AFM scanning and their diverse applications. Learn how these modes are selected based on the sample and desired information.",
+              "subtopics": [
+                {
+                  "title": "Contact Mode",
+                  "details": "Explore how the tip maintains constant contact with the surface, suitable for robust samples and fast imaging."
+                },
+                {
+                  "title": "Tapping Mode (Intermittent Contact)",
+                  "details": "Understand how the tip oscillates and lightly taps the surface, reducing lateral forces and ideal for soft or delicate samples."
+                },
+                {
+                  "title": "Non-Contact Mode",
+                  "details": "Learn about scanning with the tip hovering above the surface, minimizing interaction for ultra-sensitive measurements."
+                }
+              ]
+            }
+          ],
+          "conclusion": "Mastering the AFM scanner is key to unlocking nanoscale insights. Its precise control allows for detailed surface analysis across numerous scientific and industrial fields, driving innovation at the smallest scales."
+        },
+        {
+          "id": "cc_1760647643304",
+          "createdAt": "2025-10-16T20:47:23.304Z",
+          "topic": "MultiModal Haptic Displays",
+          "summary": "Explore the integration of multiple haptic feedback channels (e.g., vibration, force, thermal) in displays to create richer, more immersive user experiences, moving beyond simple touch.",
+          "overview": "This crash course introduces multimodal haptic displays, covering their fundamental principles, diverse actuation technologies, and the benefits of combining different tactile sensations. We will delve into applications across various industries and discuss future research directions for more intuitive and engaging human-computer interaction.",
+          "main_topics": [
+            {
+              "title": "Fundamentals of Haptic Perception",
+              "description": "Understand how humans perceive touch and the various stimuli that contribute to tactile sensation. This section lays the groundwork for appreciating the complexities involved in creating effective haptic feedback.",
+              "subtopics": [
+                {
+                  "title": "Sensory Channels",
+                  "details": "Explore mechanoreception (pressure, vibration), thermoreception (temperature), and nociception (pain/discomfort) as key pathways for tactile information transmission to the brain."
+                },
+                {
+                  "title": "Perceptual Thresholds",
+                  "details": "Learn about the minimum stimulus intensity required for detection and discrimination, and how factors like frequency and location influence our perception."
+                },
+                {
+                  "title": "Psychophysics of Touch",
+                  "details": "Investigate the relationship between physical stimuli and the subjective sensations they produce, crucial for designing impactful haptic experiences."
+                }
+              ]
+            },
+            {
+              "title": "Actuation Technologies for Haptics",
+              "description": "Discover the diverse technologies used to generate haptic feedback. This topic examines the mechanisms behind creating different tactile sensations, from simple vibrations to complex force feedback.",
+              "subtopics": [
+                {
+                  "title": "Vibratory Actuators",
+                  "details": "Examine common types like Eccentric Rotating Mass (ERM) and Linear Resonant Actuators (LRA), focusing on their generation of tactile vibrations."
+                },
+                {
+                  "title": "Force Feedback Systems",
+                  "details": "Understand technologies such as servo motors and pneumatic actuators used to exert physical forces, enabling users to feel resistance and textures."
+                },
+                {
+                  "title": "Thermal and Electrostatic Actuators",
+                  "details": "Explore devices that manipulate temperature or surface friction using electrostatic fields to simulate different material properties and thermal cues."
+                }
+              ]
+            },
+            {
+              "title": "Multimodal Integration and Applications",
+              "description": "Focus on how combining multiple haptic channels enhances realism and user engagement. This section highlights real-world uses and the synergistic effects of multimodal feedback.",
+              "subtopics": [
+                {
+                  "title": "Synergistic Effects",
+                  "details": "Learn how combining vibration, force, and thermal cues creates richer perceptions than individual stimuli, leading to more immersive interactions."
+                },
+                {
+                  "title": "Virtual and Augmented Reality",
+                  "details": "See how multimodal haptics improve presence and interaction fidelity in VR/AR environments, making virtual objects feel more tangible."
+                },
+                {
+                  "title": "Accessibility and Assistive Tech",
+                  "details": "Discover applications in enhancing user interfaces for individuals with visual or auditory impairments, providing alternative sensory feedback channels."
+                }
+              ]
+            },
+            {
+              "title": "Challenges and Future Directions",
+              "description": "Address the current limitations and explore the exciting future possibilities in multimodal haptic display technology, paving the way for next-generation interactive experiences.",
+              "subtopics": [
+                {
+                  "title": "Miniaturization and Power",
+                  "details": "Discuss the engineering challenges in creating compact, energy-efficient haptic actuators suitable for wearable and portable devices."
+                },
+                {
+                  "title": "Advanced Materials",
+                  "details": "Explore emerging materials and smart technologies that could enable novel haptic effects and more seamless integration into surfaces."
+                },
+                {
+                  "title": "Personalized Haptics",
+                  "details": "Consider the potential for adaptive haptic systems that tailor feedback to individual user preferences and physiological responses."
+                }
+              ]
+            }
+          ],
+          "conclusion": "Multimodal haptic displays represent a significant leap in human-computer interaction, offering richer, more intuitive feedback that enhances immersion and accessibility across diverse applications."
+        },
+        {
+          "id": "cc_1760647515081",
+          "createdAt": "2025-10-16T20:45:15.081Z",
+          "topic": "Confidence Based Tracking",
+          "summary": "Confidence Based Tracking (CBT) is a technique in computer vision that enhances object tracking by incorporating a confidence score for each tracked object. This allows for more robust and reliable tracking in dynamic environments.",
+          "overview": "This crash course introduces Confidence Based Tracking (CBT), a sophisticated approach to object tracking. We will explore its core principles, how confidence scores are generated and utilized, and its advantages over traditional methods. Learn how CBT improves tracking accuracy and resilience in complex scenarios.",
+          "main_topics": [
+            {
+              "title": "Introduction to Object Tracking and Confidence",
+              "description": "Understand the fundamentals of object tracking and the limitations of traditional methods. We introduce the concept of confidence scores as a way to measure the reliability of a track, paving the way for more robust solutions.",
+              "subtopics": [
+                {
+                  "title": "What is Object Tracking?",
+                  "details": "Object tracking involves locating a moving object in a video sequence over time. Traditional methods often struggle with occlusions, fast motion, and appearance changes, leading to track drift or loss."
+                },
+                {
+                  "title": "Limitations of Traditional Tracking",
+                  "details": "Standard trackers can fail when objects are temporarily hidden, change direction abruptly, or undergo significant visual alterations. This often results in inaccurate bounding boxes or complete loss of the target."
+                },
+                {
+                  "title": "The Need for Confidence",
+                  "details": "Introducing a confidence metric helps quantify how likely a track is to be correct. This allows the system to make informed decisions about when to trust or discard a track."
+                }
+              ]
+            },
+            {
+              "title": "Core Principles of Confidence Based Tracking",
+              "description": "Delve into how CBT operates. This section explains the mechanisms for generating confidence scores and how these scores are integrated into the tracking process to improve performance and handle challenging situations effectively.",
+              "subtopics": [
+                {
+                  "title": "Confidence Score Generation",
+                  "details": "Learn about various methods to compute confidence, such as appearance similarity, motion consistency, and detection-based validation. These scores reflect the tracker's certainty about the object's presence and location."
+                },
+                {
+                  "title": "Integration with Tracking Algorithms",
+                  "details": "Discover how confidence scores are used to update object states, filter out false positives, and re-initialize tracks. This dynamic feedback loop is crucial for robust tracking."
+                },
+                {
+                  "title": "Handling Occlusions and Ambiguities",
+                  "details": "Explore how CBT leverages confidence to manage situations where the object is partially or fully occluded, or when multiple similar objects are present, making more informed tracking decisions."
+                }
+              ]
+            },
+            {
+              "title": "Advantages and Applications of CBT",
+              "description": "Examine the significant benefits of using CBT, including improved robustness, reduced false positives, and better handling of complex scenarios. We also highlight its diverse applications across various industries.",
+              "subtopics": [
+                {
+                  "title": "Enhanced Robustness and Accuracy",
+                  "details": "CBT significantly increases tracking reliability by actively managing uncertainty. This leads to more accurate trajectories and fewer tracking errors, even in cluttered or dynamic environments."
+                },
+                {
+                  "title": "Real-time Performance Considerations",
+                  "details": "Discuss how confidence-based methods can be optimized for real-time applications, balancing computational cost with tracking quality for efficient deployment in various systems."
+                },
+                {
+                  "title": "Use Cases and Future Trends",
+                  "details": "Explore applications in autonomous driving, surveillance, robotics, and augmented reality. Future trends involve integrating deep learning for even more sophisticated confidence estimation."
+                }
+              ]
+            }
+          ],
+          "conclusion": "Confidence Based Tracking offers a powerful framework for robust object tracking. By intelligently incorporating confidence scores, it overcomes limitations of traditional methods, enabling more reliable and accurate performance in real-world applications."
+        },
+        {
+          "id": "cc_1760647467670",
+          "createdAt": "2025-10-16T20:44:27.670Z",
+          "topic": "Controller Design",
+          "summary": "Learn the fundamentals of controller design, focusing on how to stabilize systems, achieve desired performance, and ensure robustness against uncertainties using various control strategies.",
+          "overview": "This crash course explores the essential principles of designing controllers for dynamic systems. We'll cover system modeling, basic control concepts like feedback and stability, common controller types (PID), and advanced techniques. The goal is to provide a solid foundation for understanding and implementing control solutions in real-world applications.",
+          "main_topics": [
+            {
+              "title": "Introduction to Control Systems",
+              "description": "Understand the basic concepts of control systems, including open-loop and closed-loop systems, feedback, and the importance of a controller in achieving system objectives.",
+              "subtopics": [
+                {
+                  "title": "What is a Control System?",
+                  "details": "Explore the definition of control systems and their ubiquitous presence in everyday technology, from thermostats to aircraft autopilots."
+                },
+                {
+                  "title": "Open-Loop vs. Closed-Loop",
+                  "details": "Differentiate between open-loop systems (no feedback) and closed-loop systems (with feedback) and their respective advantages and disadvantages."
+                },
+                {
+                  "title": "Role of the Controller",
+                  "details": "Identify the controller as the brain of a closed-loop system, responsible for processing system errors and generating control signals."
+                }
+              ]
+            },
+            {
+              "title": "System Modeling and Analysis",
+              "description": "Learn how to represent dynamic systems mathematically using transfer functions and state-space models, which are crucial for controller analysis and design.",
+              "subtopics": [
+                {
+                  "title": "Transfer Function Basics",
+                  "details": "Introduce the concept of transfer functions in the Laplace domain to describe linear, time-invariant (LTI) system dynamics."
+                },
+                {
+                  "title": "State-Space Representation",
+                  "details": "Understand state-space models as an alternative, powerful method for representing complex multi-input, multi-output (MIMO) systems."
+                },
+                {
+                  "title": "Stability Analysis",
+                  "details": "Learn to assess system stability using concepts like poles, Routh-Hurwitz criterion, and root locus plots."
+                }
+              ]
+            },
+            {
+              "title": "PID Controller Design",
+              "description": "Master the design and tuning of Proportional-Integral-Derivative (PID) controllers, the most common type used in industrial applications for their simplicity and effectiveness.",
+              "subtopics": [
+                {
+                  "title": "Proportional (P) Control",
+                  "details": "Understand how proportional gain affects system response by reacting to the current error."
+                },
+                {
+                  "title": "Integral (I) Control",
+                  "details": "Explore how integral action eliminates steady-state errors by considering past errors."
+                },
+                {
+                  "title": "Derivative (D) Control",
+                  "details": "Learn how derivative action improves transient response and reduces overshoot by considering the rate of change of error."
+                }
+              ]
+            },
+            {
+              "title": "Advanced Control Concepts",
+              "description": "Briefly touch upon more sophisticated control techniques beyond PID, such as lead-lag compensation, state feedback, and robustness considerations.",
+              "subtopics": [
+                {
+                  "title": "Lead-Lag Compensation",
+                  "details": "Discover how lead and lag compensators can shape system frequency response to improve stability and performance."
+                },
+                {
+                  "title": "State Feedback Control",
+                  "details": "Introduce the concept of using all system states for feedback control, offering greater design flexibility."
+                },
+                {
+                  "title": "Robustness and Uncertainty",
+                  "details": "Discuss the importance of designing controllers that can handle variations and uncertainties in the system model."
+                }
+              ]
+            }
+          ],
+          "conclusion": "Mastering controller design empowers you to shape system behavior, ensuring stability, performance, and reliability across diverse engineering applications. Continue practicing to refine your skills!"
+        },
+        {
+          "id": "cc_1760646324253",
+          "createdAt": "2025-10-16T20:25:24.253Z",
+          "topic": "Electric Actuators",
+          "summary": "Electric actuators convert electrical energy into mechanical motion, providing precise control for various applications. This course covers their types, working principles, selection criteria, and common uses.",
+          "overview": "This crash course introduces electric actuators, fundamental components in automation. We'll explore different types like linear and rotary, delve into their operational mechanisms, discuss factors for choosing the right actuator, and highlight their widespread applications across industries.",
+          "main_topics": [
+            {
+              "title": "Introduction to Electric Actuators",
+              "description": "Understand the basic definition and purpose of electric actuators. Learn how they serve as the 'muscles' of automated systems, translating electrical signals into physical movement for control and operation.",
+              "subtopics": [
+                {
+                  "title": "What is an Actuator?",
+                  "details": "An actuator is a component responsible for moving or controlling a mechanism or system. It is powered by a source and provides an input to the mechanism."
+                },
+                {
+                  "title": "Role in Automation",
+                  "details": "Electric actuators are crucial for automating tasks, enabling precise positioning, speed control, and force application in manufacturing, robotics, and process control."
+                },
+                {
+                  "title": "Energy Conversion",
+                  "details": "They transform electrical energy, typically from a power source, into mechanical energy in the form of linear or rotary motion."
+                }
+              ]
+            },
+            {
+              "title": "Types of Electric Actuators",
+              "description": "Explore the diverse range of electric actuators available. We will differentiate between linear and rotary types, and briefly touch upon specific technologies like solenoid, stepper, and servo motors.",
+              "subtopics": [
+                {
+                  "title": "Linear Actuators",
+                  "details": "These produce motion in a straight line. Common types include screw-driven, belt-driven, and pneumatic/hydraulic-electric hybrid systems."
+                },
+                {
+                  "title": "Rotary Actuators",
+                  "details": "These generate rotational or angular motion. They are widely used for valve control and robotic arm joints."
+                },
+                {
+                  "title": "Common Motor Technologies",
+                  "details": "Discussing DC motors, AC motors, stepper motors, and servo motors, highlighting their unique characteristics and applications within actuators."
+                }
+              ]
+            },
+            {
+              "title": "Working Principles and Components",
+              "description": "Gain insight into the internal workings of electric actuators. Learn about the key components such as motors, gearboxes, control electronics, and feedback mechanisms that ensure proper operation.",
+              "subtopics": [
+                {
+                  "title": "Motor and Gear Drive",
+                  "details": "The motor provides the initial power, and the gearbox reduces speed while increasing torque for the desired output motion."
+                },
+                {
+                  "title": "Control Systems",
+                  "details": "Explains how electronic controllers interpret signals and regulate the motor's speed, direction, and position."
+                },
+                {
+                  "title": "Feedback Mechanisms",
+                  "details": "Discussing sensors like potentiometers or encoders that provide position or speed data back to the controller for closed-loop operation."
+                }
+              ]
+            },
+            {
+              "title": "Selection Criteria and Applications",
+              "description": "Understand the factors to consider when selecting an electric actuator for a specific task. This includes force, speed, stroke length, duty cycle, and environmental conditions, along with common industry uses.",
+              "subtopics": [
+                {
+                  "title": "Key Selection Parameters",
+                  "details": "Covers essential specifications like required force/torque, speed, travel distance, precision, and operating voltage."
+                },
+                {
+                  "title": "Environmental Considerations",
+                  "details": "Discussing factors such as temperature range, ingress protection (IP rating), and hazardous environment suitability."
+                },
+                {
+                  "title": "Common Industry Use Cases",
+                  "details": "Examples include industrial automation, robotics, automotive systems, medical devices, and home automation."
+                }
+              ]
+            }
+          ],
+          "conclusion": "Electric actuators are versatile and essential for modern automation. Understanding their types, functions, and selection criteria empowers you to integrate them effectively into diverse applications."
+        },
+        {
+          "id": "cc_1760646308913",
+          "createdAt": "2025-10-16T20:25:08.913Z",
+          "topic": "Automotive Engineering",
+          "summary": "Automotive engineering focuses on the design, manufacturing, and operation of vehicles. It encompasses mechanical, electrical, and software systems, aiming for safety, efficiency, and performance.",
+          "overview": "This crash course explores the fundamentals of automotive engineering. We'll delve into vehicle structure, powertrain systems, electrical components, and modern advancements like autonomous driving and electric vehicles. Gain a foundational understanding of how cars are designed, built, and the future of personal transportation.",
+          "main_topics": [
+            {
+              "title": "Vehicle Structure and Safety",
+              "description": "Understanding the core structure of a vehicle, including the chassis, body, and suspension systems. Focuses on how these elements contribute to vehicle dynamics, handling, and passenger safety through passive and active safety features.",
+              "subtopics": [
+                {
+                  "title": "Chassis and Frame Design",
+                  "details": "Explore different types of chassis (body-on-frame, unibody) and their roles in supporting the vehicle's weight, housing components, and ensuring structural integrity and rigidity."
+                },
+                {
+                  "title": "Suspension Systems Explained",
+                  "details": "Learn about various suspension types (e.g., MacPherson strut, multi-link) and their function in absorbing shocks, maintaining tire contact, and providing a comfortable ride."
+                },
+                {
+                  "title": "Crashworthiness and Safety Features",
+                  "details": "Understand how vehicle design mitigates impact forces in a crash, including crumple zones, airbags, seatbelts, and advanced driver-assistance systems (ADAS)."
+                }
+              ]
+            },
+            {
+              "title": "Powertrain and Drivetrain Systems",
+              "description": "Covers the components responsible for generating power and delivering it to the wheels. This includes internal combustion engines, transmissions, and the systems that manage fuel and emissions.",
+              "subtopics": [
+                {
+                  "title": "Internal Combustion Engines (ICE)",
+                  "details": "Basics of how gasoline and diesel engines work, including cycles, components like pistons and crankshafts, and their thermodynamic principles."
+                },
+                {
+                  "title": "Transmissions and Drivetrains",
+                  "details": "Explore manual, automatic, CVT, and dual-clutch transmissions, and how they transfer power from the engine to the wheels (FWD, RWD, AWD)."
+                },
+                {
+                  "title": "Fuel and Emissions Control",
+                  "details": "Understand fuel injection systems, exhaust systems, catalytic converters, and modern emission reduction technologies to meet environmental standards."
+                }
+              ]
+            },
+            {
+              "title": "Electrical and Electronic Systems",
+              "description": "An overview of the increasingly complex electrical architecture in modern vehicles. This includes battery systems, lighting, infotainment, and the sophisticated control units that manage various functions.",
+              "subtopics": [
+                {
+                  "title": "Vehicle Electrical Architecture",
+                  "details": "Learn about the 12V/48V systems, wiring harnesses, fuses, relays, and how power is distributed throughout the vehicle's electronic components."
+                },
+                {
+                  "title": "Infotainment and Connectivity",
+                  "details": "Discover the systems controlling audio, navigation, climate control, and how modern vehicles integrate with smartphones and the internet."
+                },
+                {
+                  "title": "Engine Control Units (ECUs)",
+                  "details": "Understand the role of ECUs in managing engine performance, fuel efficiency, emissions, and diagnostics, processing data from numerous sensors."
+                }
+              ]
+            },
+            {
+              "title": "Future of Automotive Technology",
+              "description": "Examines emerging trends shaping the future of vehicles, including electrification, autonomous driving, and advanced connectivity, focusing on their impact on design, performance, and user experience.",
+              "subtopics": [
+                {
+                  "title": "Electric Vehicle (EV) Technology",
+                  "details": "Explore battery technology, electric motors, charging infrastructure, and the advantages and challenges of transitioning to electric mobility."
+                },
+                {
+                  "title": "Autonomous Driving Systems",
+                  "details": "Understand the levels of automation, sensor technologies (LIDAR, radar, cameras), AI, and the path towards self-driving vehicles."
+                },
+                {
+                  "title": "Vehicle-to-Everything (V2X) Communication",
+                  "details": "Learn how vehicles communicate with each other, infrastructure, and pedestrians to enhance safety, traffic flow, and real-time information sharing."
+                }
+              ]
+            }
+          ],
+          "conclusion": "Automotive engineering is a dynamic field driving innovation. Understanding these core principles provides insight into current vehicles and the exciting technologies shaping the future of transportation."
+        },
+        {
+          "id": "cc_1760646301159",
+          "createdAt": "2025-10-16T20:25:01.159Z",
+          "topic": "Control Theory",
+          "summary": "Control theory is the study of how to influence the behavior of dynamic systems. It provides mathematical tools to design controllers that ensure systems perform as desired, stably and efficiently, even with uncertainties.",
+          "overview": "This crash course introduces the fundamental concepts of control theory. We'll explore system modeling, feedback mechanisms, stability analysis, and controller design techniques. You'll learn how to represent systems mathematically, understand the power of feedback, and grasp the basics of creating controllers for various applications.",
+          "main_topics": [
+            {
+              "title": "Introduction to Dynamic Systems and Modeling",
+              "description": "Understand what dynamic systems are and why we need to model them. Learn basic mathematical tools to describe how systems change over time, setting the stage for control.",
+              "subtopics": [
+                {
+                  "title": "What are Dynamic Systems?",
+                  "details": "Explore systems whose states evolve over time, from simple pendulums to complex biological processes. Recognize their inherent time-dependent nature."
+                },
+                {
+                  "title": "Mathematical Modeling Basics",
+                  "details": "Learn to represent system behavior using differential equations, transfer functions, and state-space representations. Focus on creating simplified yet effective models."
+                },
+                {
+                  "title": "System Inputs and Outputs",
+                  "details": "Differentiate between control inputs that we can manipulate and outputs that we observe or want to regulate. Understand their roles in system dynamics."
+                }
+              ]
+            },
+            {
+              "title": "The Power of Feedback Control",
+              "description": "Discover how feedback allows systems to self-correct and adapt. Understand the advantages of closed-loop control over open-loop systems for robustness and performance.",
+              "subtopics": [
+                {
+                  "title": "Open-Loop vs. Closed-Loop",
+                  "details": "Compare systems that operate without sensing the output (open-loop) to those that use output measurements to adjust inputs (closed-loop)."
+                },
+                {
+                  "title": "Benefits of Feedback",
+                  "details": "Learn how feedback reduces sensitivity to disturbances and parameter variations, improving accuracy and stability in dynamic systems."
+                },
+                {
+                  "title": "Error Signal Concept",
+                  "details": "Understand how the difference between the desired output and the actual output (error) drives the control action in feedback systems."
+                }
+              ]
+            },
+            {
+              "title": "Stability and Performance Analysis",
+              "description": "Learn how to determine if a system is stable and how to evaluate its performance. Key concepts include poles, zeros, and transient/steady-state responses.",
+              "subtopics": [
+                {
+                  "title": "Concept of Stability",
+                  "details": "Grasp the fundamental idea of stability: a system that returns to equilibrium after a disturbance. Introduce criteria like Routh-Hurwitz and Nyquist."
+                },
+                {
+                  "title": "Transient Response",
+                  "details": "Analyze how a system behaves immediately after a change, focusing on metrics like rise time, settling time, and overshoot."
+                },
+                {
+                  "title": "Steady-State Response",
+                  "details": "Examine the system's behavior as time approaches infinity. Understand steady-state error and its implications for controller design."
+                }
+              ]
+            },
+            {
+              "title": "Basic Controller Design",
+              "description": "Introduce common controller types like PID controllers. Learn the basic principles behind tuning controllers to achieve desired system performance and stability.",
+              "subtopics": [
+                {
+                  "title": "Proportional (P) Control",
+                  "details": "Understand how proportional control uses a control signal directly proportional to the error. Discuss its simplicity and limitations."
+                },
+                {
+                  "title": "Proportional-Integral (PI) Control",
+                  "details": "Learn how integral action eliminates steady-state error. Explore its benefits and potential drawbacks like slower response."
+                },
+                {
+                  "title": "Proportional-Integral-Derivative (PID) Control",
+                  "details": "Discover the full PID controller, adding derivative action to improve transient response and stability. Understand basic tuning concepts."
+                }
+              ]
+            }
+          ],
+          "conclusion": "Control theory provides the essential tools to design systems that behave predictably and reliably. Mastering these fundamentals empowers you to shape the behavior of dynamic systems across numerous fields."
+        },
+        {
+          "id": "cc_1760646262011",
+          "createdAt": "2025-10-16T20:24:22.011Z",
+          "topic": "Z Transform",
+          "summary": "The Z-transform is a mathematical tool used in digital signal processing and control theory to analyze discrete-time systems by converting sequences into a continuous function in the complex domain, simplifying analysis.",
+          "overview": "This crash course introduces the Z-transform, a fundamental concept for analyzing discrete-time signals and systems. We will cover its definition, properties, and applications. You'll learn how to find the Z-transform of common sequences, understand the region of convergence (ROC), and use it for system analysis like stability and frequency response.",
+          "main_topics": [
+            {
+              "title": "Fundamentals of the Z-Transform",
+              "description": "Explore the basic definition and purpose of the Z-transform. Understand its role in transforming discrete-time sequences into the complex z-domain, making complex operations like convolution manageable through algebraic methods.",
+              "subtopics": [
+                {
+                  "title": "Definition and Purpose",
+                  "details": "Learn the mathematical definition of the Z-transform and why it's essential for analyzing discrete-time signals and systems, bridging the gap between time and frequency domains."
+                },
+                {
+                  "title": "Region of Convergence (ROC)",
+                  "details": "Understand the concept of the Region of Convergence (ROC), which is crucial for system causality and stability, and how it defines the domain where the Z-transform exists."
+                },
+                {
+                  "title": "Inverse Z-Transform",
+                  "details": "Discover methods to convert a function in the z-domain back to its original discrete-time sequence, essential for recovering system outputs and understanding system responses."
+                }
+              ]
+            },
+            {
+              "title": "Properties and Techniques",
+              "description": "Delve into the key properties of the Z-transform that simplify analysis, such as linearity, time shifting, and differentiation. Learn techniques for applying these properties to solve problems efficiently.",
+              "subtopics": [
+                {
+                  "title": "Common Transform Pairs",
+                  "details": "Familiarize yourself with the Z-transforms of standard discrete-time signals like unit steps, impulses, and exponentials, which form the building blocks for more complex sequences."
+                },
+                {
+                  "title": "Linearity and Time Shifting",
+                  "details": "Understand how the Z-transform handles linear combinations of sequences and how time shifts in the discrete domain translate to simple multiplications in the z-domain."
+                },
+                {
+                  "title": "Convolution Property",
+                  "details": "Learn the powerful property where convolution in the time domain becomes multiplication in the z-domain, simplifying the analysis of Linear Time-Invariant (LTI) systems."
+                }
+              ]
+            },
+            {
+              "title": "Applications in System Analysis",
+              "description": "Apply the Z-transform to analyze discrete-time systems. Understand how it helps determine system stability, frequency response, and solve difference equations, crucial for designing and understanding digital filters and control systems.",
+              "subtopics": [
+                {
+                  "title": "System Stability",
+                  "details": "Learn how the ROC and pole locations in the z-plane determine the stability of a discrete-time system, a critical factor in practical applications."
+                },
+                {
+                  "title": "Frequency Response",
+                  "details": "Explore how the Z-transform reveals the frequency response characteristics of a system, showing how it affects different frequency components of an input signal."
+                },
+                {
+                  "title": "Solving Difference Equations",
+                  "details": "Master the use of the Z-transform to efficiently solve linear constant-coefficient difference equations, which model many discrete-time systems."
+                }
+              ]
+            }
+          ],
+          "conclusion": "The Z-transform provides a powerful framework for understanding discrete-time systems. Mastering its properties and applications unlocks the ability to analyze, design, and implement digital signal processing and control systems effectively."
+        },
+        {
+          "id": "cc_1760645171049",
+          "createdAt": "2025-10-16T20:06:11.049Z",
+          "topic": "Fourier Transforms",
+          "summary": "Unlock the power of Fourier Transforms to decompose complex signals into their fundamental frequencies. Understand how this mathematical tool revolutionizes signal processing, data analysis, and numerous scientific fields by revealing hidden patterns.",
+          "overview": "This crash course demystifies Fourier Transforms. We'll explore the core concept of frequency decomposition, learn about the forward and inverse transforms, and understand their applications in areas like audio processing, image analysis, and solving differential equations. Get ready to see signals in a new light!",
+          "main_topics": [
+            {
+              "title": "The Essence of Frequency Decomposition",
+              "description": "Explore the fundamental idea behind Fourier Transforms: breaking down any signal into a sum of simple sine and cosine waves of different frequencies and amplitudes. This reveals the signal's spectral content.",
+              "subtopics": [
+                {
+                  "title": "Signals as Waves",
+                  "details": "Understand that complex signals, like sound or light, can be represented as combinations of basic oscillating waves. This forms the intuitive basis for frequency analysis."
+                },
+                {
+                  "title": "Frequency Domain vs. Time Domain",
+                  "details": "Learn the crucial distinction between viewing a signal over time (time domain) and viewing its constituent frequencies (frequency domain). Each offers unique insights."
+                },
+                {
+                  "title": "Why Decompose Signals?",
+                  "details": "Discover the benefits of frequency decomposition, such as noise reduction, data compression, and identifying periodic components that are obscured in the time domain."
+                }
+              ]
+            },
+            {
+              "title": "Understanding the Transforms",
+              "description": "Delve into the mathematical definitions of the Fourier Transform and its inverse. Learn how to move between the time and frequency domains and what each transform signifies.",
+              "subtopics": [
+                {
+                  "title": "The Forward Fourier Transform",
+                  "details": "This transform converts a time-domain signal into its frequency-domain representation, showing the amplitude and phase of each frequency component present."
+                },
+                {
+                  "title": "The Inverse Fourier Transform",
+                  "details": "The inverse transform reconstructs the original time-domain signal from its frequency-domain components, demonstrating the completeness of the spectral information."
+                },
+                {
+                  "title": "Continuous vs. Discrete Transforms",
+                  "details": "Differentiate between the Fourier Transform for continuous signals and the Discrete Fourier Transform (DFT) used for sampled, digital data, and its efficient version, the FFT."
+                }
+              ]
+            },
+            {
+              "title": "Real-World Applications",
+              "description": "Witness the practical impact of Fourier Transforms across various disciplines. From analyzing sound waves to processing images and solving complex physics problems, their utility is vast.",
+              "subtopics": [
+                {
+                  "title": "Audio and Image Processing",
+                  "details": "See how Fourier Transforms are used for filtering noise, compressing audio/images (like MP3s and JPEGs), and enhancing features by manipulating frequency components."
+                },
+                {
+                  "title": "Solving Differential Equations",
+                  "details": "Understand how transforming linear differential equations into the frequency domain can simplify them into algebraic equations, making them easier to solve."
+                },
+                {
+                  "title": "Signal Analysis and Filtering",
+                  "details": "Learn how engineers use Fourier Transforms to identify specific frequencies in signals, remove unwanted interference, and design effective filters for various systems."
+                }
+              ]
+            }
+          ],
+          "conclusion": "Fourier Transforms provide an indispensable lens for understanding signals. By revealing the frequency spectrum, they unlock powerful analysis and manipulation techniques essential in science and engineering."
+        },
+        {
+          "id": "cc_1760645158220",
+          "createdAt": "2025-10-16T20:05:58.220Z",
+          "topic": "Covalent Bonds",
+          "summary": "Covalent bonds involve the sharing of electrons between atoms, forming stable molecules. This crash course explores their formation, types, properties, and importance in chemistry.",
+          "overview": "This course will demystify covalent bonds, explaining how atoms share electrons to create molecules. We'll cover the fundamental principles of covalent bonding, differentiate between polar and nonpolar bonds, discuss bond characteristics like length and strength, and highlight their critical role in the structure and function of countless chemical substances.",
+          "main_topics": [
+            {
+              "title": "Fundamentals of Covalent Bonding",
+              "description": "Understand the basic principle of covalent bonding: the sharing of valence electrons between atoms to achieve a stable electron configuration, typically resembling a noble gas.",
+              "subtopics": [
+                {
+                  "title": "Electron Sharing Mechanism",
+                  "details": "Atoms share electrons when they both need electrons to complete their outer shells. This sharing creates a strong attraction between the nuclei and the shared electron pair, holding the atoms together."
+                },
+                {
+                  "title": "Valence Electrons and Stability",
+                  "details": "Focuses on the electrons in the outermost shell (valence electrons). Achieving a full valence shell (octet rule, duet rule for hydrogen) leads to greater stability for the atoms involved."
+                },
+                {
+                  "title": "Lewis Structures Representation",
+                  "details": "Learn to draw Lewis structures, a simple way to visualize covalent bonds. Dots represent valence electrons, and lines or pairs of dots show shared electron pairs between atoms."
+                }
+              ]
+            },
+            {
+              "title": "Types of Covalent Bonds",
+              "description": "Explore the different ways electrons can be shared, leading to various types of covalent bonds based on polarity and the number of shared electron pairs.",
+              "subtopics": [
+                {
+                  "title": "Nonpolar Covalent Bonds",
+                  "details": "Occurs when electrons are shared equally between two identical or very similar atoms. The electronegativity difference is zero or very small."
+                },
+                {
+                  "title": "Polar Covalent Bonds",
+                  "details": "Results from unequal sharing of electrons due to a difference in electronegativity between atoms. This creates partial positive and negative charges within the molecule."
+                },
+                {
+                  "title": "Single, Double, and Triple Bonds",
+                  "details": "Covers bonds formed by sharing one (single), two (double), or three (triple) pairs of electrons between two atoms, affecting bond strength and length."
+                }
+              ]
+            },
+            {
+              "title": "Properties and Importance",
+              "description": "Discover how covalent bonding influences the physical and chemical properties of substances and its essential role in biological and material science.",
+              "subtopics": [
+                {
+                  "title": "Bond Length and Strength",
+                  "details": "Examines the relationship between bond type (single, double, triple) and its characteristics. Shorter bonds are generally stronger and require more energy to break."
+                },
+                {
+                  "title": "Molecular Geometry and Polarity",
+                  "details": "Discusses how the arrangement of atoms in a molecule (geometry) and the presence of polar bonds influence the overall polarity and intermolecular forces."
+                },
+                {
+                  "title": "Role in Organic Chemistry",
+                  "details": "Highlights the significance of covalent bonds, especially carbon-carbon and carbon-hydrogen bonds, as the backbone of all organic molecules, from DNA to proteins."
+                }
+              ]
+            }
+          ],
+          "conclusion": "Covalent bonds are the foundation of molecular diversity, enabling the creation of countless substances. Understanding electron sharing is key to unlocking the principles of chemistry and the world around us."
+        },
+        {
+          "id": "cc_1760645129258",
+          "createdAt": "2025-10-16T20:05:29.258Z",
+          "topic": "Brushless Motors",
+          "summary": "Explore the fundamental principles, construction, operation, and applications of brushless DC motors. Understand their advantages in efficiency, lifespan, and control over traditional brushed motors.",
+          "overview": "This crash course delves into the world of brushless motors. We will cover their basic working principles, essential components, and how they differ from brushed motors. You'll learn about their electronic commutation, common types, and various applications, highlighting why they are preferred in many modern technologies.",
+          "main_topics": [
+            {
+              "title": "Fundamentals of Brushless Motors",
+              "description": "Understand the core concepts behind brushless motors, including electromagnetic principles and the absence of mechanical brushes. Learn how electronic commutation replaces traditional brushes for improved performance and longevity.",
+              "subtopics": [
+                {
+                  "title": "Working Principle",
+                  "details": "Brushless motors operate using electronic commutation. Magnets on the rotor interact with electromagnets on the stator, switched electronically to create continuous rotation. This eliminates wear associated with mechanical brushes."
+                },
+                {
+                  "title": "Comparison to Brushed Motors",
+                  "details": "Unlike brushed motors, brushless designs lack internal brushes and commutators. This results in higher efficiency, less electrical noise, longer lifespan, and better heat dissipation, making them ideal for demanding applications."
+                },
+                {
+                  "title": "Key Advantages",
+                  "details": "Key benefits include superior efficiency, reduced maintenance due to no brush wear, higher speed capabilities, better torque-to-weight ratio, and precise speed and position control, contributing to their widespread adoption."
+                }
+              ]
+            },
+            {
+              "title": "Construction and Components",
+              "description": "Examine the essential parts that make up a brushless motor. Understanding the stator, rotor, and electronic speed controller (ESC) is crucial to grasping how these motors function and are managed.",
+              "subtopics": [
+                {
+                  "title": "Stator and Windings",
+                  "details": "The stator is the stationary part, containing electromagnets (coils of wire). These windings are energized in sequence by the ESC to create a rotating magnetic field that drives the rotor."
+                },
+                {
+                  "title": "Rotor and Magnets",
+                  "details": "The rotor is the rotating part, typically housing permanent magnets. The magnetic field of the rotor interacts with the stator's rotating field, causing the rotor to spin."
+                },
+                {
+                  "title": "Electronic Speed Controller (ESC)",
+                  "details": "The ESC is the 'brain' of the system. It interprets control signals and precisely switches the current to the stator windings, managing motor speed, direction, and torque."
+                }
+              ]
+            },
+            {
+              "title": "Types and Applications",
+              "description": "Discover the different configurations of brushless motors and where they are commonly used. From simple hobby applications to complex industrial machinery, their versatility is a key feature.",
+              "subtopics": [
+                {
+                  "title": "Motor Configurations (e.g., Outrunner, Inrunner)",
+                  "details": "Outrunner motors have the rotor on the outside, offering high torque at low RPM. Inrunner motors have the rotor inside, providing higher speeds and a more compact design for similar power."
+                },
+                {
+                  "title": "Common Applications",
+                  "details": "Brushless motors power drones, electric vehicles, computer fans, power tools, electric bikes, and robotic systems due to their efficiency, power density, and reliability."
+                },
+                {
+                  "title": "Control and Sensing",
+                  "details": "Sensored motors use Hall effect sensors for precise rotor position feedback to the ESC. Sensorless motors infer position from back-EMF, simplifying construction but requiring more complex ESC algorithms."
+                }
+              ]
+            }
+          ],
+          "conclusion": "Brushless motors offer significant advantages in efficiency, durability, and control. Their advanced design makes them the standard for many modern applications requiring reliable and high-performance rotational power."
+        },
+        {
+          "id": "cc_1760645116848",
+          "createdAt": "2025-10-16T20:05:16.848Z",
+          "topic": "Stepper Motors",
+          "summary": "Stepper motors are brushless DC electric motors that divide a full rotation into a number of equal steps. They precisely control position without feedback, making them ideal for automation and robotics.",
+          "overview": "This crash course demystifies stepper motors. We'll explore their fundamental principles, types, how they work, common applications, and essential driving techniques. You'll gain a solid understanding of their advantages, limitations, and how to select and implement them for various projects.",
+          "main_topics": [
+            {
+              "title": "Introduction to Stepper Motors",
+              "description": "Understand the basic concept of stepper motors, how they differ from other motor types, and why their unique step-by-step operation is valuable for precise motion control.",
+              "subtopics": [
+                {
+                  "title": "What is a Stepper Motor?",
+                  "details": "Learn that stepper motors move in discrete steps, allowing for exact positioning. They are brushless and have a rotor with permanent magnets or toothed iron."
+                },
+                {
+                  "title": "Stepper vs. DC Motors",
+                  "details": "Contrast stepper motors with standard DC motors, highlighting the stepper's inherent positional control without encoders, versus the DC motor's continuous rotation requiring feedback."
+                },
+                {
+                  "title": "Key Advantages",
+                  "details": "Discover benefits like excellent open-loop position control, holding torque at rest, good reliability, and cost-effectiveness for positioning tasks."
+                }
+              ]
+            },
+            {
+              "title": "Types and Construction",
+              "description": "Explore the different classifications of stepper motors based on their magnetic construction and operational principles, including permanent magnet, variable reluctance, and hybrid types.",
+              "subtopics": [
+                {
+                  "title": "Permanent Magnet (PM) Steppers",
+                  "details": "Understand motors with magnetized rotor teeth. They offer good torque but lower resolution compared to other types."
+                },
+                {
+                  "title": "Variable Reluctance (VR) Steppers",
+                  "details": "Examine motors with a soft iron rotor. They are simpler but have lower torque and no inherent holding torque."
+                },
+                {
+                  "title": "Hybrid Steppers",
+                  "details": "Learn about the most common type, combining PM and VR features. They offer high torque, high resolution, and good accuracy."
+                }
+              ]
+            },
+            {
+              "title": "How Stepper Motors Work",
+              "description": "Delve into the operational mechanics, understanding how sequential energizing of stator windings creates magnetic fields that rotate the rotor step by step.",
+              "subtopics": [
+                {
+                  "title": "Stator and Rotor Interaction",
+                  "details": "Visualize how stator coils, when energized in sequence, create a rotating magnetic field that attracts and aligns the rotor's magnetic poles."
+                },
+                {
+                  "title": "Step Modes: Full, Half, Microstepping",
+                  "details": "Discover different modes of operation: full step (basic), half step (smoother, doubled resolution), and microstepping (very smooth, high resolution)."
+                },
+                {
+                  "title": "Step Angle and Resolution",
+                  "details": "Understand how the step angle (e.g., 1.8 degrees) determines the motor's resolution and how microstepping further refines this."
+                }
+              ]
+            },
+            {
+              "title": "Driving and Controlling Stepper Motors",
+              "description": "Learn about the essential electronic drivers and control methods required to operate stepper motors, including current control and the role of dedicated driver ICs.",
+              "subtopics": [
+                {
+                  "title": "Stepper Motor Drivers",
+                  "details": "Understand the need for driver circuits to sequence coil energization and control current, protecting the motor and controller."
+                },
+                {
+                  "title": "Common Driver ICs",
+                  "details": "Identify popular driver chips like the A4988 or DRV8825, which simplify control by accepting step and direction inputs."
+                },
+                {
+                  "title": "Current Control & Microstepping",
+                  "details": "Explore how drivers manage current (chopping) for efficiency and heat management, and how they enable microstepping for smoother motion."
+                }
+              ]
+            },
+            {
+              "title": "Applications and Considerations",
+              "description": "See where stepper motors are commonly used and what factors to consider when choosing the right motor for your specific project needs.",
+              "subtopics": [
+                {
+                  "title": "Common Use Cases",
+                  "details": "Identify applications like 3D printers, CNC machines, robotics, automation, scanners, and precise camera positioning systems."
+                },
+                {
+                  "title": "Choosing the Right Motor",
+                  "details": "Learn factors like torque requirements, step angle, voltage, current, and physical size relevant to application selection."
+                },
+                {
+                  "title": "Potential Issues",
+                  "details": "Be aware of issues like resonance, missed steps under load, and power consumption, and how to mitigate them."
+                }
+              ]
+            }
+          ],
+          "conclusion": "Stepper motors offer precise, repeatable motion control essential for countless automated systems. Understanding their types, operation, and control methods empowers you to implement them effectively in your next project."
+        },
+        {
+          "id": "cc_1760645109062",
+          "createdAt": "2025-10-16T20:05:09.062Z",
+          "topic": "Power Automate",
+          "summary": "Learn to automate repetitive tasks and streamline workflows across applications with Microsoft Power Automate. Build custom solutions without extensive coding, boosting productivity and efficiency.",
+          "overview": "This crash course introduces Microsoft Power Automate, focusing on its core concepts and practical applications. We'll cover building flows, using connectors, automating approvals, and integrating with other Microsoft services. Ideal for beginners looking to enhance their workflow efficiency through low-code automation.",
+          "main_topics": [
+            {
+              "title": "Understanding Power Automate Fundamentals",
+              "description": "Explore the core components of Power Automate, including its purpose, interface, and the types of automation it supports. Grasp the basic building blocks for creating efficient automated processes.",
+              "subtopics": [
+                {
+                  "title": "What is Power Automate?",
+                  "details": "Discover Power Automate as a cloud-based service that allows users to create and automate workflows across multiple applications and services without needing extensive coding knowledge."
+                },
+                {
+                  "title": "Navigating the Interface",
+                  "details": "Get familiar with the Power Automate portal, understanding the dashboard, templates, and the environment where you'll build and manage your automated flows."
+                },
+                {
+                  "title": "Types of Flows",
+                  "details": "Learn about the three main types of flows: Automated, Instant, and Scheduled flows, and when to use each one for different automation scenarios."
+                }
+              ]
+            },
+            {
+              "title": "Building Your First Flows",
+              "description": "Dive into the practical aspects of creating automated workflows. Learn to use triggers, actions, and connectors to link different applications and automate specific tasks effectively.",
+              "subtopics": [
+                {
+                  "title": "Triggers and Actions",
+                  "details": "Understand triggers that initiate a flow and actions that perform tasks. Learn how to configure them to build a functional automated process."
+                },
+                {
+                  "title": "Using Connectors",
+                  "details": "Explore the vast library of connectors that allow Power Automate to interact with various services like Office 365, SharePoint, Twitter, and more."
+                },
+                {
+                  "title": "Creating an Automated Flow",
+                  "details": "Step-by-step guide to building a simple automated flow, such as saving email attachments to OneDrive, demonstrating the end-to-end process."
+                }
+              ]
+            },
+            {
+              "title": "Advanced Concepts and Best Practices",
+              "description": "Enhance your automation skills with advanced features like approvals, error handling, and process optimization. Learn best practices for maintaining and scaling your Power Automate solutions.",
+              "subtopics": [
+                {
+                  "title": "Approval Workflows",
+                  "details": "Implement approval processes within your flows to manage requests, documents, or other business scenarios, ensuring proper oversight and decision-making."
+                },
+                {
+                  "title": "Error Handling and Monitoring",
+                  "details": "Learn techniques for handling errors gracefully and monitoring your flows' performance to ensure reliability and troubleshoot issues effectively."
+                },
+                {
+                  "title": "Tips for Efficiency",
+                  "details": "Discover best practices for designing efficient, maintainable, and scalable Power Automate solutions to maximize your productivity gains."
+                }
+              ]
+            }
+          ],
+          "conclusion": "Mastering Power Automate empowers you to automate routine tasks, freeing up valuable time for more strategic work. Start building your first flow today and unlock greater efficiency!"
+        },
+        {
+          "id": "cc_1760645061659",
+          "createdAt": "2025-10-16T20:04:21.659Z",
+          "topic": "Mechatronics",
+          "summary": "Mechatronics integrates mechanical engineering, electronics, computer science, and control engineering to design intelligent products and systems. It focuses on creating innovative solutions through the synergy of these disciplines.",
+          "overview": "This crash course explores the fundamentals of mechatronics. We will delve into its core components, including mechanical systems, sensors, actuators, microcontrollers, and control strategies. Learn how these elements combine to create sophisticated automated systems and intelligent devices.",
+          "main_topics": [
+            {
+              "title": "Introduction to Mechatronics",
+              "description": "Understand the definition, scope, and importance of mechatronics. Explore its interdisciplinary nature and historical evolution, highlighting key applications that showcase its impact on modern technology.",
+              "subtopics": [
+                {
+                  "title": "Definition and Scope",
+                  "details": "Mechatronics combines mechanical, electrical, and computer engineering to design smart systems. It's the synergy of these fields creating advanced functionalities."
+                },
+                {
+                  "title": "Historical Evolution",
+                  "details": "Trace the development of mechatronics from early automation to modern robotics and intelligent systems, driven by advancements in microprocessors and sensors."
+                },
+                {
+                  "title": "Key Applications",
+                  "details": "Discover diverse applications like robotics, automotive systems, consumer electronics, and manufacturing automation, showcasing mechatronics' real-world impact."
+                }
+              ]
+            },
+            {
+              "title": "Core Components of Mechatronic Systems",
+              "description": "Examine the essential building blocks of mechatronic systems: mechanical elements, electronic circuits, sensors for data acquisition, actuators for motion, and microcontrollers for intelligent control.",
+              "subtopics": [
+                {
+                  "title": "Mechanical Systems",
+                  "details": "Focus on the physical aspects: structures, mechanisms, linkages, gears, and their role in providing form, function, and motion in mechatronic designs."
+                },
+                {
+                  "title": "Sensors and Actuators",
+                  "details": "Learn about sensors that gather environmental data (temperature, position) and actuators (motors, solenoids) that effect physical changes or motion."
+                },
+                {
+                  "title": "Microcontrollers and Embedded Systems",
+                  "details": "Understand the 'brain' of mechatronic systems: microcontrollers processing data, making decisions, and controlling actuators based on programmed logic."
+                }
+              ]
+            },
+            {
+              "title": "Control Strategies and System Design",
+              "description": "Explore various control techniques, from basic feedback loops to advanced algorithms. Learn the systematic approach to designing, modeling, and simulating mechatronic systems for optimal performance.",
+              "subtopics": [
+                {
+                  "title": "Feedback Control Systems",
+                  "details": "Understand closed-loop systems where sensor feedback adjusts actuator output to achieve desired performance, ensuring stability and accuracy."
+                },
+                {
+                  "title": "Modeling and Simulation",
+                  "details": "Learn to create mathematical models of mechatronic systems and use simulation tools to predict behavior and optimize designs before physical implementation."
+                },
+                {
+                  "title": "System Integration and Design Process",
+                  "details": "Discuss the iterative process of integrating mechanical, electrical, and software components, emphasizing concurrent engineering and system-level thinking."
+                }
+              ]
+            }
+          ],
+          "conclusion": "Mechatronics bridges disciplines to create smarter, more efficient systems. By understanding its core components and control strategies, you can appreciate and contribute to the innovation driving our increasingly automated world."
+        }
+      ],
+      "summaries": [
+        {
+          "id": "sum_1760646849789",
+          "createdAt": "2025-10-16T20:34:09.789Z",
+          "fileName": "11419.pdf",
+          "document_title": "INDUSTRY-ORIENTED COMPETENCY REQUIREMENTS FOR MECHATRONICS TECHNOLOGY IN TAIWAN",
+          "executive_summary": "This study identifies industry-oriented competency indicators for mechatronics technology in Taiwan using a three-phase empirical method. The research involved behavioral event interviews with engineers, the Delphi technique with experts, and quantitative validation with learners. The study developed a list of 36 competencies across 9 domains, confirming their practical relevance and importance for job performance. The findings aim to inform curriculum development and training programs in mechatronics education to better align with industry demands.",
+          "key_findings": [
+            "A comprehensive list of 36 industry-oriented competencies for mechatronics technology in Taiwan has been identified and validated.",
+            "The study successfully employed a three-phase empirical method (BEI, Delphi, validation survey) to determine these competencies, demonstrating its reliability for similar analyses.",
+            "There was no significant difference in the perceived importance of these competencies between industry experts and mechatronics learners, suggesting strong consensus on industry needs."
+          ],
+          "section_summaries": [
+            {
+              "page_range": "1",
+              "summary_points": [
+                "Title page for the research paper: 'INDUSTRY-ORIENTED COMPETENCY REQUIREMENTS FOR MECHATRONICS TECHNOLOGY IN TAIWAN'.",
+                "Abstract summarizing the study's methodology, results (36 competencies in 9 domains), and purpose.",
+                "Introduction highlighting the importance of industry-oriented competencies in technological education and the interdisciplinary nature of mechatronics."
+              ]
+            },
+            {
+              "page_range": "2",
+              "summary_points": [
+                "Further elaboration on the definition and importance of mechatronics as an integrated, multidisciplinary field crucial for modern economies.",
+                "Discussion on the teaching objectives for mechatronics courses, focusing on enhancing student competency and employability.",
+                "Review of existing definitions of competency, including knowledge, skills, attitudes, and psychosocial prerequisites for job performance."
+              ]
+            },
+            {
+              "page_range": "3",
+              "summary_points": [
+                "Detailed explanation of the study's approach: literature review, Behavioral Event Interviews (BEI), Delphi technique, and quantitative analysis.",
+                "The core concept of competency analysis and its application in various fields, including education and professional development.",
+                "Introduction to the Behavioral Event Interview (BEI) method as a tool to identify competencies by comparing outstanding and typical performers."
+              ]
+            },
+            {
+              "page_range": "4",
+              "summary_points": [
+                "Outline of the three-phase methodology: Phase I (BEI with engineers), Phase II (Delphi with experts), and Phase III (validation with learners).",
+                "Rationale for the chosen methodology, emphasizing BEI for initial identification and learner validation for generalizability.",
+                "Detailed explanation of the Delphi technique, its purpose in achieving consensus, and its typical application in research."
+              ]
+            },
+            {
+              "page_range": "5",
+              "summary_points": [
+                "Description of the questionnaire design, identifying nine domains of mechatronics competency and rating competencies on a Likert scale.",
+                "Details on the participants: three field engineers for BEI, ten experts (6 industry, 4 professors) for Delphi, and 62 mechatronics learners for validation.",
+                "Information on the instruments used, including content validity verification for BEI and the survey instrument for Phase III."
+              ]
+            },
+            {
+              "page_range": "6",
+              "summary_points": [
+                "Description of the study's procedure, detailing the timeline (September-November 2011) and the steps for each phase (interviews, surveys).",
+                "Explanation of data analysis methods: descriptive analysis (mean, SD, Z-value for K-S test) for Phase II and Mann-Whitney U-test for Phase III.",
+                "Figure 1 visually represents the three-phase competency analysis process."
+              ]
+            },
+            {
+              "page_range": "7",
+              "summary_points": [
+                "Presentation of results from the Delphi survey, listing the nine competency domains and Z-values from the K-S test.",
+                "Indication that the mean scores for the 36 competencies were above 4.4, suggesting they are considered 'more important' by the Delphi group.",
+                "Table 1 displays the competency indicators and their corresponding Z-values, with asterisks denoting statistical significance (p<0.05)."
+              ]
+            },
+            {
+              "page_range": "8",
+              "summary_points": [
+                "Summary of the 36 identified competencies across the nine domains, providing a comprehensive list of skills and knowledge required.",
+                "Presentation of results from the Mann-Whitney U-test (Table 2), comparing mean ratings between experts and learners.",
+                "Conclusion from the U-test that the mean ratings of experts and learners did not significantly differ, indicating strong agreement on competency importance."
+              ]
+            },
+            {
+              "page_range": "9",
+              "summary_points": [
+                "Discussion of the study's three main contributions: empirical data on competencies, support for learner programs, and a validated three-phase methodology.",
+                "Implications of findings for curriculum development and the need for learner support systems.",
+                "Limitations of the study (e.g., sample from Taiwan) and recommendations for future research, including larger sample sizes and standardized measurement methods."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sum_1760646819384",
+          "createdAt": "2025-10-16T20:33:39.384Z",
+          "fileName": "FULLTEXT01.pdf",
+          "document_title": "Leveraging Robust Artificial Intelligence for Mechatronic Product Development—A Literature Review",
+          "executive_summary": "This paper reviews the literature on applying Artificial Intelligence (AI) in mechatronic product development. It explores how AI can serve as a comprehensive database, decision support system, and modeling tool to enhance design, optimize performance, and leverage knowledge. While AI offers significant potential, human expertise remains crucial for contextualization, trade-offs, and ethical considerations. The review analyzes AI's benefits across the V-cycle development model, identifying key areas such as domain linking, expert knowledge replacement, prediction quality, and intelligent control systems. The findings indicate that AI integration is transforming mechatronic development, but a holistic view and robust, context-sensitive AI implementation are still needed.",
+          "key_findings": [
+            "Artificial Intelligence is revolutionizing mechatronic product development by acting as a powerful database, decision support system, and modeling tool, enhancing efficiency and innovation.",
+            "While AI offers significant advantages like domain linking, knowledge management, and improved prediction quality, human expertise is indispensable for contextual understanding, ethical considerations, and complex trade-offs.",
+            "The literature review highlights that current AI applications in mechatronics are often selective, and a holistic approach to integrating robust and context-sensitive AI throughout the entire development process is still required."
+          ],
+          "section_summaries": [
+            {
+              "page_range": "1-5",
+              "summary_points": [
+                "Mechatronic product development is a multidisciplinary field enhanced by AI, which acts as a knowledge base, decision support, and modeling tool.",
+                "The V-model is adapted to show AI's potential integration across all development phases, from specification to validation.",
+                "AI offers benefits in data management, decision-making, modeling, simulation, and intelligent control systems, but human expertise remains vital for contextualization and ethical considerations."
+              ]
+            },
+            {
+              "page_range": "6-10",
+              "summary_points": [
+                "Key aspects for AI in mechatronics include holistic cycle consideration, domain linking, complementing expert knowledge, differentiating relevant information, and addressing knowledge gaps.",
+                "AI databases can manage vast information, facilitate interdisciplinary connections, and potentially replace or augment human expertise.",
+                "The literature review identifies specific AI applications and their potential, including robust prediction quality and optimization proposals, with a focus on validating new concepts through proofs of concept."
+              ]
+            },
+            {
+              "page_range": "11-15",
+              "summary_points": [
+                "The literature analysis shows that while aspects like holistic cycle consideration and domain linking are well-covered, robustness of prediction quality and knowledge gaps require further investigation.",
+                "AI integration in mechatronic product development offers clear benefits, including improved domain linking, potential replacement of human expertise, and enhanced prediction quality.",
+                "AI contributes to considering the holistic development cycle, offering optimization proposals, differentiating relevant knowledge, and addressing knowledge gaps, thereby transforming the field."
+              ]
+            },
+            {
+              "page_range": "16-21",
+              "summary_points": [
+                "The 'References' section lists 69 sources, indicating a broad review of existing literature on AI in mechatronic product development.",
+                "The document concludes that AI integration provides significant advantages in mechatronics, improving efficiency, accuracy, and innovation across the development lifecycle.",
+                "Despite the advancements, the review emphasizes the need for a holistic view and robust, context-sensitive AI implementation throughout mechatronic development processes."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sum_1760646800528",
+          "createdAt": "2025-10-16T20:33:20.528Z",
+          "fileName": "IJRPR15478.pdf",
+          "document_title": "Mechatronics and Robotics for Service Applications",
+          "executive_summary": "This paper explores the revolutionary impact of mechatronics and robotics on service applications across various industries. It delves into the fundamental concepts of mechatronics, highlighting the integration of mechanical, electrical, and software components, and discusses key technologies like sensors and actuators. The document showcases diverse applications in healthcare, logistics, agriculture, and customer service, presenting case studies of automation, precision, and improved experiences. Furthermore, it addresses future trends such as AI integration and human-robot collaboration, alongside crucial ethical and safety considerations for responsible development and deployment.",
+          "key_findings": [
+            "Mechatronics and robotics are transforming service applications by enhancing efficiency, precision, and capabilities across sectors like healthcare, logistics, and defence.",
+            "The interdisciplinary nature of mechatronics, integrating mechanical, electrical, and software engineering, is crucial for developing advanced robotic systems.",
+            "Future advancements in mechatronics and robotics for service applications will focus on human-robot collaboration, artificial intelligence integration, and ethical considerations to ensure responsible innovation."
+          ],
+          "section_summaries": [
+            {
+              "page_range": "1",
+              "summary_points": [
+                "The document is titled 'Mechatronics and Robotics for Service Applications' and is published in the International Journal of Research Publication and Reviews.",
+                "It introduces mechatronics and robotics as revolutionary fields enhancing efficiency and capabilities in service industries, outlining key components and applications.",
+                "The abstract highlights the integration of mechanical, electrical, and software systems, discussing applications in healthcare and logistics, and touching upon future challenges and trends."
+              ]
+            },
+            {
+              "page_range": "2",
+              "summary_points": [
+                "Defines mechatronics engineering as a relatively new, interdisciplinary field combining mechanical engineering, electronics, control systems, and computer science.",
+                "Emphasizes the need for engineers with mechatronics expertise to address modern challenges and drive innovation through integrated technical domains.",
+                "Explains that mechatronic systems are characterized by the transfer of energy and information, often driven by forces, torques, or electric currents."
+              ]
+            },
+            {
+              "page_range": "3",
+              "summary_points": [
+                "Explains the importance of Mechatronics and Robotics applications, highlighting the interdisciplinary collaboration between control engineering, robotics, and mechatronics.",
+                "Details control engineering's role in mathematical modeling, dynamic behavior analysis, and creating controllers for stable and efficient system performance.",
+                "Defines robotics as the science and technology of designing, manufacturing, and applying robots, encompassing areas like space exploration, medical robotics, and industrial automation."
+              ]
+            },
+            {
+              "page_range": "4",
+              "summary_points": [
+                "Describes automated warehouses where robots and humans collaborate to move inventory efficiently, reducing manual labor and improving speed and accuracy.",
+                "Introduces ventilation duct inspection robots designed with robust frames, mobility systems, and sensors (cameras, gas detectors) for internal infrastructure assessment.",
+                "Explains how these inspection robots remotely transmit data to operators for real-time analysis of duct conditions, enabling detection of leaks or damage."
+              ]
+            },
+            {
+              "page_range": "5",
+              "summary_points": [
+                "Highlights the importance of mechatronics and robotics in defence for enhancing capabilities, efficiency, and safety through unmanned systems (UAVs, UGVs, UUVs).",
+                "Details the use of mechatronic devices in Explosive Ordnance Disposal (EOD) for remote handling and neutralization of explosive threats.",
+                "Discusses the application in Intelligence, Surveillance, and Reconnaissance (ISR) using unmanned systems for continuous monitoring and data collection, as well as autonomous systems for logistics and operations."
+              ]
+            },
+            {
+              "page_range": "6",
+              "summary_points": [
+                "Explains the development of prosthetic limbs that mimic natural movements using mechatronics for mechanical structures and robotics for precise control via sensors and user feedback.",
+                "Describes learning methods for prosthetic limb control, including demonstration, user action imitation, and real-time feedback through surface electrodes and muscle signal monitoring.",
+                "Introduces Search and Rescue (SAR) robots used to navigate dangerous environments, equipped with sensors and cameras to locate survivors and assess structural integrity."
+              ]
+            },
+            {
+              "page_range": "7",
+              "summary_points": [
+                "Details the use of various robots in SAR operations, including Unmanned Aerial Vehicles (UAVs) for aerial surveillance, Unmanned Ground Vehicles (UGVs) for difficult terrain, and Remotely Operated Underwater Vehicles (ROVs) for underwater exploration.",
+                "Discusses the potential of humanoid robots in SAR for navigating complex terrains and interacting with the environment to assist in rescue efforts.",
+                "Covers applications in the automobile industry, such as advanced vehicle control systems (ESC, ACC, ABS), electric power steering, and Advanced Driver Assistance Systems (ADAS)."
+              ]
+            },
+            {
+              "page_range": "8",
+              "summary_points": [
+                "Outlines mechatronics applications in the aerospace industry, including flight control systems (fly-by-wire), UAVs, and avionics/instrumentation for improved safety and performance.",
+                "Highlights the use of robotics in aircraft production and assembly for precision tasks like welding and painting, as well as in space exploration for satellite deployment and maintenance.",
+                "Concludes that mechatronics and robotics offer a flexible and optimized design approach, revolutionizing various service sectors by enhancing efficiency, safety, and human well-being."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sum_1760646772784",
+          "createdAt": "2025-10-16T20:32:52.784Z",
+          "fileName": "jmrsp.2022.57.64.pdf",
+          "document_title": "Analysis of Mechatronics Degree Evaluation Models",
+          "executive_summary": "This paper presents an analysis of different metric models used to evaluate the degree of mechatronics in a product, a concept termed 'mechatronizability'. The authors explore existing models by Leonida and Tabourot and Balland, focusing on indicators for functional integration, dematerialization, and complexity. These models are applied to a hydraulic pump to demonstrate their utility in quantifying a product's mechatronic level. The study aims to provide tools for Small and Medium Enterprises (SMEs) to assess and improve their mechatronic product design capabilities, ultimately aiding in the transition to multi-domain mechatronic activities.",
+          "key_findings": [
+            "Existing mechatronic evaluation models, such as those proposed by Leonida and Tabourot & Balland, provide quantitative metrics for assessing product mechatronizability.",
+            "The functional integration, functional dematerialization, and functional complexity indicators are key metrics used to evaluate a product's degree of mechatronics.",
+            "Applying these metric models to a practical example, like a hydraulic pump, allows for critical synthesis and comparison of different evaluation approaches, informing design decisions and industrial strategy."
+          ],
+          "section_summaries": [
+            {
+              "page_range": "1",
+              "summary_points": [
+                "This page is the title page of the article, including the title, authors, affiliations, and submission/acceptance dates.",
+                "It also contains the abstract, which outlines the concept of mechatronizability and introduces three proposed metric models: functional integration, functional complexity, and functional dematerialization.",
+                "Keywords such as Metrics, Product Design, Mechatronic Evaluation, Mechatronizability, and Functional Analysis are provided."
+              ]
+            },
+            {
+              "page_range": "2",
+              "summary_points": [
+                "The introduction discusses the revolution of mechatronics in the industrial world and its synergistic integration of mechanics, electronics, automation, and computer science.",
+                "It highlights two trends in mechatronics: the development of integrated products (e.g., Internet of Things) and the study of mechatronics from various perspectives like ontology development, education, and reliability.",
+                "The importance of mechatronics for the 'factory of the future' and the challenges for Small and Medium Enterprises (SMEs) in adopting mechatronic activities are discussed."
+              ]
+            },
+            {
+              "page_range": "3",
+              "summary_points": [
+                "This section continues the introduction by discussing the need for SMEs to transition to mechatronic activities and the utility of evaluating a product's degree of mechatronics.",
+                "It defines physical integration and functional integration, emphasizing that mechatronic product qualification relies on analyzing its functions.",
+                "The research objective is to propose metrics for evaluating technological solutions used to meet mechatronic product functional needs, focusing on the 'evaluation of mechatronics at the design stage'."
+              ]
+            },
+            {
+              "page_range": "4",
+              "summary_points": [
+                "This page introduces the 'Materials and Methods' section, defining what a metric is in the context of design evaluation.",
+                "It details the Metrics Proposed by Leonida (2017), including the Functional Integration Indicator (IntegMax), Functional Dematerialization Indicator (DemMax), and Functional Complexity Indicator (ComplexiMax), along with their formulas and interpretations.",
+                "Formulas and explanations are provided for each metric, including the variables and the meaning of the resulting values (e.g., what IntegMax = 1 or 0 signifies)."
+              ]
+            },
+            {
+              "page_range": "5",
+              "summary_points": [
+                "This section presents the Metrics Proposed by Tabourot and Balland (2017), including their versions of the Functional Integration Indicator and Functional Dematerialization Indicator.",
+                "The Functional Complexity Indicator proposed by Leonida (2017) is noted as being the same as that proposed by Tabourot and Balland (2017).",
+                "Formulas and brief descriptions are provided for Tabourot's metrics, including the breakdown of DemMax into sub-indicators (DemMaxEIA, DemMaxinfo, DemMaxdiag, DemMaxinterv)."
+              ]
+            },
+            {
+              "page_range": "6",
+              "summary_points": [
+                "This page begins the 'Results and Discussion' section, focusing on the 'Application of the Metrics'.",
+                "A hydraulic pump is chosen as the equipment for applying the metrics, with figures illustrating the pump and the process for metric application.",
+                "The Octopus diagram and functional flow chart of the hydraulic pump are presented, showing its environment, functions (F1: Supply hydraulic motor, F2: Attach to thermal engine), and functional decomposition into modules."
+              ]
+            },
+            {
+              "page_range": "7",
+              "summary_points": [
+                "This section details the application of the metrics proposed by Tabourot and Balland (2017) to the hydraulic pump, using data from Table 1 (Incidence matrix).",
+                "Calculated results for IntegMax (0.50) and DemMax (0.38) indicate moderate integration and low intelligence, while ComplexiMax (0.02) shows low functional complexity.",
+                "It also details the application of metrics proposed by 'Granon' (likely referring to Leonida, as indicated in Table 5), presenting calculations for IntegMax (0.50), DemMax (0.5), and ComplexiMax (0.02) using data from Tables 2, 3, and 4."
+              ]
+            },
+            {
+              "page_range": "8",
+              "summary_points": [
+                "This page provides a 'Synthesis' comparing the metrics proposed by Tabourot and Balland (2017) and Leonida (2017), highlighting differences in how they consider components versus functional modules and which functions are accounted for in the DemMax indicator.",
+                "The 'Conclusion' states that these metric models can be used to compare products across generations or manufacturers by measuring mechatronizability, and that they apply to the phase where product functions are established.",
+                "The page includes acknowledgments, author contributions, ethics declarations, and a list of references cited in the paper."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sum_1760646757818",
+          "createdAt": "2025-10-16T20:32:37.818Z",
+          "fileName": "RP311.pdf",
+          "document_title": "Development of Courses in Mechatronics and Mechatronic System Design within the Mechanical Engineering Technology Program",
+          "executive_summary": "This paper details the development of two new mechatronics courses, 'Introduction to Mechatronics' and 'Mechatronic System Design,' within Old Dominion University's Mechanical Engineering Technology program. These courses were created in response to feedback from an industrial advisory board and the needs of local industry. The initiative aims to equip Mechanical Engineering Technology students with essential mechatronics competencies for roles in product design, development, manufacturing, and system operation. The paper outlines the motivation, course content, and laboratory support for these new electives, highlighting their compatibility with existing programs and the skills graduates will acquire.",
+          "key_findings": [
+            "Old Dominion University has introduced two new senior elective courses in Mechatronics within the Mechanical Engineering Technology program to address local industry needs.",
+            "The new courses, 'Introduction to Mechatronics' and 'Mechatronic System Design,' are designed to provide students with core competencies in areas like electromechanical systems, control, sensors, and actuators.",
+            "The curriculum development is supported by existing laboratory infrastructure and aims to enhance graduates' readiness for roles in mechatronics-related fields through problem-based learning and hands-on activities."
+          ],
+          "section_summaries": [
+            {
+              "page_range": "1",
+              "summary_points": [
+                "Presents the development of 'Introduction to Mechatronics' and 'Mechatronic System Design' courses in response to industry feedback.",
+                "These courses are integrated into the Mechanical Engineering Technology program at Old Dominion University.",
+                "The paper discusses the motivation and developmental efforts for these new senior electives focusing on industry-needed competencies."
+              ]
+            },
+            {
+              "page_range": "2",
+              "summary_points": [
+                "Details the existing Mechanical Engineering Technology program at Old Dominion University, including its elective areas and common core courses.",
+                "Highlights that mechatronics aligns with existing courses like Automation and Controls, Robotics, and Computer Integrated Manufacturing.",
+                "Discusses how graduates are prepared for various technical functions in product design, development, manufacturing, and system maintenance."
+              ]
+            },
+            {
+              "page_range": "3",
+              "summary_points": [
+                "Examines how mechatronics courses are offered at other universities, noting various course names and content, often emphasizing project-based learning.",
+                "Identifies that mechatronics programs exist at multiple universities in the US, leading to Bachelor of Science degrees in Mechatronics Engineering or Technology.",
+                "Introduces the Packaging Machinery Manufacturers Institute (PMMI) adopted model for defining mechatronics engineering technologist skill standards and career paths."
+              ]
+            },
+            {
+              "page_range": "4",
+              "summary_points": [
+                "Introduces two new senior elective courses: MET 426 - Introduction to Mechatronics and MET 427 - Mechatronic System Design.",
+                "Describes the content of MET 426, focusing on fundamental concepts of electromechanical systems, circuits, and components.",
+                "Describes the content of MET 427, focusing on integrated modeling, optimal design, and the application of sensors, actuators, and control systems."
+              ]
+            },
+            {
+              "page_range": "5",
+              "summary_points": [
+                "Discusses the laboratory support for the new mechatronics courses, utilizing upgraded existing labs like the Controls Lab and Robotics Lab.",
+                "Outlines specific project activities for students, such as assembling and programming a Sumo Bot, and developing skills in various mechatronic applications.",
+                "Concludes that the new courses equip Mechanical Engineering Technology students with essential mechatronics skills for industry roles, enhancing collaboration through problem-based and hands-on learning."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sum_1760646725527",
+          "createdAt": "2025-10-16T20:32:05.527Z",
+          "fileName": "WJARR-2023-2561.pdf",
+          "document_title": "Mechatronics in modern industrial applications: Delving into the integration of electronics, mechanics, and informatics",
+          "executive_summary": "This study explores the integration of electronics, mechanics, and informatics within mechatronics and its crucial role in modern industrial applications. Employing a systematic literature review, it reveals that mechatronics has become a cornerstone technology, significantly impacting sectors like manufacturing, automotive, and healthcare. Advancements such as AI and IoT integration have boosted efficiency and precision in industrial processes. The research also highlights the economic, technological, and environmental benefits, emphasizing mechatronics' role in driving innovation and sustainability. Recommendations for stakeholders focus on R&D investment, workforce training, and ethical standards, with future research directed towards scalability and societal impacts.",
+          "key_findings": [
+            "Mechatronics, a synergistic integration of mechanics, electronics, and informatics, has evolved into a fundamental technology driving innovation and efficiency across key industrial sectors like manufacturing, automotive, and healthcare.",
+            "The integration of advanced technologies such as AI and IoT within mechatronic systems is leading to enhanced precision, automation, and adaptability in industrial processes, crucial for Industry 4.0 and beyond.",
+            "Mechatronics offers significant technological, economic, and environmental benefits, including improved operational efficiency, cost savings, and reduced ecological footprints, aligning with sustainable development goals."
+          ],
+          "section_summaries": [
+            {
+              "page_range": "1",
+              "summary_points": [
+                "This page is the title page, containing the document title, authors, affiliations, and publication details.",
+                "It also includes copyright information, publication history, and the article's DOI.",
+                "An abstract summarizing the study's purpose, methodology, key findings, and conclusions is presented."
+              ]
+            },
+            {
+              "page_range": "2",
+              "summary_points": [
+                "Defines mechatronics as a synergistic blend of mechanics, electronics, and informatics, emphasizing its role in creating innovative solutions and enhancing system efficiency through functional integration and decentralized intelligence.",
+                "Highlights mechatronics' transdisciplinary nature as a pivotal 21st-century technology, continuously adapting and incorporating advancements from its constituent disciplines.",
+                "Discusses the growing prevalence of mechatronic systems in diverse fields like automotive, aeronautics, and consumer products, driven by advancements in computer engineering, MEMS, and DSPs."
+              ]
+            },
+            {
+              "page_range": "3",
+              "summary_points": [
+                "Examines the scope and relevance of mechatronics in the context of Industry 4.0, emphasizing the revolutionary impact of AI, 5G, and mechatronics integration on manufacturing and supply chains.",
+                "Discusses the opportunities and challenges of integrating 5G technology in industrial applications, including digital transformation, equipment compatibility, and standardization.",
+                "Details the pivotal role of AI in Industry 4.0 for smart industries, highlighting its capabilities in data interpretation, malfunction alerts, and seamless integration with IoT devices for end-to-end activity tracking."
+              ]
+            },
+            {
+              "page_range": "4",
+              "summary_points": [
+                "Traces the historical evolution of mechatronics from a novel concept to an established discipline, noting the early concurrent design philosophy that integrated mechanics, electronics, and computer science.",
+                "Emphasizes the role of educational mechatronics, linked to educational robotics, in developing skills for the new industrial world and aligning with Industry 4.0 through modular system design.",
+                "Illustrates the industrial evolution of mechatronics through mobile robotic manufacturing systems, such as those used by Spirit AeroSystems in aircraft production, showcasing advanced robotics, control systems, and software integration."
+              ]
+            },
+            {
+              "page_range": "5",
+              "summary_points": [
+                "Identifies a research gap concerning the socio-technical implications of mechatronic systems on the workforce, particularly regarding labor dynamics, skill requirements, and employment patterns.",
+                "States the primary aim of the research: to analyze the integration of electronics, mechanics, and informatics in mechatronics and its modern industrial applications.",
+                "Outlines specific research objectives, including analyzing mechatronics' evolution, investigating current industrial applications, examining technological trends, and assessing its impact on industry and society."
+              ]
+            },
+            {
+              "page_range": "6",
+              "summary_points": [
+                "Highlights mechatronics as a cornerstone for advancing modern industry due to its ability to enhance efficiency, precision, and innovation across sectors like aerospace, defense, and manufacturing.",
+                "Discusses the transformative role of mechatronics in manufacturing through advanced automation systems that optimize productivity and precision, integrating control systems and software with mechanical and electronic components.",
+                "Explains how AI and robotics, key mechatronic components, have revolutionized aerospace and defense by leading to cost savings, faster design, improved efficiency, and enhanced capabilities like unmanned autonomous aircraft and advanced security strategies."
+              ]
+            },
+            {
+              "page_range": "7",
+              "summary_points": [
+                "Introduces Industry 5.0 as a paradigm shift emphasizing human-machine collaboration, building on Industry 4.0 with a human-centered strategy that integrates sophisticated technologies for sustainable and resilient production.",
+                "Discusses the methodology of identifying and utilizing diverse research sources, emphasizing the importance of integrating multiple data streams from academic databases and industry reports for a comprehensive understanding.",
+                "References Scopus as a high-quality bibliometric data source crucial for identifying relevant literature, understanding field evolution, and recognizing key contributions in mechatronics research."
+              ]
+            },
+            {
+              "page_range": "8",
+              "summary_points": [
+                "Details the comprehensive literature search strategy, including keywords, Boolean operators, and reference list scanning to ensure thorough coverage of mechatronics in industrial applications.",
+                "Outlines the inclusion criteria (focus on integration of electronics, mechanics, informatics in industrial mechatronics, historical development, current trends, future prospects) and exclusion criteria (non-peer-reviewed, non-English, unrelated studies).",
+                "Explains the selection criteria based on relevance, publication date (preference for recent studies), and source credibility, prioritizing studies offering innovative insights or comprehensive overviews."
+              ]
+            },
+            {
+              "page_range": "9",
+              "summary_points": [
+                "Describes the data analysis approach, involving qualitative synthesis and thematic categorization of information based on theoretical foundations, technological advancements, and practical applications of mechatronics in industry.",
+                "Discusses the theoretical foundations of mechatronics, emphasizing the integration of mechanics, electronics, and informatics for designing innovative systems, citing Wang (2021) on modeling and analysis in mechanical engineering.",
+                "Highlights Hammami and Edmonson's (2015) work on theoretical foundations of system engineering, stressing the need for a robust framework for multidisciplinary projects like mechatronics, including formal definitions and complexity theory."
+              ]
+            },
+            {
+              "page_range": "10",
+              "summary_points": [
+                "Presents Samak, Samak, and Krovi's (2023) application of mechatronics principles in autonomous vehicle development, showcasing multidisciplinary co-design and concurrent engineering frameworks.",
+                "Explains the structural analysis of mechatronic systems, including the use of SysML for safety analysis and risk assessment in safety-critical systems like Electro Mechanical Actuators (Choley et al., 2012).",
+                "Introduces metrics for evaluating mechatronics degree, such as functional integration and complexity indicators, to assess component collaboration and the interpenetration of different domains (Samon & Guessom, 2022)."
+              ]
+            },
+            {
+              "page_range": "11",
+              "summary_points": [
+                "Analyzes the application of mechatronics in modern automotive systems, detailing the structural integration of electromechanical systems in features like automatic fuel filling and ABS (Ma, 2023).",
+                "Summarizes the diverse application areas of mechatronics in industry, including manufacturing, construction machinery, and intelligent manufacturing, emphasizing its role in automation, efficiency, and precision (Ibrahim et al., 2018).",
+                "Discusses the application of mechatronics in construction machinery, leading to improved efficiency, quality, and safety through integrated sensors, control systems, and automation (Zhao, 2021)."
+              ]
+            },
+            {
+              "page_range": "12",
+              "summary_points": [
+                "Explores the application of opto-mechatronics technology in intelligent manufacturing, combining optical, mechanical, and electronic components for high-precision CNC production, robotics, and intelligent production lines (Hao & Zhang, 2021).",
+                "Details the technological evolution in mechatronic systems, focusing on automation and economic performance in construction through the integration of mechanical, control, and information technology (Bai, 2022).",
+                "Examines the integration of intelligent technology and mechatronics in mechanical manufacturing, leading to electromechanical integration technology for intelligent control of mechanical systems (Zhao & Huang, 2022)."
+              ]
+            },
+            {
+              "page_range": "13",
+              "summary_points": [
+                "Discusses the application of mechanical electronic engineering technology in sensor measurement systems, highlighting advancements in sensitivity, linearity, and repeatability compared to traditional systems (Lu et al., 2023).",
+                "Covers current innovations and trends in mechatronics, including the increasing complexity and multidisciplinary nature of system development, driven by advancements in AI, IoT, MEMS, and DSPs (Nnodim et al., 2021).",
+                "Analyzes global technological trends impacting mechatronics, particularly in the military sphere, with innovations in AI, robotics, and autonomous systems creating new capabilities (Andas, 2020)."
+              ]
+            },
+            {
+              "page_range": "14",
+              "summary_points": [
+                "Examines technological trends in machine-tool construction in Russia, identifying challenges and priorities for future development, including product innovation and automation (Baurina & Savchenko, 2019).",
+                "Delves into prospective developments in mechatronic technologies, emphasizing increasing complexity, multidisciplinary system development, and advancements in computer engineering, simulation, and modeling (Nnodim et al., 2021).",
+                "Discusses the application of mechatronics in modern construction, focusing on automation and economic performance through integrated mechanical, control, and information technology (Bai, 2022)."
+              ]
+            },
+            {
+              "page_range": "15",
+              "summary_points": [
+                "Explores the integration of mechatronic and automation technology in sustainable farming for food security in Kenya, utilizing AI, ML, IoT, and other technologies for enhanced production and monitoring (Ontiri & Amuhaya, 2022).",
+                "Highlights next-generation design and functionalities in mechatronics, including advanced architectures, modularity, and incorporation of Cyber-Physical Systems (CPS), flexible electronics, and high-resolution imaging.",
+                "Discusses a novel layered architecture for next-generation CPS, emphasizing integration of physical and cyber realms, scalability, and adaptability for IoT/M2M applications (Mishra & Ray, 2022)."
+              ]
+            },
+            {
+              "page_range": "16",
+              "summary_points": [
+                "Presents insights into next-generation CMOS Time Delay and Integration (TDI) detectors for high-resolution imaging, focusing on technological design for space-borne instruments and higher integration (Andreas et al., 2019).",
+                "Examines advancements and challenges in flexible electronics for mm-wave wearable arrays in 5G networks, highlighting the transition to flexible substrates for cost-effective and portable mechatronic components (Sharma et al., 2020).",
+                "Focuses on emerging trends in system integration and miniaturization in mechatronics, driven by advancements in power electronics, chemistry, pharmaceuticals, and silicon photonics."
+              ]
+            },
+            {
+              "page_range": "17",
+              "summary_points": [
+                "Discusses emerging system applications and technological trends in power electronics, including adiabatic conversion, monolithic converters, and wide-bandgap devices, for applications in renewable energy and smart infrastructure (Tan, 2015).",
+                "Analyzes trends and challenges in advanced packaging for silicon photonics beyond 400Gbps for data center networking, highlighting miniaturization and performance enhancement (Xue et al., 2022).",
+                "Presents an in-depth discussion on the impact assessment of mechatronic systems in industry, covering technological, economic, and environmental impacts."
+              ]
+            },
+            {
+              "page_range": "18",
+              "summary_points": [
+                "Details the technological impacts of mechatronics, including improved operational efficiency, precision, and productivity, citing examples in steel manufacturing (Arani et al., 2021).",
+                "Discusses the economic impacts, such as cost savings through efficiency and waste reduction, and the creation of new market opportunities, referencing marine ecological restoration projects (Wang et al., 2022).",
+                "Covers the environmental impacts, focusing on life cycle sustainability and reduced ecological footprints through efficient resource use and emission reduction, as seen in light rail transit systems (Gulcimen, Aydogan, & Uzal, 2021)."
+              ]
+            },
+            {
+              "page_range": "19",
+              "summary_points": [
+                "Addresses challenges in mechatronics implementation, such as the need for skilled personnel and high initial investment, and proposes solutions like workforce training and financial incentives.",
+                "Analyzes the multifaceted impacts of mechatronics (technological, economic, environmental) and highlights future directions driven by AI, IoT, and machine learning, emphasizing predictive analysis for system optimization.",
+                "Discusses challenges in mechatronic systems, including human-robot interaction, control system robustness, and sensor interface implementation, and proposes solutions like advanced safety protocols and integrated electronic design."
+              ]
+            },
+            {
+              "page_range": "20",
+              "summary_points": [
+                "Explores evolutionary trends in mechatronics, noting its expansion to include IoT and cloud computing, aligning with Industry 4.0 principles (Kučera et al., 2019).",
+                "Highlights the evolution of sensor technologies and their impact on broadening mechatronics applications, emphasizing the interplay between sensors and mechatronic systems (Coccia et al., 2022).",
+                "Identifies the integration of machine learning techniques as a key trend for advancing Industry 4.0 and mechatronics, while also noting challenges related to data quality and security (Schmidt, 2023)."
+              ]
+            },
+            {
+              "page_range": "21",
+              "summary_points": [
+                "Discusses the role of modeling and simulation in predictive performance analysis of mechatronic systems, enhancing system dynamics and optimization (Verma, 2021).",
+                "Details the application of predictive analysis in industrial machining for predictive part quality and maintenance, utilizing data-driven approaches from control systems (Rudolph, Schoch, & Fromm, 2020).",
+                "Presents a methodology for predictive analysis in industrial systems, specifically for predicting supplier delays, using machine learning to improve efficiency and responsiveness (Zaghdoudi et al., 2022)."
+              ]
+            },
+            {
+              "page_range": "22",
+              "summary_points": [
+                "Emphasizes the importance of standards, regulations, and quality control in mechatronics to ensure system reliability, safety, and efficiency across various industries.",
+                "Discusses aligning educational and training programs with industry standards for mechatronics professionals, using a trainer prototype to assess skill competencies (Suganob et al., 2022).",
+                "Highlights the development of quality control procedures for additive manufacturing of patient-specific implants, based on industry best practices and standards from FDA and ASTM (Martinez-Marquez et al., 2019)."
+              ]
+            },
+            {
+              "page_range": "23",
+              "summary_points": [
+                "Examines the intersection of 3D printing, software regulation, and quality control in healthcare for personalized anatomical models, emphasizing accuracy and safety (Paxton, 2023).",
+                "Underscores the critical role of stakeholder analysis in industrial mechatronics, recognizing the diverse perspectives of engineers, manufacturers, end-users, and policymakers (Osorio & Osorio, 2020).",
+                "Discusses the expanding stakeholder landscape due to Industry 4.0 technologies like drones and IoT, stressing the need for equitable benefit distribution and ethical considerations (Hanrahan et al., 2021)."
+              ]
+            },
+            {
+              "page_range": "24",
+              "summary_points": [
+                "Analyzes the challenges in verifying the correctness of IoT applications in industrial automation, involving stakeholders like software developers and data analysts, and emphasizing system reliability and security (Faqrizal, Salaün, & Falcone, 2022).",
+                "Concludes that stakeholder analysis in industrial mechatronics requires a deep understanding of technical, social, economic, and ethical dimensions to maximize benefits and minimize adverse impacts.",
+                "Summarizes the study's findings on the interdisciplinary essence of mechatronics, its evolving role in automation and smart manufacturing, and the critical balance between technological advancement and user-centric design."
+              ]
+            },
+            {
+              "page_range": "25",
+              "summary_points": [
+                "Projects the future trajectory of mechatronics towards greater integration with AI, IoT, and robotics, leading to more autonomous, intelligent, and interconnected systems.",
+                "Recommends continuous investment in R&D and workforce training for industries, while policymakers should develop standards for safe and ethical use and support research initiatives.",
+                "Suggests future research should address scalability and sustainability of mechatronic systems, explore their potential in addressing global challenges like climate change, and analyze long-term impacts on productivity and workforce dynamics."
+              ]
+            },
+            {
+              "page_range": "26",
+              "summary_points": [
+                "Discusses the profound impact of mechatronics beyond industrial applications, influencing society and technology through sustainable systems, improved quality of life, and serving as a catalyst for innovation.",
+                "This page contains the 'Compliance with ethical standards' and 'Disclosure of conflict of interest' sections, stating no conflict of interest.",
+                "This page lists the references cited throughout the document, categorized numerically."
+              ]
+            },
+            {
+              "page_range": "27",
+              "summary_points": [
+                "This page continues the list of references cited in the document.",
+                "References cover various aspects of mechatronics, industrial applications, technological advancements, and related fields.",
+                "The list includes authors, publication titles, journals or conference proceedings, and DOI links where available."
+              ]
+            },
+            {
+              "page_range": "28",
+              "summary_points": [
+                "This page continues the list of references cited in the document.",
+                "The references provide a comprehensive overview of the academic and research sources used in the study.",
+                "This concludes the list of references."
+              ]
+            },
+            {
+              "page_range": "29",
+              "summary_points": [
+                "This page continues the list of references cited in the document.",
+                "It includes a variety of sources from different journals and conferences.",
+                "This concludes the list of references."
+              ]
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "user_002",

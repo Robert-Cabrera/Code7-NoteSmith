@@ -122,8 +122,17 @@ router.post('/', upload.single('pdf'), async (req, res) => {
 
         const data = await response.json();
         
-        // Save to user's summaries if userId provided
-        if (userId) {
+        // Parse the actual summary content from Gemini response
+        let summaryContent = null;
+        if (data && data.candidates && data.candidates[0] && 
+            data.candidates[0].content && data.candidates[0].content.parts && 
+            data.candidates[0].content.parts[0] && data.candidates[0].content.parts[0].text) {
+            
+            summaryContent = JSON.parse(data.candidates[0].content.parts[0].text);
+        }
+        
+        // Save to user's summaries if userId provided and we have valid content
+        if (userId && summaryContent) {
             const usersData = readUsers();
             const userIndex = usersData.users.findIndex(u => u.id === userId);
             
@@ -132,11 +141,11 @@ router.post('/', upload.single('pdf'), async (req, res) => {
                     id: `sum_${Date.now()}`,
                     createdAt: new Date().toISOString(),
                     fileName: req.file.originalname,
-                    prompt: prompt,
-                    content: data
+                    ...summaryContent  // Spread the entire summary object from Gemini
                 };
                 
-                usersData.users[userIndex].summaries.push(summary);
+                // Add to beginning of array (most recent first)
+                usersData.users[userIndex].summaries.unshift(summary);
                 writeUsers(usersData);
             }
         }

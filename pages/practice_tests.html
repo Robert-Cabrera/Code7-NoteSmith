@@ -14,6 +14,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NoteSmith – Practice Test</title>
   <link rel="stylesheet" href="../stylesheets/style.css" />
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
   <script type="module" src="../scripts/script.js"></script>
 </head>
 <body>
@@ -39,25 +40,35 @@
 
   <!-- Main Container -->
   <div class="practice-test-container">
-    <header class="dashboard-header">
-      <h2>Practice Test</h2>
-      <p>Fill in your course and topic to generate a practice test.</p>
-    </header>
+    <!-- Locked Message -->
+    <div id="test-locked" style="display:none;">
+      <lottie-player src="../assets/lock_icon.json" background="transparent" speed="1"
+          style="width:150px; height:150px; margin:auto;" loop autoplay>
+      </lottie-player>
+      <p>You must be logged in to access Practice Tests.</p>
+    </div>
 
     <!-- Practice Test Form -->
-    <form id="practice-test-form" class="practice-test-form">
-      <div class="form-group">
-        <label for="courseInput">Course</label>
-        <input type="text" id="practiceTestCourseInput" name="course" placeholder="e.g., Computer Organization" required />
-      </div>
+    <div id="test-form" style="display:none;">
+      <header class="dashboard-header">
+        <h2>Practice Test</h2>
+        <p>Fill in your course and topic to generate a practice test.</p>
+      </header>
 
-      <div class="form-group">
-        <label for="topicInput">Topic</label>
-        <input type="text" id="practiceTestTopicInput" name="topic" placeholder="e.g., Memory Hierarchy" required />
-      </div>
+      <form class="practice-test-form">
+        <div class="form-group">
+          <label for="courseInput">Course</label>
+          <input type="text" id="practiceTestCourseInput" name="course" placeholder="e.g., Computer Organization" required />
+        </div>
 
-      <button type="submit" id="submitBtn" class="submit-btn">Generate Test</button>
-    </form>
+        <div class="form-group">
+          <label for="topicInput">Topic</label>
+          <input type="text" id="practiceTestTopicInput" name="topic" placeholder="e.g., Memory Hierarchy" required />
+        </div>
+
+        <button type="submit" id="submitBtn" class="submit-btn">Generate Test</button>
+      </form>
+    </div>
   </div>
 </body>
 </html>

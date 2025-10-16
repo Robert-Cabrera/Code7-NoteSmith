@@ -45,20 +45,52 @@
         <header class="dashboard-header">
             <h2>Your Dashboard</h2>
             <p>Ready to crush your next test? Jump back into your notes or create a new test instantly.</p>
-            <div class="dashboard_stats">
-                <p>Work in Progress, maybe display statistics like avg score or something?</p>
+            <div class="dashboard-stats" style="display: none;">
+                <div class="stat-card">
+                    <h3 id="statSummaries">0</h3>
+                    <p>Total Summaries</p>
+                </div>
+                <div class="stat-card">
+                    <h3 id="statCrashCourses">0</h3>
+                    <p>Total Crash Courses</p>
+                </div>
             </div>
         </header>
+
+        <section class="dashboard-section recent-summaries">
+            <h3>Recently Generated Summaries</h3>
+            <div class="summaries-list-container">
+                <div class="empty-state">
+                    <p>No summaries generated yet.</p>
+                    <p>Create your first summary to see it here!</p>
+                </div>
+                <button class="load-more-btn" id="loadMoreSummaries" style="display:none;">
+                    <span class="material-symbols-outlined">expand_more</span>
+                </button>
+            </div>
+        </section>
+
+        <section class="dashboard-section recent-crash-courses">
+            <h3>Recently Generated Crash Courses</h3>
+            <div class="crash-courses-list-container">
+                <div class="empty-state">
+                    <p>No crash courses generated yet.</p>
+                    <p>Create your first crash course to see it here!</p>
+                </div>
+                <button class="load-more-btn" id="loadMoreCrashCourses" style="display:none;">
+                    <span class="material-symbols-outlined">expand_more</span>
+                </button>
+            </div>
+        </section>
 
         <section class="dashboard-section recent-tests">
             <h3>Recently Generated Tests & Quizzes</h3>
             <div class="tests-list-container">
-                <div class="empty-state"> <!-- make one thats not later-->
+                <div class="empty-state">
                     <p>Koalas have fingerprints that are so similar to human fingerprints that they could potentially contaminate a crime scene.</p>
                     <p>Do what you will with this information...</p>
                 </div>
-
-                </div>
+            </div>
         </section>
 
         <section class="dashboard-section quick-access">
@@ -72,14 +104,41 @@
                     <h4>Summary Generator</h4>
                     <p>and guess what this box does</p>
                 </a>
-                <a href="#" class="card tool-card">
+                <a href="./practice_tests.html" class="card tool-card">
                     <h4>Placeholder for test when it comes</h4>
-                    <p>...</p>
+                    <p>yup, you know where this takes you</p>
                 </a>
             </div>
         </section>
 
     </div>
+
+    <!-- HTML Templates for Dashboard -->
+    <template id="loading-template">
+        <div class="loading-overlay">
+            <div class="loading-animation-container">
+                <div class="loading-spinner"></div>
+                <p>Loading...</p>
+            </div>
+        </div>
+    </template>
+
+    <template id="empty-state-template">
+        <div class="empty-state">
+            <p data-line1></p>
+            <p data-line2></p>
+        </div>
+    </template>
+
+    <template id="history-item-template">
+        <div class="history-item">
+            <div class="history-item-header">
+                <div class="history-item-title" data-title></div>
+                <div class="history-item-date" data-date></div>
+            </div>
+            <div class="history-item-preview" data-preview></div>
+        </div>
+    </template>
 </body>
 
 </html>

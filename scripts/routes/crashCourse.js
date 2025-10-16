@@ -54,20 +54,34 @@ router.post('/', async (req, res) => {
 
         const data = await response.json();
         
-        // Save to user's crash courses if userId provided
-        if (userId) {
+        // Parse the actual crash course content from Gemini response
+        let crashCourseContent = null;
+        if (data && data.candidates && data.candidates[0] && 
+            data.candidates[0].content && data.candidates[0].content.parts && 
+            data.candidates[0].content.parts[0] && data.candidates[0].content.parts[0].text) {
+            
+            try {
+                crashCourseContent = JSON.parse(data.candidates[0].content.parts[0].text);
+            } catch (parseError) {
+                console.error('Failed to parse crash course content:', parseError);
+            }
+        }
+        
+        // Save to user's crash courses if userId provided and we have valid content
+        if (userId && crashCourseContent) {
             const usersData = readUsers();
             const userIndex = usersData.users.findIndex(u => u.id === userId);
             
             if (userIndex !== -1) {
+                // Only save the parsed content (topic, summary, overview, main_topics, conclusion)
                 const crashCourse = {
                     id: `cc_${Date.now()}`,
                     createdAt: new Date().toISOString(),
-                    prompt: prompt,
-                    content: data
+                    ...crashCourseContent
                 };
                 
-                usersData.users[userIndex].crashCourses.push(crashCourse);
+                // Add to beginning of array (most recent first)
+                usersData.users[userIndex].crashCourses.unshift(crashCourse);
                 writeUsers(usersData);
             }
         }

@@ -6,16 +6,20 @@
 
 export function initPracticeTest(isLoggedIn) {
   const practiceTestContainer = document.querySelector(".practice-test-container");
+  
+  // If not on practice test page, exit early
+  if (!practiceTestContainer) {
+    return;
+  }
+
   const testLocked = document.getElementById("test-locked");
   const testForm = document.getElementById("test-form");
 
-  if (practiceTestContainer) {
-    if (isLoggedIn) {
-      testForm.style.display = "block";
-      testLocked.style.display = "none";
-    } else {
-      testLocked.style.display = "block";
-      testForm.style.display = "none";
-    }
+  if (isLoggedIn) {
+    if (testForm) testForm.style.display = "block";
+    if (testLocked) testLocked.style.display = "none";
+  } else {
+    if (testLocked) testLocked.style.display = "block";
+    if (testForm) testForm.style.display = "none";
   }
 }

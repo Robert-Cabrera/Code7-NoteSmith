@@ -31,7 +31,7 @@ class Summary {
     const formData = new FormData();
     formData.append('pdf', file);
 
-    const response = await fetch('/api/pdf-token-count', {
+    const response = await fetch('/api/summary/token-count', {
       method: 'POST',
       body: formData
     });
@@ -94,7 +94,7 @@ class Summary {
       formData.append('userId', userData.id);
     }
 
-    const response = await fetch('/api/summarize-pdf', {
+    const response = await fetch('/api/summary', {
       method: 'POST',
       body: formData
     });
@@ -162,66 +162,62 @@ class Summary {
 
 // Helper functions for rendering
 function renderSummary(data) {
-  if (!data || typeof data !== 'object') return '<p>Invalid summary data.</p>';
-
-  let html = `<div style="max-width:100%; width:98vw; margin:0 auto;">`;
-
-  html += `<h3 style="text-align:center;font-size:2rem;color:var(--clr_primary);margin-bottom:1.5rem;">
-    ${data.document_title}
-  </h3>`;
-
-  html += `<div style="margin-bottom:2rem;padding:1.5rem;background:var(--clr_card_bg);border-left:4px solid var(--clr_primary);border-radius:8px;">`;
-  html += `<div style="font-size:1.3rem;font-weight:650;color:var(--clr_primary);margin-bottom:0.8rem;">Executive Summary</div>`;
-  html += `<p style="font-size:1.05rem;color:var(--clr_text);line-height:1.6;">${data.executive_summary}</p>`;
-  html += `</div>`;
-
-  if (Array.isArray(data.key_findings) && data.key_findings.length > 0) {
-    html += `<div style="margin-bottom:2rem;padding:1.5rem;background:var(--clr_card_bg);border-left:4px solid var(--clr_accent);border-radius:8px;">`;
-    html += `<div style="font-size:1.3rem;font-weight:650;color:var(--clr_accent);margin-bottom:0.8rem;">Key Findings</div>`;
-    html += `<ul style="margin-left:1.2rem;list-style:none;padding:0;">`;
-    data.key_findings.forEach((finding, index) => {
-      html += `<li style="margin-bottom:0.6rem;padding-left:1.5rem;position:relative;">
-        <span style="position:absolute;left:0;color:var(--clr_accent);font-weight:bold;">${index + 1}.</span>
-        <span style="color:var(--clr_text);font-size:1.05rem;">${finding}</span>
-      </li>`;
-    });
-    html += `</ul></div>`;
+  if (!data || typeof data !== 'object') {
+    document.getElementById('summary-output').innerHTML = '<p>Invalid summary data.</p>';
+    return;
   }
 
+  // Populate document title
+  document.getElementById('summary-doc-title').textContent = data.document_title;
+
+  // Populate executive summary
+  document.getElementById('summary-executive').textContent = data.executive_summary;
+
+  // Populate key findings
+  const findingsList = document.getElementById('summary-key-findings');
+  findingsList.innerHTML = '';
+  if (Array.isArray(data.key_findings) && data.key_findings.length > 0) {
+    data.key_findings.forEach((finding, index) => {
+      const li = document.createElement('li');
+      li.setAttribute('data-index', index + 1);
+      li.textContent = finding;
+      findingsList.appendChild(li);
+    });
+  }
+
+  // Populate sections
+  const sectionsContainer = document.getElementById('summary-sections');
+  const sectionsTitle = document.getElementById('summary-sections-title');
+  sectionsContainer.innerHTML = '';
+  
   if (Array.isArray(data.section_summaries) && data.section_summaries.length > 0) {
-    html += `<div style="margin-bottom:1.5rem;">`;
-    
     const isPageByPage = data.section_summaries.length > 0 && 
                          !data.section_summaries[0].page_range.includes('-');
     
-    const headerText = isPageByPage ? "Page-by-Page Summary" : "Content Summary by Section";
-    html += `<h4 style="font-size:1.5rem;font-weight:650;color:var(--clr_primary);margin-bottom:1rem;">${headerText}</h4>`;
+    sectionsTitle.textContent = isPageByPage ? "Page-by-Page Summary" : "Content Summary by Section";
 
     data.section_summaries.forEach(section => {
       if (Array.isArray(section.summary_points)) {
-        html += `<div class="page-summary-card">`;
+        const card = document.createElement('div');
+        card.className = 'page-summary-card';
         
         const label = section.page_range.includes('-') ? `Pages ${section.page_range}` : `Page ${section.page_range}`;
-        html += `<div style="font-size:1.1rem;font-weight:600;color:var(--clr_primary);margin-bottom:0.6rem;">${label}</div>`;
+        const title = document.createElement('h5');
+        title.textContent = label;
+        card.appendChild(title);
         
-        html += `<ul style="margin-left:1.2rem;list-style:disc;">`;
+        const ul = document.createElement('ul');
         section.summary_points.forEach(point => {
-          html += `<li style="margin-bottom:0.4rem;color:var(--clr_text);">${point}</li>`;
+          const li = document.createElement('li');
+          li.textContent = point;
+          ul.appendChild(li);
         });
-        html += `</ul></div>`;
+        card.appendChild(ul);
+        
+        sectionsContainer.appendChild(card);
       }
     });
-    html += `</div>`;
   }
-
-  html += `<div style="text-align:center;margin-top:2rem;margin-bottom:1rem;">`;
-  html += `<button id="downloadSummaryBtn" style="padding:0.8rem 2rem;background:var(--clr_contrasting_accent);color:var(--clr_body_bg);border:none;border-radius:8px;cursor:pointer;font-weight:600;font-size:1rem;font-family:inherit;transition:all 0.3s ease;box-shadow:0 2px 8px rgba(0,0,0,0.15);">
-     Download Summary
-  </button>`;
-  html += `</div>`;
-
-  html += `</div>`;
-  return html;
 }
 
 function downloadSummaryAsTxt(data) {
@@ -278,46 +274,60 @@ function downloadSummaryAsTxt(data) {
 
 export function initSummary(isLoggedIn) {
   const summaryContainer = document.querySelector(".summary-container");
+  
+  // If not on summary page, exit early
+  if (!summaryContainer) {
+    return;
+  }
+
   const summaryLocked = document.getElementById("summary-locked");
   const summaryUI = document.getElementById("summary-ui");
   const summarizeBtn = document.getElementById("summarizeBtn");
   const summaryOutput = document.getElementById("summary-output");
 
-  if (summaryContainer) {
-    if (isLoggedIn) {
-      summaryUI.style.display = "block";
-      summaryLocked.style.display = "none";
-      const sizeLimitElem = document.getElementById("size-limit");
-      if (sizeLimitElem) {
-        sizeLimitElem.textContent = `Maximum file size: ${FILE_SIZE_LIMIT_MB}MB`;
-      }
-    } else {
-      summaryLocked.style.display = "block";
-      summaryUI.style.display = "none";
+  if (isLoggedIn) {
+    if (summaryUI) summaryUI.style.display = "block";
+    if (summaryLocked) summaryLocked.style.display = "none";
+    const sizeLimitElem = document.getElementById("size-limit");
+    if (sizeLimitElem) {
+      sizeLimitElem.textContent = `Maximum file size: ${FILE_SIZE_LIMIT_MB}MB`;
     }
+  } else {
+    if (summaryLocked) summaryLocked.style.display = "block";
+    if (summaryUI) summaryUI.style.display = "none";
   }
 
   const pdfInput = document.getElementById("pdfUpload");
   const uploadBox = document.querySelector(".upload-box");
   let currentPdfPageCount = 0;
 
-  if (pdfInput && uploadBox) {
-    const pdfInfoContainer = document.createElement("div");
-    pdfInfoContainer.id = "pdf-info-container";
-    pdfInfoContainer.style.display = "none";
-    pdfInfoContainer.className = "upload-box";
-    uploadBox.parentNode.insertBefore(pdfInfoContainer, uploadBox.nextSibling);
+  if (!pdfInput || !uploadBox) {
+    console.error('PDF upload elements not found:', { pdfInput, uploadBox });
+    return;
+  }
 
-    pdfInput.addEventListener("change", async (e) => {
-      const file = e.target.files[0];
+  const pdfInfoContainer = document.getElementById("pdf-info-container");
+  const pdfFileName = document.getElementById("pdf-file-name");
+  const pdfPageCount = document.getElementById("pdf-page-count");
+  const pdfStatus = document.getElementById("pdf-status");
+  const removePdfBtn = document.getElementById("removePdfBtn");
+  const pdfLottie = document.getElementById("pdf-lottie");
+
+  if (!pdfInfoContainer) {
+    console.error('PDF info container not found');
+    return;
+  }
+
+  pdfInput.addEventListener("change", async (e) => {
+    console.log('PDF input change event fired');
+    const file = e.target.files[0];
+    console.log('Selected file:', file);
 
       if (!file) {
         currentPdfPageCount = 0;
         uploadBox.style.display = "flex";
         pdfInfoContainer.style.display = "none";
-        pdfInfoContainer.innerHTML = "";
         summaryOutput.style.display = "none";
-        summaryOutput.innerHTML = "";
         return;
       }
 
@@ -326,25 +336,16 @@ export function initSummary(isLoggedIn) {
       if (file.size > maxSizeBytes) {
         uploadBox.style.display = "none";
         pdfInfoContainer.style.display = "flex";
-        pdfInfoContainer.innerHTML = `
-          <div style="display:flex;flex-direction:column;align-items:center;gap:1rem;justify-content:center;width:100%;padding:1.5rem;">
-            <div style="font-size:3rem;color:#dc3545;">Error!</div>
-            <div style="text-align:center;">
-              <div style="font-weight:600;color:#dc3545;font-size:1.2rem;">File is too big</div>
-              <div style="color:var(--clr_text_muted);margin-top:0.5rem;">
-                Your file is ${(file.size / (1024 * 1024)).toFixed(2)}MB. Maximum allowed size is ${FILE_SIZE_LIMIT_MB}MB.
-              </div>
-            </div>
-            <button id="removePdfBtn" style="padding:0.6rem 1.2rem;background:#dc3545;color:white;border:none;border-radius:8px;cursor:pointer;font-weight:600;">Choose Another File</button>
-          </div>
-        `;
-
-        document.getElementById("removePdfBtn")?.addEventListener("click", () => {
-          pdfInput.value = "";
-          uploadBox.style.display = "flex";
-          pdfInfoContainer.style.display = "none";
-          pdfInfoContainer.innerHTML = "";
-        });
+        
+        // Hide lottie, show error state
+        pdfLottie.style.display = "none";
+        pdfFileName.textContent = "File is too big";
+        pdfFileName.classList.add('pdf-error-title');
+        pdfPageCount.textContent = `Your file is ${(file.size / (1024 * 1024)).toFixed(2)}MB. Maximum allowed size is ${FILE_SIZE_LIMIT_MB}MB.`;
+        pdfPageCount.classList.add('pdf-error-message');
+        pdfStatus.textContent = "Error!";
+        pdfStatus.classList.add('error');
+        removePdfBtn.textContent = "Choose Another File";
         return;
       }
 
@@ -362,75 +363,71 @@ export function initSummary(isLoggedIn) {
       if (data.totalTokens > TOKEN_LIMIT) {
         uploadBox.style.display = "none";
         pdfInfoContainer.style.display = "flex";
-        pdfInfoContainer.innerHTML = `
-          <div style="display:flex;flex-direction:column;align-items:center;gap:1rem;justify-content:center;width:100%;padding:1.5rem;">
-            <div style="font-size:3rem;color:#dc3545;">Error!</div>
-            <div style="text-align:center;">
-              <div style="font-weight:600;color:#dc3545;font-size:1.2rem;">File is too dense!</div>
-              <div style="color:var(--clr_text_muted);margin-top:0.5rem;">
-                Your PDF is too dense! Try separating it into parts.
-              </div>
-            </div>
-            <button id="removePdfBtn" style="padding:0.6rem 1.2rem;background:#dc3545;color:white;border:none;border-radius:8px;cursor:pointer;font-weight:600;">Choose Another File</button>
-          </div>
-        `;
-
-        document.getElementById("removePdfBtn")?.addEventListener("click", () => {
-          pdfInput.value = "";
-          uploadBox.style.display = "flex";
-          pdfInfoContainer.style.display = "none";
-          pdfInfoContainer.innerHTML = "";
-        });
+        
+        // Hide lottie, show error state
+        pdfLottie.style.display = "none";
+        pdfFileName.textContent = "File is too dense!";
+        pdfFileName.classList.add('pdf-error-title');
+        pdfPageCount.textContent = "Your PDF is too dense! Try separating it into parts.";
+        pdfPageCount.classList.add('pdf-error-message');
+        pdfStatus.textContent = "Error!";
+        pdfStatus.classList.add('error');
+        removePdfBtn.textContent = "Choose Another File";
         return;
       }
 
+      // Show success state
       uploadBox.style.display = "none";
       pdfInfoContainer.style.display = "flex";
-      pdfInfoContainer.innerHTML = `
-        <div style="display:flex;flex-direction:column;align-items:center;gap:1rem;justify-content:center;width:100%;padding:1.5rem;">
-          <lottie-player src="../assets/pdf.json" background="transparent" speed="1" style="width:80px;height:80px;" loop autoplay></lottie-player>
-          <div style="text-align:center;">
-            <div style="font-weight:600;color:var(--clr_primary);">File: ${file.name}</div>
-            <div id="pdf-page-count" style="color:var(--clr_text_muted);">Pages: ${pageCount}</div>
-            <div id="pdf-token-count" style="color:green;font-weight:bold;margin-top:0.5rem;">File is valid!</div>
-          </div>
-          <button id="removePdfBtn" style="padding:0.6rem 1.2rem;background:#dc3545;color:white;border:none;border-radius:8px;cursor:pointer;font-weight:600;">Remove PDF</button>
-        </div>
-      `;
+      
+      // Reset to normal state
+      pdfLottie.style.display = "block";
+      pdfFileName.textContent = `File: ${file.name}`;
+      pdfFileName.classList.remove('pdf-error-title');
+      pdfPageCount.textContent = `Pages: ${pageCount}`;
+      pdfPageCount.classList.remove('pdf-error-message');
+      pdfStatus.textContent = "File is valid!";
+      pdfStatus.classList.remove('error');
+      removePdfBtn.textContent = "Remove PDF";
+  });
 
-      document.getElementById("removePdfBtn")?.addEventListener("click", () => {
-        pdfInput.value = "";
-        uploadBox.style.display = "flex";
-        pdfInfoContainer.style.display = "none";
-        pdfInfoContainer.innerHTML = "";
-        summaryOutput.style.display = "none";
-        summaryOutput.innerHTML = "";
-      });
+  // Remove PDF button handler
+  if (removePdfBtn) {
+    removePdfBtn.addEventListener("click", () => {
+      pdfInput.value = "";
+      currentPdfPageCount = 0;
+      uploadBox.style.display = "flex";
+      pdfInfoContainer.style.display = "none";
+      summaryOutput.style.display = "none";
     });
   }
 
   if (summarizeBtn) {
     summarizeBtn.addEventListener("click", async () => {
       const pdf = document.getElementById("pdfUpload").files[0];
+      const summaryOutput = document.getElementById("summary-output");
+      const loading = document.getElementById("summary-loading");
+      
       if (!pdf) {
         summaryOutput.style.display = "block";
         summaryOutput.innerHTML = "<p style='text-align:center;'>Please upload a PDF first.</p>";
         return;
       }
 
-      summaryOutput.style.display = "block";
-      summaryOutput.innerHTML = `
-        <div id='summary-loading' style='display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:220px;'>
-          <lottie-player id='summary-lottie' src="../assets/loading_light.json" background="transparent" speed="1" style="width:120px;height:120px;margin-bottom:1rem;" loop autoplay></lottie-player>
-          <span style='color:var(--clr_text_muted);font-size:1.1rem;'>Analyzing PDF and generating summary...</span>
-        </div>
-      `;
+      // Hide output
+      summaryOutput.style.display = "none";
 
+      // Set the correct loading animation based on theme BEFORE showing it
       const theme = document.body.classList.contains('dark-theme') ? 'dark' : 'light';
-      const lottie = summaryOutput.querySelector('#summary-lottie');
+      const lottie = loading.querySelector('#summary-lottie');
       if (lottie) {
-        lottie.setAttribute('src', theme === 'dark' ? '../assets/loading_dark.json' : '../assets/loading_light.json');
+        const newSrc = theme === 'dark' ? '../assets/loading_dark.json' : '../assets/loading_light.json';
+        lottie.setAttribute('src', newSrc);
+        lottie.load(newSrc); // Force reload the animation
       }
+
+      // Now show loading
+      loading.style.display = "flex";
 
       try {
         const totalPages = currentPdfPageCount || 1;
@@ -439,8 +436,14 @@ export function initSummary(isLoggedIn) {
 
         if (!data) throw new Error('No valid response from API.');
 
-        summaryOutput.innerHTML = renderSummary(data);
+        // Hide loading, show output
+        loading.style.display = "none";
+        summaryOutput.style.display = "block";
         
+        // Populate the HTML structure
+        renderSummary(data);
+        
+        // Attach download button handler
         const downloadBtn = document.getElementById("downloadSummaryBtn");
         if (downloadBtn) {
           downloadBtn.addEventListener("click", () => {
@@ -448,6 +451,8 @@ export function initSummary(isLoggedIn) {
           });
         }
       } catch (err) {
+        loading.style.display = "none";
+        summaryOutput.style.display = "block";
         summaryOutput.innerHTML = `<p style='color:var(--clr_error);text-align:center;'>Error: ${err.message || 'Failed to generate summary.'}</p>`;
       }
     });

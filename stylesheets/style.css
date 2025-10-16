@@ -20,12 +20,25 @@
 /* Import font Google Poppins */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
+/* Import Material Symbols */
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
+
+/* Material Symbols Configuration */
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+
 /* Should honestly separate these into multiple css files - David*/ 
 /* Base dark/light theme colors. Feel free to change them or set your own colors*/
 :root {
     --clr_primary: #133670;
     --clr_accent: #3b74ce;
     --clr_contrasting_accent:#e67229;
+    --clr_error: #670202;
 
     --clr_body_bg: #f4f4f4;
     --clr_nav_bg: rgba(255, 255, 255, 0.85);
@@ -57,6 +70,7 @@
     --clr_accent: #87baff;
     --clr_darker_accent:#705a39;
     --clr_contrasting_accent:#e0c191;
+    --clr_error: #ff5252;
     
     --clr_container_bg: #2a2a2a;
     --clr_output_bg: #303030;
@@ -90,11 +104,45 @@
 }
 
 .dashboard-header p {
-    font-size: 1.1em;
+    font-size: 1.3em;
     color: var(--clr_text_muted);
     margin-bottom: 30px;
 }
 
+.dashboard-stats {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.stat-card {
+    background-color: var(--clr_bg);
+    border: 2px solid var(--clr_primary);
+    border-radius: 12px;
+    padding: 25px 40px;
+    text-align: center;
+    min-width: 180px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px var(--clr_nav_shadow);
+}
+
+.stat-card h3 {
+    font-size: 2.5em;
+    color: var(--clr_primary);
+    margin: 0 0 10px 0;
+    font-weight: bold;
+}
+
+.stat-card p {
+    font-size: 1em;
+    color: var(--clr_text_muted);
+    margin: 0;
+}
 
 /* Section Styling */
 .dashboard-section {
@@ -129,6 +177,207 @@
 .empty-state p {
     color: var(--clr_text_muted);
     margin-bottom: 15px;
+}
+
+/* Loading state */
+.loading-state {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}
+
+/* Loading overlay - appears on top of content */
+.loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--clr_container_bg);
+    opacity: 0.95;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    border-radius: 8px;
+    backdrop-filter: blur(2px);
+}
+
+.summaries-list-container,
+.crash-courses-list-container {
+    position: relative; /* Make container the positioning context for overlay */
+}
+
+.loading-animation-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.loading-animation-container p {
+    color: var(--clr_text_muted);
+    font-size: 0.95em;
+}
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid var(--clr_output_border);
+    border-top: 4px solid var(--clr_primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Loading card (when loading more items) - REMOVED, using overlay instead */
+
+/* Section title with load more button */
+.dashboard-section h3 {
+    font-size: 1.6em;
+    color: var(--clr_text_base);
+    border-bottom: 2px solid var(--clr_output_border);
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+}
+
+/* History items list - HORIZONTAL LAYOUT */
+.history-list {
+    display: flex;
+    gap: 20px;
+    overflow-x: hidden; /* Default: no scroll */
+    padding-bottom: 10px;
+    scroll-behavior: smooth;
+}
+
+.history-list::-webkit-scrollbar {
+    height: 8px;
+}
+
+.history-list::-webkit-scrollbar-track {
+    background: var(--clr_locked_bg);
+    border-radius: 4px;
+}
+
+.history-list::-webkit-scrollbar-thumb {
+    background: var(--clr_primary);
+    border-radius: 4px;
+}
+
+.history-list::-webkit-scrollbar-thumb:hover {
+    background: var(--clr_text_base);
+}
+
+.history-item {
+    background-color: var(--clr_container_bg);
+    border: 1px solid var(--clr_output_border);
+    border-radius: 8px;
+    padding: 20px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+    min-width: 300px;
+    max-width: 350px;
+    flex-shrink: 0;
+}
+
+.history-item:hover {
+    transform: translateY(2px);
+    box-shadow: 0 6px 16px var(--clr_nav_shadow);
+}
+
+.history-item-header {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.history-item-title {
+    font-size: 1.2em;
+    font-weight: 600;
+    color: var(--clr_primary);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.history-item-date {
+    font-size: 0.85em;
+    color: var(--clr_text_muted);
+}
+
+.history-item-preview {
+    color: var(--clr_text_base);
+    font-size: 0.95em;
+    line-height: 1.5;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+.summaries-list-container,
+.crash-courses-list-container {
+    min-height: 200px;
+    background-color: var(--clr_container_bg);
+    border: 1px dashed var(--clr_output_border);
+    border-radius: 8px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.summaries-list-container:has(.history-list),
+.crash-courses-list-container:has(.history-list) {
+    border-style: solid;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+    overflow: hidden; /* Prevent container overflow */
+}
+
+/* Container holds both the scrollable list and arrow button */
+.summaries-list-container .history-list,
+.crash-courses-list-container .history-list {
+    flex: 1;
+    overflow-x: hidden; /* No scroll initially, enabled by JS when all items loaded */
+    min-width: 0; /* Allow flex item to shrink below content size */
+}
+
+.load-more-btn {
+    background: var(--clr_container_bg);
+    border: 1px solid var(--clr_output_border);
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 50%;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+    color: var(--clr_primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0; /* Don't shrink the button */
+    margin: 0;
+    width: 48px;
+    height: 48px;
+    align-self: center;
+}
+
+.load-more-btn:hover {
+    background-color: var(--clr_locked_bg);
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px var(--clr_nav_shadow);
+}
+
+.load-more-btn .material-symbols-outlined {
+    font-size: 1.5em;
+    transform: rotate(-90deg); /* Point right (arrow_downward rotated) */
 }
 
 .small-button {
@@ -297,6 +546,7 @@ body {
 
 .nav-right {
   justify-content: flex-end;
+  gap: 0.8rem;
 }
 
 .navigation-bar .logo {
@@ -369,12 +619,50 @@ body {
   transform: translateY(-1px);
 }
 
+/* Account Settings button (when logged in) */
+.navigation-bar a.account {
+  background: none;
+  color: var(--clr_text_nav);
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: all 0.2s ease-in-out;
+}
+
+.navigation-bar a.account:hover {
+  color: var(--clr_primary);
+  background: var(--clr_hover_bg);
+  transform: translateY(-1px);
+}
+
 .navigation-bar .avatar {
   height: 20px;
   width: 20px;
   border-radius: 50%;
   vertical-align: middle;
   margin-right: 6px;
+}
+
+/* Logout button */
+.logout-btn {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0.25rem 0.5rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.logout-btn:hover {
+  background-color: #c82333;
+  transform: translateY(-1px);
 }
 
 /* Navigation Bar *------------------------------------------------------------------------------------------*/
@@ -458,7 +746,7 @@ body {
 #output h3 {
     margin-top: 0;
     color: var(--clr_primary);
-    font-size: 1.3rem;
+    font-size: 2em;
     margin-bottom: 1rem;
 }
 
@@ -596,6 +884,72 @@ body {
 }
 
 
+/* PDF Info Box */
+.pdf-info-box {
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem;
+}
+
+.pdf-info-text {
+  text-align: center;
+}
+
+.pdf-file-name {
+  font-weight: 600;
+  color: var(--clr_primary);
+  margin-bottom: 0.3rem;
+}
+
+.pdf-page-count {
+  color: var(--clr_text_muted);
+  font-size: 0.95rem;
+}
+
+.pdf-status {
+  color: #28a745;
+  font-weight: bold;
+  margin-top: 0.5rem;
+}
+
+.pdf-status.error {
+  color: var(--clr_error);
+}
+
+.remove-pdf-btn {
+  padding: 0.6rem 1.2rem;
+  background: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  transition: background-color 0.2s ease;
+}
+
+.remove-pdf-btn:hover {
+  background: #c82333;
+}
+
+/* Error State */
+.pdf-error-icon {
+  font-size: 3rem;
+  color: #dc3545;
+}
+
+.pdf-error-title {
+  font-weight: 600;
+  color: #dc3545;
+  font-size: 1.2rem;
+}
+
+.pdf-error-message {
+  color: var(--clr_text_muted);
+  margin-top: 0.5rem;
+}
+
 /* Summary Page *------------------------------------------------------------------------------------------*/
 
 /* Practice Test Page Styles -------------------------------------------------------*/
@@ -608,6 +962,23 @@ body {
   border-radius: 12px;
   box-shadow: 0 6px 18px var(--clr_nav_shadow);
   transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+/* Locked message for Practice Test */
+#test-locked {
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--clr_text_muted);
+  padding: 2rem;
+  border: 2px dashed var(--clr_locked_border);
+  border-radius: 8px;
+  background: var(--clr_locked_bg);
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+#test-locked p {
+  margin-top: 1rem;
 }
 
 /* Form Styling */
@@ -746,3 +1117,256 @@ body {
 
 
 /* Login/Signup Page *------------------------------------------------------------------------------------------*/
+/* ============================================ CRASH COURSE OUTPUT STYLES ============================================ */
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 220px;
+  padding: 2rem;
+}
+
+.loading-text {
+  color: var(--clr_text_muted);
+  font-size: 1.1rem;
+  margin-top: 1rem;
+}
+
+.crash-output {
+  max-width: 90%;
+  width: 90%;
+  margin: 2rem auto;
+  padding: 1.5rem;
+}
+
+.crash-title {
+  text-align: center;
+  font-size: 2em;
+  color: var(--clr_primary);
+  margin-bottom: 0.7rem;
+}
+
+.crash-title.error-message {
+  color:var(--clr_error) !important;
+  font-size: 2em !important;
+  padding-top: 1rem !important;
+  margin-top: 0rem 0 !important;
+}
+
+.crash-shine {
+  position: relative;
+  display: inline-block;
+  color: var(--clr_primary);
+  background: linear-gradient(
+    90deg,
+    var(--clr_primary),
+    var(--clr_contrasting_accent),
+    var(--clr_primary)
+  );
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: crashShine 4.2s linear infinite;
+}
+
+@keyframes crashShine {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.crash-summary {
+  font-size: 1.1rem;
+  color: var(--clr_text);
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.crash-overview {
+  margin-bottom: 1.5rem;
+  color: var(--clr_text);
+}
+
+.crash-overview strong {
+  font-weight: 650;
+  color: var(--clr_accent);
+}
+
+.crash-topics {
+  margin-bottom: 2rem;
+}
+
+.crash-topic {
+  margin-bottom: 2rem;
+}
+
+.crash-topic-title {
+  font-size: 1.5em;
+  font-weight: 600;
+  color: var(--clr_primary);
+  margin-bottom: 0.5rem;
+}
+
+.crash-topic-desc {
+  margin-bottom: 0.5rem;
+  color: var(--clr_text);
+}
+
+.crash-subtopics {
+  margin-left: 1.2rem;
+  margin-bottom: 0.2rem;
+  list-style: disc;
+}
+
+.crash-subtopic {
+  margin-bottom: 0.4rem;
+}
+
+.crash-subtopic-title {
+  font-weight: 650;
+  color: var(--clr_accent);
+}
+
+.crash-subtopic-details {
+  color: var(--clr_text);
+}
+
+.crash-conclusion {
+  margin-top: 2rem;
+  font-size: 1.08rem;
+}
+
+.crash-conclusion strong {
+  font-weight: 600;
+  color: var(--clr_primary);
+}
+
+/* ============================================ SUMMARY OUTPUT STYLES ============================================ */
+
+.summary-output {
+  max-width: 100%;
+  width: 90%;
+  margin: 2rem auto;
+  padding: 1.5rem;
+}
+
+.summary-title-main {
+  text-align: center;
+  font-size: 2rem;
+  color: var(--clr_primary);
+  margin-bottom: 1.5rem;
+}
+
+.summary-section {
+  margin-bottom: 2rem;
+  padding: 0rem 0.8rem;
+  background: var(--clr_card_bg);
+  border-radius: 8px;
+}
+
+.summary-section.executive-summary {
+  border-left: 4px solid var(--clr_primary);
+}
+
+.summary-section.key-findings {
+  border-left: 4px solid var(--clr_accent);
+}
+
+.section-title {
+  font-size: 1.3rem;
+  font-weight: 650;
+  color: var(--clr_primary);
+  margin-bottom: 0.8rem;
+}
+
+.key-findings .section-title {
+  color: var(--clr_accent);
+}
+
+.section-content {
+  font-size: 1.05rem;
+  color: var(--clr_text);
+  line-height: 1.6;
+}
+
+.findings-list {
+  margin-left: 1.2rem;
+  list-style: none;
+  padding: 0;
+}
+
+.findings-list li {
+  margin-bottom: 0.6rem;
+  padding-left: 1.5rem;
+  position: relative;
+  color: var(--clr_text);
+  font-size: 1.05rem;
+}
+
+.findings-list li::before {
+  content: attr(data-index) ".";
+  position: absolute;
+  left: 0;
+  color: var(--clr_accent);
+  font-weight: bold;
+}
+
+.sections-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.page-summary-card {
+  padding: 0rem 0.8rem;
+  background: var(--clr_card_bg);
+  border-radius: 8px;
+  border-left: 3px solid var(--clr_primary);
+}
+
+.page-summary-card h5 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--clr_primary);
+  margin:0;
+  padding:0;
+}
+
+.page-summary-card ul {
+  margin-left: 1.2rem;
+  list-style: disc;
+}
+
+.page-summary-card li {
+  margin-bottom: 0.4rem;
+  color: var(--clr_text);
+}
+
+.download-section {
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.download-btn {
+  padding: 0.8rem 2rem;
+  background: var(--clr_contrasting_accent);
+  color: var(--clr_body_bg);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.download-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+
+/* ============================================ END OUTPUT STYLES ============================================ */

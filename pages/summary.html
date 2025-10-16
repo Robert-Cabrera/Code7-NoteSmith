@@ -65,8 +65,50 @@
                 <input type="file" id="pdfUpload" accept="application/pdf" hidden>
             </label>
 
+            <!-- PDF Info Container -->
+            <div id="pdf-info-container" class="upload-box pdf-info-box" style="display:none;">
+                <lottie-player id="pdf-lottie" src="../assets/pdf.json" background="transparent" speed="1" 
+                    style="width:80px;height:80px;" loop autoplay></lottie-player>
+                <div class="pdf-info-text">
+                    <div id="pdf-file-name" class="pdf-file-name"></div>
+                    <div id="pdf-page-count" class="pdf-page-count"></div>
+                    <div id="pdf-status" class="pdf-status"></div>
+                </div>
+                <button id="removePdfBtn" class="remove-pdf-btn">Remove PDF</button>
+            </div>
+
             <button id="summarizeBtn">Summarize PDF</button>
-            <div id="summary-output" style="display:none;"></div>
+            
+            <!-- Loading State -->
+            <div id="summary-loading" class="loading-container" style="display:none;">
+                <lottie-player id="summary-lottie" src="../assets/loading_light.json" background="transparent" speed="1"
+                    style="width:120px;height:120px;margin-bottom:1rem;" loop autoplay></lottie-player>
+                <span class="loading-text">Analyzing PDF and generating summary...</span>
+            </div>
+
+            <!-- Output Container -->
+            <div id="summary-output" class="summary-output" style="display:none;">
+                <h3 id="summary-doc-title" class="summary-title-main"></h3>
+                
+                <div class="summary-section executive-summary">
+                    <h4 class="section-title">Executive Summary</h4>
+                    <p id="summary-executive" class="section-content"></p>
+                </div>
+
+                <div class="summary-section key-findings">
+                    <h4 class="section-title">Key Findings</h4>
+                    <ul id="summary-key-findings" class="findings-list"></ul>
+                </div>
+
+                <div class="summary-section page-summaries">
+                    <h4 id="summary-sections-title" class="section-title">Content Summary</h4>
+                    <div id="summary-sections" class="sections-container"></div>
+                </div>
+
+                <div class="download-section">
+                    <button id="downloadSummaryBtn" class="download-btn">Download Summary</button>
+                </div>
+            </div>
         </div>
     </div>
 </body>
