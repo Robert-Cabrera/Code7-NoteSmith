@@ -1,0 +1,24 @@
+{
+  "users": [
+    {
+      "id": "user_001",
+      "username": "Alice",
+      "email": "alice@notesmith.com",
+      "password": "password123",
+      "createdAt": "2023-10-01T10:00:00Z",
+      "profilePicture": "",
+      "crashCourses": [],
+      "summaries": []
+    },
+    {
+      "id": "user_002",
+      "username": "TestUser",
+      "email": "test@notesmith.com",
+      "password": "test123",
+      "createdAt": "2025-10-16T17:55:23.649Z",
+      "profilePicture": "",
+      "crashCourses": [],
+      "summaries": []
+    }
+  ]
+}
