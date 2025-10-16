@@ -1,2 +1,5 @@
 # Ignore keys
 scripts/keys.env
+
+# Ignore node modules
+#node_modules/
