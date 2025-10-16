@@ -1018,7 +1018,7 @@ document.addEventListener("DOMContentLoaded", () => {
         location.reload();
 
         if (isIndex) {
-          window.location.href = "./pages/dashboard.html";
+          window.location.href = "./pages/login-signup.html";
         } else {
 
           // For now stay in the page
