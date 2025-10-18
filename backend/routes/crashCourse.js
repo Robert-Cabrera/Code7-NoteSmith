@@ -16,7 +16,7 @@ router.post('/', async (req, res) => {
         const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 
         // Load the crash course schema from data_objects/CrashCoursePrompt.json
-        const crashCoursePromptPath = path.join(__dirname, '..', '..', 'data_objects', 'CrashCoursePrompt.json');
+        const crashCoursePromptPath = path.join(__dirname, '..', 'data_objects', 'CrashCoursePrompt.json');
         const crashCourseSchema = JSON.parse(fs.readFileSync(crashCoursePromptPath, 'utf8'));
 
         // Use Gemini's structured output feature

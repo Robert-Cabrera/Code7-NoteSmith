@@ -1,5 +1,5 @@
 const express = require('express');
-require('dotenv').config({ path: './scripts/keys.env' });
+require('dotenv').config({ path: './backend/keys.env' });
 
 const app = express();
 const PORT = 3000;
@@ -18,7 +18,7 @@ app.use('/api/crash-course', crashCourseRoutes);
 app.use('/api/summary', summaryRoutes);
 
 // Serve favicon specifically BEFORE static files
-const faviconPath = path.join(__dirname, '..', 'assets', 'favicon.ico');
+const faviconPath = path.join(__dirname, '..', 'frontend', 'assets', 'favicon.ico');
 app.get('/favicon.ico', (req, res) => {
     res.sendFile(faviconPath, (err) => {
         if (err) {
@@ -27,8 +27,8 @@ app.get('/favicon.ico', (req, res) => {
     });
 });
 
-// Serve everything from project root so all folders are accessible
-app.use(express.static(path.join(__dirname, '..')));
+// Serve everything from frontend folder so all folders are accessible
+app.use(express.static(path.join(__dirname, '..', 'frontend')));
 
 app.listen(PORT, () => {
     console.log(`Server running at http://localhost:${PORT}/index.html`);

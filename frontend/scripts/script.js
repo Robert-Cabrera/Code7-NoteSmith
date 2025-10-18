@@ -5,13 +5,13 @@
   Imports and initializes all feature modules.
 */
 
-import { initTheme } from './frontend/theme.js';
-import { initAuth, isUserLoggedIn } from './frontend/auth.js';
-import { initNavbar } from './frontend/navbar.js';
-import { initCrashCourse } from './frontend/crashCourse.js';
-import { initSummary } from './frontend/summary.js';
-import { initPracticeTest } from './frontend/practiceTest.js';
-import { initDashboard } from './frontend/dashboard.js';
+import { initTheme } from './theme.js';
+import { initAuth, isUserLoggedIn } from './auth.js';
+import { initNavbar } from './navbar.js';
+import { initCrashCourse } from './crashCourse.js';
+import { initSummary } from './summary.js';
+import { initPracticeTest } from './practiceTest.js';
+import { initDashboard } from './dashboard.js';
 
 document.addEventListener("DOMContentLoaded", () => {
   // Initialize core functionality

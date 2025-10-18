@@ -1,5 +1,4 @@
-# Ignore keys
-scripts/keys.env
-
-# Ignore node modules
-#node_modules/
+# Environment variables and API keys
+backend/keys.env
+*.env
+.env

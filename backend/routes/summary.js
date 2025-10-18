@@ -80,7 +80,7 @@ router.post('/', upload.single('pdf'), async (req, res) => {
         const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 
         // Load the chunked summary schema from data_objects/SummaryPrompt.json
-        const summaryPromptPath = path.join(__dirname, '..', '..', 'data_objects', 'SummaryPrompt.json');
+        const summaryPromptPath = path.join(__dirname, '..', 'data_objects', 'SummaryPrompt.json');
         const chunkedSummarySchema = JSON.parse(fs.readFileSync(summaryPromptPath, 'utf8'));
 
         // Extract text from PDF
