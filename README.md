@@ -28,7 +28,7 @@ csc47300-team-code7/
   
  To run the local version of the repository, execute:  
  ```bash
- node scripts/server.js
+ node backend/server.js
  ```
 A Gemini-API key is required, this can be obtained in https://aistudio.google.com/api-keys
   
